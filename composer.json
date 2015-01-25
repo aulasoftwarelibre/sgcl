@@ -1,8 +1,18 @@
 {
-    "name": "sgomez/sf2-behat-skel",
+    "name": "jmibla/sgcl",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution with Behat",
+    "description": "Sistema de Gestión de Códigos Logísticos",
+    "authors": [
+        {
+            "name": "Joaquín Millán Blanco",
+            "email": "i12miblj@uco.es"
+        },
+        {
+            "name": "María Jesús León García",
+            "email": "i22legam@uco.es"
+        }
+    ],
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
