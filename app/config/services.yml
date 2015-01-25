@@ -4,6 +4,13 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    sgcl.admin.category:
+        class: AppBundle\Admin\CompanyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Company" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Company
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
