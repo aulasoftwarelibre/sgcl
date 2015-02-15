@@ -4,13 +4,23 @@ parameters:
 #    parameter_name: value
 
 services:
-    sgcl.admin.category:
+    sgcl.admin.category.company:
         class: AppBundle\Admin\CompanyAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Company" }
         arguments:
             - ~
             - AppBundle\Entity\Company
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+    sgcl.admin.category.trademark:
+        class: AppBundle\Admin\TrademarkAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Trademark" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Trademark
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle]]
