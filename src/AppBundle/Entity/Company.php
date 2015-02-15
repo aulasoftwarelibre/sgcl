@@ -17,7 +17,7 @@ class Company
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", unique=true, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -35,12 +35,10 @@ class Company
      * @var string
      *
      * @ORM\Column(name="cif", type="string", length=9, unique=true, nullable=false)
-     * @Assert\Length(
-     *      min="9",
-     *      max="9",
-     *      minMessage="El NIF son {{ limit }} caracteres",
-     *      minMessage="El NIF son {{ limit }} caracteres",
-     *      exactMessage="El NIF son {{ limit }} caracteres"
+     * @Assert\Regex(
+     *      pattern="/^[abcdefghjnpqrsuvwABCDEFGHJNPQRSUVW]\d{8}$/",
+     *      match=true,
+     *      message="Revisaaaaaaaaaaaaaa el NIF"
      * )
      */
     private $cif;
@@ -158,5 +156,10 @@ class Company
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
