@@ -63,6 +63,8 @@ class CompanyAdmin extends Admin
         $filter
             ->add('name')
             ->add('cif')
+            ->add('company_address')
+            ->add('phone')
         ;
     }
 
@@ -70,6 +72,7 @@ class CompanyAdmin extends Admin
     {
         $filter
             ->add('name')
+            ->add('cif')
         ;
     }
 

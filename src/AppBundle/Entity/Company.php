@@ -96,7 +96,7 @@ class Company
      */
     public function setCif($cif)
     {
-        $this->cif = $cif;
+        $this->cif = strtoupper( $cif );
 
         return $this;
     }
