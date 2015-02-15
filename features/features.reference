@@ -1,0 +1,46 @@
+symfony | Given /^estoy en la página de inicio/
+symfony |  When /^voy a la página de inicio/
+symfony | Given /^estoy en "(?P<page>[^"]+)"$/
+symfony |  When /^voy a "(?P<page>[^"]+)"$/
+symfony |  When /^recargo la página$/
+symfony |  When /^voy hacia atrás una página$/
+symfony |  When /^voy hacia adelante una página$/
+symfony |  When /^presiono "(?P<button>(?:[^"]|\\")*)"$/
+symfony |  When /^sigo "(?P<link>(?:[^"]|\\")*)"$/
+symfony |  When /^relleno "(?P<field>(?:[^"]|\\")*)" con "(?P<value>(?:[^"]|\\")*)"$/
+symfony |  When /^(?:|I )fill in "(?P<field>(?:[^"]|\\")*)" with:$/
+symfony |  When /^relleno con "(?P<value>(?:[^"]|\\")*)" a "(?P<field>(?:[^"]|\\")*)"$/
+symfony |  When /^relleno lo siguiente:$/
+symfony |  When /^selecciono "(?P<option>(?:[^"]|\\")*)" de "(?P<select>(?:[^"]|\\")*)"$/
+symfony |  When /^adicionalmente selecciono "(?P<option>(?:[^"]|\\")*)" de "(?P<select>(?:[^"]|\\")*)"$/
+symfony |  When /^marco "(?P<option>(?:[^"]|\\")*)"$/
+symfony |  When /^desmarco "(?P<option>(?:[^"]|\\")*)"$/
+symfony |  When /^adjunto el archivo "(?P<path>[^"]*)" a "(?P<field>(?:[^"]|\\")*)"$/
+symfony |  Then /^debo estar en "(?P<page>[^"]+)"$/
+symfony |  Then /^(?:|I )should be on (?:|the )homepage$/
+symfony |  Then /^la URL debe seguir el patrón (?P<pattern>"(?:[^"]|\\")*")$/
+symfony |  Then /^el código de estado de la respuesta debe ser (?P<code>\d+)$/
+symfony |  Then /^el código de estado de la respuesta no debe ser (?P<code>\d+)$/
+symfony |  Then /^debo ver "(?P<text>(?:[^"]|\\")*)"$/
+symfony |  Then /^no debo ver "(?P<text>(?:[^"]|\\")*)"$/
+symfony |  Then /^debo ver texto que siga el patrón (?P<pattern>"(?:[^"]|\\")*")$/
+symfony |  Then /^no debo ver texto que siga el patrón (?P<pattern>"(?:[^"]|\\")*")$/
+symfony |  Then /^la respuesta debe contener "(?P<text>(?:[^"]|\\")*)"$/
+symfony |  Then /^la respuesta no debe contener "(?P<text>(?:[^"]|\\")*)"$/
+symfony |  Then /^debo ver "(?P<text>(?:[^"]|\\")*)" en el elemento "(?P<element>[^"]*)"$/
+symfony |  Then /^no debo ver "(?P<text>(?:[^"]|\\")*)" en el elemento "(?P<element>[^"]*)"$/
+symfony |  Then /^el elemento "(?P<element>[^"]*)" debe contener "(?P<value>(?:[^"]|\\")*)"$/
+symfony |  Then /^the "(?P<element>[^"]*)" element should not contain "(?P<value>(?:[^"]|\\")*)"$/
+symfony |  Then /^debo ver un elemento "(?P<element>[^"]*)"$/
+symfony |  Then /^no debo ver un elemento "(?P<element>[^"]*)"$/
+symfony |  Then /^el campo "(?P<field>(?:[^"]|\\")*)" debe contener "(?P<value>(?:[^"]|\\")*)"$/
+symfony |  Then /^el campo "(?P<field>(?:[^"]|\\")*)" no debe contener "(?P<value>(?:[^"]|\\")*)"$/
+symfony |  Then /^la casilla de selección "(?P<checkbox>[^"]*) debe estar marcada" $/
+symfony |  Then /^the checkbox "(?P<checkbox>(?:[^"]|\\")*)" (?:is|should be) checked$/
+symfony |  Then /^la casilla de selección "(?P<checkbox>(?:[^"]|\\")*)" no debe estar marcada$/
+symfony |  Then /^the checkbox "(?P<checkbox>(?:[^"]|\\")*)" should (?:be unchecked|not be checked)$/
+symfony |  Then /^the checkbox "(?P<checkbox>(?:[^"]|\\")*)" is (?:unchecked|not checked)$/
+symfony |  Then /^debo ver (?P<num>\d+) "(?P<element>[^"]*)" elementos$/
+symfony |  Then /^print current URL$/
+symfony |  Then /^imprime la última respuesta$/
+symfony |  Then /^muestra la última respuesta$/

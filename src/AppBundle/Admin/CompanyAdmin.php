@@ -4,6 +4,7 @@ namespace AppBundle\Admin;
 
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -27,7 +28,9 @@ class CompanyAdmin extends Admin
             ->with('Crear nueva COMPAÑÍA')
                 ->add('name')
                 ->add('cif')
-                ->add('company_address')
+                ->add('company_address', 'textarea', array(
+                    'label' => 'Dirección',
+                ))
                 ->add('phone')
                 ->setHelps(array(
                     'name'=>'Introduce el nombre de la empresa',
@@ -63,6 +66,12 @@ class CompanyAdmin extends Admin
         ;
     }
 
+    protected function configureDatagridFilters( DatagridMapper $filter )
+    {
+        $filter
+            ->add('name')
+        ;
+    }
 
 
 }
