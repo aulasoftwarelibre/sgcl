@@ -26,15 +26,15 @@ class CompanyAdmin extends Admin
     {
         $form
             ->with('Crear nueva COMPAÑÍA')
-                ->add('name')
-                ->add('cif')
+                ->add('name', null, array('label' => 'Nombre'))
+                ->add('nif', null, array('label' => 'NIF'))
                 ->add('company_address', 'textarea', array(
                     'label' => 'Dirección',
                 ))
-                ->add('phone')
+                ->add('phone', null, array('label' => 'Telefono'))
                 ->setHelps(array(
                     'name'=>'Introduce el nombre de la empresa',
-                    'cif'=>'Introduce el NIF de la empresa (recuerde que son nueve caracteres)',
+                    'nif'=>'Introduce el NIF de la empresa (recuerde que son nueve caracteres)',
                     'company_address'=>'Introduce la dirección de la empresa',
                     'phone'=>'Introduce el teléfono de la empresa',
                 ))
@@ -45,7 +45,7 @@ class CompanyAdmin extends Admin
     {
         $list
             ->addIdentifier('name')
-            ->add('cif')
+            ->add('nif')
             ->add('company_address')
             ->add('phone')
             ->add('_action', 'actions', array(
@@ -62,7 +62,7 @@ class CompanyAdmin extends Admin
     {
         $filter
             ->add('name')
-            ->add('cif')
+            ->add('nif')
             ->add('company_address')
             ->add('phone')
         ;
@@ -72,10 +72,8 @@ class CompanyAdmin extends Admin
     {
         $filter
             ->add('name')
-            ->add('cif')
+            ->add('nif')
         ;
     }
-
-
 }
 

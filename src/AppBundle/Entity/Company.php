@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 //Para los ASSERT .. las validaciones
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * Company
@@ -34,14 +35,19 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="cif", type="string", length=9, unique=true, nullable=false)
+     * @ORM\Column(name="nif", type="string", length=9, unique=true, nullable=false)
      * @Assert\Regex(
-     *      pattern="/^[abcdefghjnpqrsuvwABCDEFGHJNPQRSUVW]\d{8}$/",
-     *      match=true,
-     *      message="Revisaaaaaaaaaaaaaa el NIF"
+     * pattern="/^[abcdefghjnpqrsuvwABCDEFGHJNPQRSUVW]\d{8}$/",
+     * match=true,
+     * message="Revisa el NIF"
+     * )
+     * @Assert\Regex(
+     * pattern="/^[abcdefghjnpqrsuvwABCDEFGHJNPQRSUVW]0{8}$/",
+     * match=false,
+     * message="Todos los númros NO pueden ser ceros"
      * )
      */
-    private $cif;
+    private $nif;
 
     /**
      * @var string
@@ -89,26 +95,26 @@ class Company
     }
 
     /**
-     * Set cif
+     * Set nif
      *
-     * @param string $cif
+     * @param string $nif
      * @return Company
      */
-    public function setCif($cif)
+    public function setNif($nif)
     {
-        $this->cif = strtoupper( $cif );
+        $this->nif = strtoupper( $nif );
 
         return $this;
     }
 
     /**
-     * Get cif
+     * Get nif
      *
      * @return string 
      */
-    public function getCif()
+    public function getNif()
     {
-        return $this->cif;
+        return $this->nif;
     }
 
     /**

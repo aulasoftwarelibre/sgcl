@@ -29,6 +29,24 @@ class CoreContext extends DefaultContext
     }
 
     /**
+     * @Given estoy en la página de creación de compañías
+     */
+    public function iAmOnCompanyCreate()
+    {
+        $this->getSession()->visit($this->generatePageUrl('company_create'));
+    }
+
+    /**
+     * @Given /^estoy en la página de edición de compañía con "([^".]*)" denominado "([^".]*)"$/
+     */
+    public function iAmOnOneCompanyEdit($campo, $valor)
+    {
+        $em = $this->getEntityManager();
+        $company = $em->getRepository('AppBundle:Company')->findOneBy(array($campo => $valor));
+        $this->assertSession()->addressEquals($this->generatePageUrl('company_edit', array('id' => $company->getId())));
+    }
+
+    /**
      * @Then debo estar en la página de listado de compañías
      */
     public function iShouldBeOnCompanyList()
@@ -48,7 +66,7 @@ class CoreContext extends DefaultContext
     }
 
     /**
-     * @When /presiono "([^".]*)" cerca de "([^".]*)"$/
+     * @When /^presiono "([^".]*)" cerca de "([^".]*)"$/
      */
     public function iClickNear($button, $value)
     {
@@ -61,5 +79,15 @@ class CoreContext extends DefaultContext
         } else {
             $tr->clickLink($button);
         }
+    }
+
+    /**
+     * @Then /^debería estar en la página edición de compañia con "([^".]*)" denominado "([^".]*)"$/
+     */
+    public function iAmOnCompanyEdit($campo, $valor)
+    {
+        $em = $this->getEntityManager();
+        $company = $em->getRepository('AppBundle:Company')->findOneBy(array($campo => $valor));
+        $this->assertSession()->addressEquals($this->generatePageUrl('company_edit', array('id' => $company->getId())));
     }
 }

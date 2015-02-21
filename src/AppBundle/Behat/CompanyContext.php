@@ -24,7 +24,7 @@ class CompanyContext extends DefaultContext
         foreach ($tableNode->getHash() as $companyHash) {
             $company = new Company();
             $company->setName( $companyHash['nombre'] );
-            $company->setCif( $companyHash['cif'] );
+            $company->setNif( $companyHash['nif'] );
 
             $em->persist($company);
         }
