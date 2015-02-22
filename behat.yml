@@ -24,6 +24,15 @@ default:
                 - Behat\MinkExtension\Context\MinkContext
             filters:
                 tags: "@company"
+        trademark:
+                    contexts:
+                        - AppBundle\Behat\CompanyContext
+                        - AppBundle\Behat\TrademarkContext
+                        - AppBundle\Behat\CoreContext
+                        - AppBundle\Behat\UserContext
+                        - Behat\MinkExtension\Context\MinkContext
+                    filters:
+                        tags: "@trademark"
 
 javascript:
     gherkin:

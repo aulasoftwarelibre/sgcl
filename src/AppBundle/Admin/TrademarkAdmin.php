@@ -4,6 +4,7 @@ namespace AppBundle\Admin;
 
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -25,11 +26,14 @@ class TrademarkAdmin extends Admin
     {
         $form
             ->with('Crear nueva marca')
-            ->add('name')
-            ->add('prefix')
+            ->add('name', null, array('label' => 'Nombre'))
+            ->add('prefix', null, array('label' => 'Prefijo codificación'))
+            ->add('prefixUPC', null, array('label' => 'Prefijo codificación para código UPC'))
+            ->add('company', null, array('label' => 'Compañía propietaria de la marca'))
             ->setHelps(array(
                 'name'=>'Introduce el nombre de la marca registrada',
                 'prefix'=>'Introduce los siete números que identifica la marca',
+                'prefixUPC' =>'Introduce, en caso se disponga, de los seis números que identifican la marca para generación de UPC',
             ))
             ->end();
     }
@@ -39,6 +43,8 @@ class TrademarkAdmin extends Admin
         $list
             ->addIdentifier('name')
             ->add('prefix')
+            ->add('prefixUPC')
+            ->add('company')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -54,10 +60,19 @@ class TrademarkAdmin extends Admin
         $filter
             ->add('name')
             ->add('prefix')
+            ->add('prefixUPC')
+            ->add('company')
         ;
     }
 
-
-
+    protected function configureDatagridFilters( DatagridMapper $filter )
+    {
+        $filter
+            ->add('name')
+            ->add('prefix')
+            ->add('prefixUPC')
+            ->add('company')
+        ;
+    }
 }
 

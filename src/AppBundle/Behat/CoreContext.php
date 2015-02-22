@@ -29,11 +29,27 @@ class CoreContext extends DefaultContext
     }
 
     /**
+     * @Given estoy en la página de listado de marcas
+     */
+    public function iAmOnTrademarkList()
+    {
+        $this->getSession()->visit($this->generatePageUrl('trademark_list'));
+    }
+
+    /**
      * @Given estoy en la página de creación de compañías
      */
     public function iAmOnCompanyCreate()
     {
         $this->getSession()->visit($this->generatePageUrl('company_create'));
+    }
+
+    /**
+     * @Given estoy en la página de creación de marcas
+     */
+    public function iAmOnTrademarkCreate()
+    {
+        $this->getSession()->visit($this->generatePageUrl('trademark_create'));
     }
 
     /**
@@ -52,6 +68,14 @@ class CoreContext extends DefaultContext
     public function iShouldBeOnCompanyList()
     {
         $this->assertSession()->addressEquals($this->generatePageUrl('company_list'));
+    }
+
+    /**
+     * @Then debo estar en la página de listado de marcas
+     */
+    public function iShouldBeOnTrademarkList()
+    {
+        $this->assertSession()->addressEquals($this->generatePageUrl('trademark_list'));
     }
 
     /**
@@ -84,10 +108,20 @@ class CoreContext extends DefaultContext
     /**
      * @Then /^debería estar en la página edición de compañia con "([^".]*)" denominado "([^".]*)"$/
      */
-    public function iAmOnCompanyEdit($campo, $valor)
+    public function iShouldBeOnCompanyEdit($campo, $valor)
     {
         $em = $this->getEntityManager();
         $company = $em->getRepository('AppBundle:Company')->findOneBy(array($campo => $valor));
         $this->assertSession()->addressEquals($this->generatePageUrl('company_edit', array('id' => $company->getId())));
+    }
+
+    /**
+     * @Then /^debería estar en la página edición de marca con "([^".]*)" denominado "([^".]*)"$/
+     */
+    public function iShouldBeOnTrademarkEdit($campo, $valor)
+    {
+        $em = $this->getEntityManager();
+        $trademark = $em->getRepository('AppBundle:Trademark')->findOneBy(array($campo => $valor));
+        $this->assertSession()->addressEquals($this->generatePageUrl('trademark_edit', array('id' => $trademark->getId())));
     }
 }

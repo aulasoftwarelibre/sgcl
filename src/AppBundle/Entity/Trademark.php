@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 //Para los ASSERT .. las validaciones
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -27,11 +28,12 @@ class Trademark
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true, nullable=false)
-     * @Assert\Length(max="255", maxMessage="No más de 255 caracteres")
+     * @ORM\Column(name="name", type="string", length=100, unique=true, nullable=false)
+     * @Assert\NotBlank(message="Recuerde introducir el nombre de la marca")
+     * @Assert\Length(max="100", maxMessage="No más de 100 caracteres")
      */
     private $name;
-///*@Assert\Type(type="integer", message="Tienes que introducir SIETE dígitos")
+
     /**
      * @var integer
      *
@@ -49,6 +51,33 @@ class Trademark
      */
     private $prefix;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prefixUPC", type="string", length=6, unique=true, nullable=true)
+     * @Assert\Regex(
+     *      pattern="/^\d{6}$/",
+     *      match=true,
+     *      message="Recuerda son SEIS dígitos (positivos) ... rellena con ceros si solo tienes cinco."
+     * )
+     * @Assert\Regex(
+     *      pattern="/^0{6}$/",
+     *      match=false,
+     *      message="Todos los númros NO pueden ser ceros"
+     * )
+     */
+    private $prefixUPC;
+
+    /**
+     * @var Company
+     *
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="trademarks")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="company_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     * })
+     * @Assert\Valid()
+     */
+    private $company;
 
     /**
      * Get id
@@ -107,6 +136,51 @@ class Trademark
     }
 
     /**
+     * Set prefixUPC
+     *
+     * @param integer $prefixUPC
+     * @return Trademark
+     */
+    public function setPrefixUPC($prefixUPC)
+    {
+        $this->prefixUPC = $prefixUPC;
+
+        return $this;
+    }
+
+    /**
+     * Get prefixUPC
+     *
+     * @return integer
+     */
+    public function getPrefixUPC()
+    {
+        return $this->prefixUPC;
+    }
+
+    /**
+     * Set company
+     *
+     * @param Company $company
+     * @return Trademark
+     */
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
      * To String
      *
      * @return string
@@ -115,6 +189,4 @@ class Trademark
     {
         return $this->getName();
     }
-
-
 }
