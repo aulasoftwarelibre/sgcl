@@ -24,3 +24,33 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle]]
+    sgcl.admin.category.barcode:
+        class: AppBundle\Admin\BarcodeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Barcode" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Barcode
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+    sgcl.admin.category.tableLogisticVariables:
+            class: AppBundle\Admin\TableLogisticVariablesAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "TableLogisticVarialbes" }
+            arguments:
+                - ~
+                - AppBundle\Entity\TableLogisticVariables
+                - ~
+            calls:
+                - [ setTranslationDomain, [AppBundle]]
+    sgcl.admin.category.product:
+                class: AppBundle\Admin\ProductAdmin
+                tags:
+                    - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Product" }
+                arguments:
+                    - ~
+                    - AppBundle\Entity\Product
+                    - ~
+                calls:
+                    - [ setTranslationDomain, [AppBundle]]

@@ -10,5 +10,6 @@ $set = new FixtureSet(array(
 
 $set->addFile(__DIR__.'/users.yml', 'yaml');
 $set->addFile(__DIR__.'/company.yml', 'yaml');
+$set->addFile(__DIR__.'/trademark.yml', 'yaml');
 
 return $set;

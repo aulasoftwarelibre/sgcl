@@ -44,6 +44,7 @@ class TrademarkAdmin extends Admin
             ->addIdentifier('name')
             ->add('prefix')
             ->add('prefixUPC')
+            ->add('counter')
             ->add('company')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -61,6 +62,7 @@ class TrademarkAdmin extends Admin
             ->add('name')
             ->add('prefix')
             ->add('prefixUPC')
+            ->add('counter')
             ->add('company')
         ;
     }

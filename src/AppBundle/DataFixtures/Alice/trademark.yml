@@ -1,0 +1,5 @@
+\AppBundle\Entity\Trademark:
+  trademark{1..40}:
+    name: <company()>
+    prefix: <randomNumber(7)>
+    company: @company*

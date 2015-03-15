@@ -33,6 +33,16 @@ default:
                         - Behat\MinkExtension\Context\MinkContext
                     filters:
                         tags: "@trademark"
+        barcode:
+                    contexts:
+                        - AppBundle\Behat\CompanyContext
+                        - AppBundle\Behat\TrademarkContext
+                        - AppBundle\Behat\BarcodeContext
+                        - AppBundle\Behat\CoreContext
+                        - AppBundle\Behat\UserContext
+                        - Behat\MinkExtension\Context\MinkContext
+                    filters:
+                        tags: "@barcode"
 
 javascript:
     gherkin:

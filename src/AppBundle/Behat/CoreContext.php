@@ -37,6 +37,14 @@ class CoreContext extends DefaultContext
     }
 
     /**
+     * @Given estoy en la página de listado de códigos de barras
+     */
+    public function iAmOnbarcodeList()
+    {
+        $this->getSession()->visit($this->generatePageUrl('barcode_list'));
+    }
+
+    /**
      * @Given estoy en la página de creación de compañías
      */
     public function iAmOnCompanyCreate()
@@ -50,6 +58,14 @@ class CoreContext extends DefaultContext
     public function iAmOnTrademarkCreate()
     {
         $this->getSession()->visit($this->generatePageUrl('trademark_create'));
+    }
+
+    /**
+     * @Given estoy en la página de creación códigos de barras
+     */
+    public function iAmOnBarcodeCreate()
+    {
+        $this->getSession()->visit($this->generatePageUrl('barcode_create'));
     }
 
     /**
@@ -76,6 +92,14 @@ class CoreContext extends DefaultContext
     public function iShouldBeOnTrademarkList()
     {
         $this->assertSession()->addressEquals($this->generatePageUrl('trademark_list'));
+    }
+
+    /**
+     * @Then debo estar en la página de listado de códigos de barras
+     */
+    public function iShouldBeOnBarcodeList()
+    {
+        $this->assertSession()->addressEquals($this->generatePageUrl('barcode_list'));
     }
 
     /**
@@ -123,5 +147,15 @@ class CoreContext extends DefaultContext
         $em = $this->getEntityManager();
         $trademark = $em->getRepository('AppBundle:Trademark')->findOneBy(array($campo => $valor));
         $this->assertSession()->addressEquals($this->generatePageUrl('trademark_edit', array('id' => $trademark->getId())));
+    }
+
+    /**
+     * @Then /^debería estar en la página edición de códigos de barras con "([^".]*)" denominado "([^".]*)"$/
+     */
+    public function iShouldBeOnBarcodeEdit($campo, $valor)
+    {
+        $em = $this->getEntityManager();
+        $barcode = $em->getRepository('AppBundle:Barcode')->findOneBy(array($campo => $valor));
+        $this->assertSession()->addressEquals($this->generatePageUrl('barcode_edit', array('id' => $barcode->getId())));
     }
 }

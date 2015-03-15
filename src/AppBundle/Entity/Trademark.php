@@ -80,6 +80,13 @@ class Trademark
     private $company;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="counter", type="integer", nullable=false)
+     */
+    private $counter = 0;
+
+    /**
      * Get id
      *
      * @return integer
@@ -178,6 +185,29 @@ class Trademark
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set counter
+     *
+     * @param integer $counter
+     * @return Trademark
+     */
+    public function setCounter($counter)
+    {
+        $this->counter = $counter;
+
+        return $this;
+    }
+
+    /**
+     * Get counter
+     *
+     * @return integer
+     */
+    public function getCounter()
+    {
+        return $this->counter;
     }
 
     /**

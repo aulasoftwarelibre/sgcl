@@ -85,7 +85,7 @@ fos_user:
         group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
 
     service:
-        user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+        user_manager: sonata.user.orm.user_manager                      # If you're So far, this entry has assumed that you have a very simple custom field type. But if you need access to configuration, a database connection, or some other service, then you'll want to register your custom type as a service. For example, suppose that you're storing the gender parameters in configuration:using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 
     profile:  # Authentication Form
         form:
@@ -93,3 +93,17 @@ fos_user:
             handler:            fos_user.profile.form.handler.default
             name:               fos_user_profile_form
             validation_groups:  [Authentication] # Please note : this is not the default value
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
+
+#Aquí se especifican como SERVICIO los diferntes tipos de códigos de barras con los que se trabaja
+parameters:
+    codetypes:
+        TYPECODE_GTIN_8: GTIN-8
+        TYPECODE_GTIN_12: GTIN-12
+        TYPECODE_GTIN_13: GTIN-13
+        TYPECODE_GTIN_14: GTIN-14
+        TYPECODE_GS1_128: GTIN-128

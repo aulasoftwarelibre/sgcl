@@ -1,4 +1,4 @@
 \AppBundle\Entity\Company:
   company{1..20}:
     name: <company()>
-    cif: <randomNumber(9)>
+    nif: <randomLetter()><numerify('########')>

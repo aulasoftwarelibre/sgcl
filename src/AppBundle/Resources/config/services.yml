@@ -1,4 +1,9 @@
 parameters:
 
 services:
-
+  app.form.type.codeType:
+    class: AppBundle\Form\Type\CodeType
+    arguments:
+        - "%codetypes%"
+    tags:
+        - { name: form.type, alias: codeType }

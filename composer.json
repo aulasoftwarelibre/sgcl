@@ -35,7 +35,8 @@
         "sonata-project/doctrine-orm-admin-bundle":     "2.3.*",
         "sonata-project/easy-extends-bundle":           "2.1.*",
         "sonata-project/user-bundle":                   "2.2.*",
-        "sylius/resource-bundle":                       "0.12.*"
+        "sylius/resource-bundle":                       "0.12.*",
+	    "stof/doctrine-extensions-bundle":              "~1.1@dev"
     },
     "require-dev": {
         "sensio/generator-bundle":              "~2.4",
