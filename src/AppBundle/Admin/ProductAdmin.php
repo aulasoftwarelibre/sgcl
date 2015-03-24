@@ -8,11 +8,17 @@
 
 namespace AppBundle\Admin;
 
+use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+//Para "query"
+use Doctrine\ORM\QueryBuilder;
+use AppBundle\Doctrine\ORM;
+Use AppBundle\Entity;
+
 
 class ProductAdmin extends Admin
 {
@@ -27,18 +33,31 @@ class ProductAdmin extends Admin
         '_sort_by' => 'trademark'  // name of the ordered field
     );
 
+    // aquí va funcion -> public function createQuery($context = 'list')
+
+    /*
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('createProduct', $this->getRouterIdParameter().'/newproduct');
+    }
+    */
+
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->with('Añadir una nuevo producto')
+            ->with('Datos del producto')
             ->add('code', null, array('label' => 'Código del nuevo producto'))
             ->add('name', null, array('label' => 'Descripción breve'))
             ->add('description', null, array('label' => 'Descripción completa'))
             ->add('changeHistory', null, array('label' => 'Historíal de modificaciones'))
             ->add('numberConsumerUnit', null, array('label' => 'Número de UC por Unidad de Venta'))
-            ->add('barcodeCU', null, array('label' => 'Código de barras para la Unidad de Consumo'))
+            ->add('barcodeCU', 'sonata_type_model', array(
+                'label' => 'Código de barras para la Unidad de Consumo',
+                'class' => 'AppBundle:Barcode',
+                'query' => $this->getConfigurationPool()->getContainer()->get('doctrine.orm.default_entity_manager')->getRepository('AppBundle:Barcode')->getBarcodeAsList('TYPECODE_GTIN_8'),
+                'required' => false,
+            ))
             ->add('barcodeSU', null, array('label' => 'Código de barras para la Unidad de Venta'))
-            ->add('barcodePallet', null, array('label' => 'Código de barras para el pallet (EAN-128)'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
             ->add('trademark', null, array('label' => 'Marca que corresponde'))
@@ -50,7 +69,6 @@ class ProductAdmin extends Admin
                 'numberConsumerUnit'=>'Introduce el número de UC que agrupa la Unidad de Venta',
                 'barcodeCU'=>'Código de barras para la UNIDAD DE CONSUMO',
                 'barcodeSU'=>'Código de barras para la UNIDAD DE VENTA',
-                'barcodePallet'=>'Código de barras para el PALET (EAN-128)',
                 'trademark' =>'Selecciona la marca que corresponde este código',
             ))
             ->end();
@@ -66,7 +84,6 @@ class ProductAdmin extends Admin
             ->add('numberConsumerUnit')
             ->add('barcodeCU')
             ->add('barcodeSU')
-            ->add('barcodePallet')
             ->add('creationDate')
             ->add('lastModificationDate')
             ->add('trademark')
@@ -90,7 +107,6 @@ class ProductAdmin extends Admin
             ->add('numberConsumerUnit')
             ->add('barcodeCU')
             ->add('barcodeSU')
-            ->add('barcodePallet')
             ->add('creationDate')
             ->add('lastModificationDate')
             ->add('trademark')
@@ -107,7 +123,6 @@ class ProductAdmin extends Admin
             ->add('numberConsumerUnit')
             ->add('barcodeCU')
             ->add('barcodeSU')
-            ->add('barcodePallet')
             ->add('creationDate')
             ->add('lastModificationDate')
             ->add('trademark')

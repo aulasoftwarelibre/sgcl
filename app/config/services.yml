@@ -21,7 +21,7 @@ services:
         arguments:
             - ~
             - AppBundle\Entity\Trademark
-            - ~
+            - AppBundle:TrademarkCRUD
         calls:
             - [ setTranslationDomain, [AppBundle]]
     sgcl.admin.category.barcode:

@@ -9,7 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 //Para asignar 'datatime'
 use Gedmo\Mapping\Annotation as Gedmo;
 // Para utilizar búsquedas ... entitymanager ...
-
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\EntityManager;
 
 /**
  * Product
@@ -74,7 +76,7 @@ class Product
      *
      * @ORM\ManyToOne(targetEntity="Barcode", inversedBy="barcode")
      * @ORM\JoinColumns({
-     *      @ORM\JoinColumn(name="barcode_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     *      @ORM\JoinColumn(name="barcode_id_CU", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      * })
      * @Assert\Valid()
      */
@@ -85,22 +87,11 @@ class Product
      *
      * @ORM\ManyToOne(targetEntity="Barcode", inversedBy="barcode")
      * @ORM\JoinColumns({
-     *      @ORM\JoinColumn(name="barcode_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     *      @ORM\JoinColumn(name="barcode_id_SU", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      * })
      * @Assert\Valid()
      */
     private $barcodeSU;
-
-    /**
-     * @var Barcode
-     *
-     * @ORM\ManyToOne(targetEntity="Barcode", inversedBy="barcode")
-     * @ORM\JoinColumns({
-     *      @ORM\JoinColumn(name="barcode_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
-     * })
-     * @Assert\Valid()
-     */
-    private $barcodePallet;
 
     /**
      * @var Trademark
@@ -261,11 +252,8 @@ class Product
      * @param Barcode $barcodeCU
      * @return Product
      */
-    public function setBarcodeCU($barcodeCU)
+    public function setBarcodeCU(Barcode $barcodeCU)
     {
-        $em = $this->getEntityManager();
-        $barcodeCU = $em->getRepository('AppBundle:Barcode')->findOneBy(array('type' => 'TYPECODE_GTIN_8'));
-    //
         $this->barcodeCU = $barcodeCU;
 
         return $this;
@@ -278,11 +266,6 @@ class Product
      */
     public function getBarcodeCU()
     {
-        $em = $this->getEntityManager();
-        //barcodeCU = $em->getRepository('AppBundle:Barcode')->findOneBy(array('type' => 'TYPECODE_GTIN_8'));
-        $repository = $em->getRepository('AppBundle:Barcode')->findOneBy(array('type' => 'TYPECODE_GTIN_8'));
-        $this->barcodeCU = $repository;
-    //
         return $this->barcodeCU;
     }
 
@@ -292,7 +275,7 @@ class Product
      * @param Barcode $barcodeSU
      * @return Product
      */
-    public function setBarcodeSU($barcodeSU)
+    public function setBarcodeSU(Barcode $barcodeSU)
     {
         $this->barcodeSU = $barcodeSU;
 
@@ -307,29 +290,6 @@ class Product
     public function getBarcodeSU()
     {
         return $this->barcodeSU;
-    }
-
-    /**
-     * Set barcodePallet
-     *
-     * @param Barcode $barcodePallet
-     * @return Product
-     */
-    public function setBarcodePallet(Barcode $barcodePallet)
-    {
-        $this->barcodePallet = $barcodePallet;
-
-        return $this;
-    }
-
-    /**
-     * Get barcodePallet
-     *
-     * @return Barcode
-     */
-    public function getBarcodePallet()
-    {
-        return $this->barcodePallet;
     }
 
     /**
