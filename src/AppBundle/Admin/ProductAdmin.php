@@ -8,22 +8,22 @@
 
 namespace AppBundle\Admin;
 
-use Doctrine\ORM\EntityRepository;
+//use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 //Para "query"
-use Doctrine\ORM\QueryBuilder;
+//use Doctrine\ORM\QueryBuilder;
 use AppBundle\Doctrine\ORM;
 Use AppBundle\Entity;
-
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class ProductAdmin extends Admin
 {
 
-    protected $baseRouteName = 'product';
+    protected $baseRouteName = 'backend_product';
 
     protected $baseRoutePattern = 'product';
 
@@ -33,14 +33,11 @@ class ProductAdmin extends Admin
         '_sort_by' => 'trademark'  // name of the ordered field
     );
 
-    // aquí va funcion -> public function createQuery($context = 'list')
-
-    /*
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('createProduct', $this->getRouterIdParameter().'/newproduct');
+        $collection->add('trademark_barcode', 'trademark/barcode');
     }
-    */
+
 
     protected function configureFormFields(FormMapper $form)
     {
@@ -51,16 +48,20 @@ class ProductAdmin extends Admin
             ->add('description', null, array('label' => 'Descripción completa'))
             ->add('changeHistory', null, array('label' => 'Historíal de modificaciones'))
             ->add('numberConsumerUnit', null, array('label' => 'Número de UC por Unidad de Venta'))
-            ->add('barcodeCU', 'sonata_type_model', array(
+            ->add('trademark', null, array('label' => 'Marca que corresponde'))
+            ->add('barcodeCU', null, array(
+                'placeholder' => 'Selecciona el código de barras',
                 'label' => 'Código de barras para la Unidad de Consumo',
                 'class' => 'AppBundle:Barcode',
-                'query' => $this->getConfigurationPool()->getContainer()->get('doctrine.orm.default_entity_manager')->getRepository('AppBundle:Barcode')->getBarcodeAsList('TYPECODE_GTIN_8'),
+                //'query' => $this->getConfigurationPool()->getContainer()->get('doctrine.orm.default_entity_manager')->getRepository('AppBundle:Barcode')->getBarcodeAsList('TYPECODE_GTIN_8'),
                 'required' => false,
             ))
-            ->add('barcodeSU', null, array('label' => 'Código de barras para la Unidad de Venta'))
+            ->add('barcodeSU', null, array(
+                'placeholder' => 'Selecciona el código de barras',
+                'label' => 'Código de barras para la Unidad de Venta',
+            ))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
-            ->add('trademark', null, array('label' => 'Marca que corresponde'))
             ->setHelps(array(
                 'code'=>'Introduce el código del nuevo producto',
                 'name'=>'Introduce la descripción breve del producto',

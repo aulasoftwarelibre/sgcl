@@ -21,7 +21,7 @@ services:
         arguments:
             - ~
             - AppBundle\Entity\Trademark
-            - AppBundle:TrademarkCRUD
+            - ~
         calls:
             - [ setTranslationDomain, [AppBundle]]
     sgcl.admin.category.barcode:
@@ -51,6 +51,7 @@ services:
                 arguments:
                     - ~
                     - AppBundle\Entity\Product
-                    - ~
+                    - AppBundle:ProductCRUD
                 calls:
                     - [ setTranslationDomain, [AppBundle]]
+                    - [ setTemplate, [edit, Product/CRUD/base_edit.html.twig]]

@@ -1,0 +1,35 @@
+{% extends '@SonataAdmin/CRUD/edit.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        $(function(){
+            $("select[id$='_trademark']").change(function() {
+                var data = {
+                    trademark_id: $(this).val()
+                };
+                console.log(data);
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ path("backend_product_trademark_barcode") }}',
+                    data: data,
+                    success: function(data) {
+                        var $barcodeSU_selector = $("select[id$='_barcodeSU']");
+                        var $barcodeCU_selector = $("select[id$='_barcodeCU']");
+
+                        $barcodeSU_selector.html('');
+                        $barcodeCU_selector.html('');
+
+                        for (var i=0, total = data.length; i < total; i++) {
+                            $barcodeSU_selector.append('<option value="' + data[i].id + '">' + data[i].code + '</option>');
+                            $barcodeCU_selector.append('<option value="' + data[i].id + '">' + data[i].code + '</option>');
+                        }
+
+                    }
+                });
+
+            });
+        });
+    </script>
+{% endblock javascripts %}

@@ -52,9 +52,6 @@ class TrademarkAdmin extends Admin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                    //'create' => array(
-                    //    'template' => 'CRUD/list__action_create.html.twig',
-                    //),
                 )
             ))
         ;

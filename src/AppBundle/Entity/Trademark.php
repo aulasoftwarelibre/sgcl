@@ -80,6 +80,12 @@ class Trademark
     private $company;
 
     /**
+     * @var Barcode
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Barcode", mappedBy="trademark")
+     */
+    private $barcodes;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="counter", type="integer", nullable=false)
@@ -218,5 +224,46 @@ class Trademark
     public function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->barcodes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add barcodes
+     *
+     * @param \AppBundle\Entity\Barcode $barcodes
+     * @return Trademark
+     */
+    public function addBarcode(\AppBundle\Entity\Barcode $barcodes)
+    {
+        $this->barcodes[] = $barcodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove barcodes
+     *
+     * @param \AppBundle\Entity\Barcode $barcodes
+     */
+    public function removeBarcode(\AppBundle\Entity\Barcode $barcodes)
+    {
+        $this->barcodes->removeElement($barcodes);
+    }
+
+    /**
+     * Get barcodes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBarcodes()
+    {
+        return $this->barcodes;
     }
 }

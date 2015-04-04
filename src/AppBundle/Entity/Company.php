@@ -62,6 +62,20 @@ class Company
     private $phone;
 
     /**
+    * @var Trademark
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Trademark", mappedBy="company")
+    */
+    private $trademarks;
+
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+        $this->trademarks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -164,6 +178,44 @@ class Company
         return $this->phone;
     }
 
+    /**
+     * Add trademarks
+     *
+     * @param \AppBundle\Entity\Trademark $trademarks
+     * @return Company
+     */
+    public function addTrademark(\AppBundle\Entity\Trademark $trademarks)
+    {
+        $this->trademarks[] = $trademarks;
+
+        return $this;
+    }
+
+    /**
+     * Remove trademarks
+     *
+     * @param \AppBundle\Entity\Trademark $trademarks
+     */
+    public function removeTrademark(\AppBundle\Entity\Trademark $trademarks)
+    {
+        $this->trademarks->removeElement($trademarks);
+    }
+
+    /**
+     * Get trademarks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTrademarks()
+    {
+        return $this->trademarks;
+    }
+
+    /**
+    * To String
+    *
+    * @return string
+    */
     public function __toString()
     {
         return $this->getName();

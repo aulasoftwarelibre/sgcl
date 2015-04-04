@@ -74,7 +74,7 @@ class Barcode
     /**
      * @var Trademark
      *
-     * @ORM\ManyToOne(targetEntity="Trademark", inversedBy="trademarks")
+     * @ORM\ManyToOne(targetEntity="Trademark", inversedBy="barcodes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="trademark_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      * })

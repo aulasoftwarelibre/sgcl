@@ -34,4 +34,17 @@ class BarcodeRepository extends CustomRepository
             ->orderBy('b.left')
             ->setParameter('1', $type);
     }
+
+    public function findByTrademarkId($trademark_id)
+    {
+        $query = $this->getEntityManager()->createQuery("
+            SELECT barcode
+            FROM AppBundle:Barcode barcode
+            LEFT JOIN barcode.trademark trademark
+            WHERE trademark.id = :trademark_id
+        ")->setParameter('trademark_id', $trademark_id);
+
+        return $query->getArrayResult();
+    }
+
 }
