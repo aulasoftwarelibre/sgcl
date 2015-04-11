@@ -86,6 +86,18 @@ class Trademark
     private $barcodes;
 
     /**
+     * @var Product
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Product", mappedBy="trademark")
+     */
+    private $products;
+
+    /**
+     * @var TableLogisticVariables
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Product", mappedBy="trademark")
+     */
+    private $tablelogisticvariabless;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="counter", type="integer", nullable=false)
@@ -262,8 +274,94 @@ class Trademark
      *
      * @return \Doctrine\Common\Collections\Collection
      */
+
     public function getBarcodes()
     {
         return $this->barcodes;
     }
+
+    /**
+     * Constructor
+     */
+    public function __constructProduct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add products
+     *
+     * @param \AppBundle\Entity\Product $products
+     * @return Trademark
+     */
+    public function addProduct(\AppBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \AppBundle\Entity\Product $products
+     */
+    public function removeProduct(\AppBundle\Entity\Product $products)
+    {
+        $this->barcodes->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __constructTableLogisticVariables()
+    {
+        $this->tablelogisticvariabless = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tablelogisticvariabless
+     *
+     * @param \AppBundle\Entity\TableLogisticVariables $tablelogisticvariabless
+     * @return Trademark
+     */
+    public function addTableLogisticVariables(\AppBundle\Entity\TableLogisticVariables $tableLogisticVariables)
+    {
+        $this->tablelogisticvariabless[] = $tableLogisticVariables;
+
+        return $this;
+    }
+
+    /**
+     * Remove tablelogisticvariabless
+     *
+     * @param \AppBundle\Entity\TableLogisticVariables $tablelogisticvariabless
+     */
+    public function removeTableLogisticVariables(\AppBundle\Entity\TableLogisticVariables $tablelogisticvariabless)
+    {
+        $this->tablelogisticvariabless->removeElement($tablelogisticvariabless);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+
+    public function getTableLogisticVariables()
+    {
+        return $this->tablelogisticvariabless;
+    }
+
 }

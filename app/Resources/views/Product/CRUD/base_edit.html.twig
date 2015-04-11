@@ -11,7 +11,7 @@
                 console.log(data);
 
                 $.ajax({
-                    type: 'post',
+                    type: 'POST',
                     url: '{{ path("backend_product_trademark_barcode") }}',
                     data: data,
                     success: function(data) {

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
+
 /**
  * Company
  *
@@ -28,7 +29,7 @@ class Company
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true, nullable=false)
-     * @Assert\Length(max="255", maxMessage="No más de 255 caracteresssss")
+     * @Assert\Length(max="255", maxMessage="No más de 255 caracteres")
      */
     private $name;
 

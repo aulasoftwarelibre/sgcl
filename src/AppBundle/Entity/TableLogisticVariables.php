@@ -31,7 +31,7 @@ class TableLogisticVariables
     /**
      * @var integer
      *
-     * @ORM\Column(name="logisticIndicator", type="integer", unique=true, nullable=false)
+     * @ORM\Column(name="logisticIndicator", type="integer", unique=false, nullable=false)
      * @Assert\Regex(
      *      pattern="/^\d{1}$/",
      *      match=true,
@@ -77,14 +77,13 @@ class TableLogisticVariables
     /**
      * @var Trademark
      *
-     * @ORM\ManyToOne(targetEntity="Trademark", inversedBy="trademarks")
+     * @ORM\ManyToOne(targetEntity="Trademark", inversedBy="tablelogisticvariabless")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="trademark_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      * })
      * @Assert\Valid()
      */
     private $trademark;
-
 
     /**
      * Get id

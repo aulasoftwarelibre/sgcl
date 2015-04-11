@@ -48,16 +48,20 @@ class ProductAdmin extends Admin
             ->add('description', null, array('label' => 'Descripción completa'))
             ->add('changeHistory', null, array('label' => 'Historíal de modificaciones'))
             ->add('numberConsumerUnit', null, array('label' => 'Número de UC por Unidad de Venta'))
-            ->add('trademark', null, array('label' => 'Marca que corresponde'))
+            ->add('trademark', null, array(
+                'label' => 'Marca que corresponde',
+                'placeholder' => 'Selecciona la marca del producto',
+            ))
             ->add('barcodeCU', null, array(
-                'placeholder' => 'Selecciona el código de barras',
+                'placeholder' => 'Selecciona el código de barras para la UNIDAD DE CONSUMO',
                 'label' => 'Código de barras para la Unidad de Consumo',
-                'class' => 'AppBundle:Barcode',
+                //'class' => 'AppBundle:Barcode',
                 //'query' => $this->getConfigurationPool()->getContainer()->get('doctrine.orm.default_entity_manager')->getRepository('AppBundle:Barcode')->getBarcodeAsList('TYPECODE_GTIN_8'),
-                'required' => false,
+                'attr'=>array('data-sonata-select2'=>'false'),
+                'required' => false
             ))
             ->add('barcodeSU', null, array(
-                'placeholder' => 'Selecciona el código de barras',
+                'placeholder' => 'Selecciona el código de barras para la UNIDAD DE VENTA',
                 'label' => 'Código de barras para la Unidad de Venta',
             ))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))

@@ -15,11 +15,15 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 //Para el uso del tipo de dado "codetype"
 use AppBundle\Form\Type;
+//Para "query"
+use AppBundle\Doctrine\ORM;
+use AppBundle\Entity;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class BarcodeAdmin extends Admin
 {
 
-    protected $baseRouteName = 'barcode';
+    protected $baseRouteName = 'backend_barcode';
 
     protected $baseRoutePattern = 'barcode';
 
@@ -29,15 +33,27 @@ class BarcodeAdmin extends Admin
         '_sort_by' => 'trademark'  // name of the ordered field
     );
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('trademark_tablelogisticvariables', 'trademark/tablelogisticvariables');
+    }
+
     protected function configureFormFields(FormMapper $form)
     {
         $form
             ->with('Crear un nuevo código de barras')
+            ->add('trademark', null, array('label' => 'Marca que corresponde este código'))
             ->add('type', 'codeType', array('label' => 'Tipo'))
-            ->add('code', null, array('label' => 'Código'))
+
+            ->add('logisticIndicator', 'entity', array(
+                'class' => 'AppBundle:TableLogisticVariables',
+                'mapped'=>false,
+                'required'=> false,
+                'label' => 'Número logístico'
+            ))
+            //->add('code', null, array('label' => 'Código'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
-            ->add('trademark', null, array('label' => 'Marca que corresponde este código'))
             ->setHelps(array(
                 'type'=>'Introduce el tipo de código',
                 'code'=>'Introduce el código',

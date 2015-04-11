@@ -74,7 +74,7 @@ class Product
     /**
      * @var Barcode
      *
-     * @ORM\ManyToOne(targetEntity="Barcode", inversedBy="barcode")
+     * @ORM\ManyToOne(targetEntity="Barcode", inversedBy="products")
      * @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="barcode_id_CU", referencedColumnName="id", onDelete="CASCADE", nullable=true)
      * })
@@ -85,7 +85,7 @@ class Product
     /**
      * @var Barcode
      *
-     * @ORM\ManyToOne(targetEntity="Barcode", inversedBy="barcode")
+     * @ORM\ManyToOne(targetEntity="Barcode", inversedBy="products")
      * @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="barcode_id_SU", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      * })
@@ -96,7 +96,7 @@ class Product
     /**
      * @var Trademark
      *
-     * @ORM\ManyToOne(targetEntity="Trademark", inversedBy="trademarks")
+     * @ORM\ManyToOne(targetEntity="Trademark", inversedBy="products")
      * @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="trademark_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      * })

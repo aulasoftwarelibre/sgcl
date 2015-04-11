@@ -31,9 +31,10 @@ services:
         arguments:
             - ~
             - AppBundle\Entity\Barcode
-            - ~
+            - AppBundle:BarcodeCRUD
         calls:
             - [ setTranslationDomain, [AppBundle]]
+            - [ setTemplate, [edit, Barcode/CRUD/base_edit.html.twig]]
     sgcl.admin.category.tableLogisticVariables:
             class: AppBundle\Admin\TableLogisticVariablesAdmin
             tags:
