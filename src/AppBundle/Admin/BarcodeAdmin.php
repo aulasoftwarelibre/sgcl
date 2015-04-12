@@ -42,13 +42,16 @@ class BarcodeAdmin extends Admin
     {
         $form
             ->with('Crear un nuevo código de barras')
-            ->add('trademark', null, array('label' => 'Marca que corresponde este código'))
+            ->add('trademark', null, array(
+                'label' => 'Marca que corresponde este código',
+                'placeholder' => 'Selecciona la marca del producto',
+            ))
             ->add('type', 'codeType', array('label' => 'Tipo'))
-
             ->add('logisticIndicator', 'entity', array(
                 'class' => 'AppBundle:TableLogisticVariables',
                 'mapped'=>false,
                 'required'=> false,
+                'placeholder' => 'Selecciona el código logístico para la Unidad de Venta',
                 'label' => 'Número logístico'
             ))
             //->add('code', null, array('label' => 'Código'))
