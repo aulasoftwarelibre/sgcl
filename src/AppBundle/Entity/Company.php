@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
  * Company
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\CompanyRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\CompanyRepository")
  */
 class Company
 {

@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityManager;
  * Product
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\ProductRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\ProductRepository")
  */
 class Product
 {

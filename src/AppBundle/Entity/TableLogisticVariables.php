@@ -15,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * TableLogisticVariables
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\TableLogisticVariablesRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\TableLogisticVariablesRepository")
  */
 class TableLogisticVariables
 {

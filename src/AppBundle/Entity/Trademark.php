@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Trademark
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\TrademarkRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\TrademarkRepository")
  */
 class Trademark
 {
@@ -93,7 +93,7 @@ class Trademark
 
     /**
      * @var TableLogisticVariables
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Product", mappedBy="trademark")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\TableLogisticVariables", mappedBy="trademark")
      */
     private $tablelogisticvariabless;
 
