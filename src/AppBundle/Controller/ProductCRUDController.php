@@ -7,10 +7,10 @@
  */
 
 namespace AppBundle\Controller;
+
 use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-
 
 use Sonata\AdminBundle\Controller\CRUDController;
 

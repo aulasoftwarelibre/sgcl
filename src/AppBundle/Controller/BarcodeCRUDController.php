@@ -7,10 +7,9 @@
  */
 
 namespace AppBundle\Controller;
-use Symfony\Component\BrowserKit\Response;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-
 
 use Sonata\AdminBundle\Controller\CRUDController;
 
@@ -20,8 +19,8 @@ class BarcodeCRUDController extends CRUDController
     {
         $trademark_id = $request->request->get('trademark_id');
         $em = $this->getDoctrine();
-        $logisticIndicator = $em->getRepository('TableLogisticVariables')->findByTrademarkId($trademark_id);
+        $tablelogisticvariabless = $em->getRepository('AppBundle:TableLogisticVariables')->findByTrademarkId($trademark_id);
 
-        return new JsonResponse($logisticIndicator);
+        return new JsonResponse($tablelogisticvariabless);
     }
 }

@@ -8,7 +8,6 @@
                 var data = {
                     trademark_id: $(this).val()
                 };
-                console.log(data);
 
                 $.ajax({
                     type: 'POST',
@@ -28,8 +27,11 @@
 
                     }
                 });
-
             });
         });
+
+        $(document).ready(function(){
+            $("select[id$='_trademark']").trigger('change');
+        })
     </script>
 {% endblock javascripts %}
