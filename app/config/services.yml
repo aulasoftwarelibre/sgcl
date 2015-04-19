@@ -55,8 +55,5 @@ services:
             - AppBundle:ProductCRUD
         calls:
             - [ setTranslationDomain, [AppBundle]]
-            - [ setTemplate, [edit, Product/CRUD/base_edit.html.twig]]
-    sgcl.listener:
-        class: AppBundle\Listener\Listener
-        tags:
-            - { name: doctrine.event_listener, event: prePersist, method: prePersist }
+            - [ setTemplate, [edit, Product/CRUD/base_edit.html.twig] ]
+            - [ setTemplate, [show, Product/CRUD/base_show.html.twig] ]

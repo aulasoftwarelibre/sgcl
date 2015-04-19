@@ -4,6 +4,7 @@
     {{ parent() }}
     <script type="application/javascript">
         $(function(){
+
             $("select[id$='_trademark']").change(function() {
                 var data = {
                     trademark_id: $(this).val()
@@ -27,23 +28,23 @@
 
                             $logisticIndicator_selector.html('');
 
-
-                        for (var i = 0, total = data.length; i < total; i++) {
-                            $logisticIndicator_selector.append('<option value="' + data[i].id + '">' + data[i].logisticIndicator + '</option>');
+                            for (var i = 0, total = data.length; i < total; i++) {
+                                $logisticIndicator_selector.append('<option value="' + data[i].id + '">' + data[i].logisticIndicator + '</option>');
+                            }
                         }
-                        //cierre del if
-                        }
-                        //Si el tipo de código no es GTING-14, ocultamos el campo que solicita al usuario que indique el 'indicador logístico' puesto que NO es necesario
-                        else { $($logisticIndicator_selector).hide(); }
-                            //$($logisticIndicator_selector).hide();
-                            //$($logisticIndicator_selector).load($(this).attr("disabled"));
-                            //$($logisticIndicator_selector).toggle();
-
-
-
                     }
                 });
 
+            });
+
+            $("select[id$='_type']").change(function() {
+                console.log('Type change');
+                if ( $(this).val() === 'TYPECODE_GTIN_14' ) {
+                    $("select[id$='_trademark']").trigger('change');
+                    $("div[id$='_logisticIndicator']").show();
+                } else {
+                    $("div[id$='_logisticIndicator']").hide()
+                }
             });
         });
 

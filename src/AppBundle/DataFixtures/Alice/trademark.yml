@@ -6,5 +6,4 @@
 \AppBundle\Entity\Barcode:
     barcodes{1..200}:
         type: 'TYPECODE_GTIN_8'
-        code: <randomNumber(8)>
         trademark: @trademark*

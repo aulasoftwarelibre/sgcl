@@ -36,6 +36,7 @@ class BarcodeAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('trademark_tablelogisticvariables', 'trademark/tablelogisticvariables');
+        $collection->add('render_codebar', 'image');
     }
 
     protected function configureFormFields(FormMapper $form)
@@ -59,8 +60,7 @@ class BarcodeAdmin extends Admin
                     'required'=> false,
                     'label' => 'Seleccionar para emplear contador, en caso contrario debará introducir los dígitos base manualmente'
             ))
-            ->add('Codigo_base', 'text', array(
-                'mapped'=>false,
+            ->add('basecode', 'text', array(
                 'required'=> false,
                 'label' => 'Indica los cinco dígitos que servirán de código_base'
             ))

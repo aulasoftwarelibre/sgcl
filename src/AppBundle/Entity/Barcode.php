@@ -18,7 +18,7 @@ use AppBundle\Form\Type;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\BarcodeRepository")
- * @ORM\EntityListeners({ "AppBundle\Listener\Listener" })
+ * @ORM\EntityListeners({ "AppBundle\EventListener\BarcodeListener" })
  */
 class Barcode
 {
@@ -51,10 +51,13 @@ class Barcode
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=128, unique=true, nullable=false)
-     * @Assert\NotBlank(message="Recuerde introducir el código")
-     * @Assert\Length(max="128", maxMessage="No más de 128 caracteres")
      */
     private $code;
+
+    /**
+     * @var string
+     */
+    private $basecode;
 
     /**
      * @var \DateTime $created
@@ -165,6 +168,22 @@ class Barcode
     }
 
     /**
+     * @return string
+     */
+    public function getBasecode()
+    {
+        return $this->basecode;
+    }
+
+    /**
+     * @param string $basecode
+     */
+    public function setBasecode( $basecode )
+    {
+        $this->basecode = $basecode;
+    }
+
+    /**
      * Set creationDate
      *
      * @param \DateTime $creationDate
@@ -233,6 +252,24 @@ class Barcode
         return $this->trademark;
     }
 
+    public function getImage()
+    {
+        // Only the text to draw is required
+        $barcodeOptions = array('text' => $this->getCode());
+        $rendererOptions = array();
+        /** @var Gd $image */
+        $image = \Zend\Barcode\Barcode::factory(
+            'ean13', 'image', $barcodeOptions, $rendererOptions
+        )->draw();
+
+        ob_start();
+        imagepng($image);
+        $contents =  ob_get_contents();
+        ob_end_clean();
+
+        return $contents;
+    }
+
     /**
      * To String
      *
@@ -240,6 +277,6 @@ class Barcode
      */
     public function __toString()
     {
-        return $this->getCode();
+        return (string) $this->getCode();
     }
 }
