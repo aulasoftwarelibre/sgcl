@@ -18,6 +18,7 @@ use AppBundle\Form\Type;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\BarcodeRepository")
+ * @ORM\EntityListeners({ "AppBundle\Listener\Listener" })
  */
 class Barcode
 {

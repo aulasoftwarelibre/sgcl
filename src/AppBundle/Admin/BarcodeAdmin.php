@@ -20,9 +20,9 @@ use AppBundle\Doctrine\ORM;
 use AppBundle\Entity;
 use Sonata\AdminBundle\Route\RouteCollection;
 
+
 class BarcodeAdmin extends Admin
 {
-
     protected $baseRouteName = 'backend_barcode';
 
     protected $baseRoutePattern = 'barcode';
@@ -53,6 +53,16 @@ class BarcodeAdmin extends Admin
                 'required'=> false,
                 'placeholder' => 'Selecciona el código logístico para la Unidad de Venta',
                 'label' => 'Número logístico'
+            ))
+            ->add('Contador', 'checkbox',array(
+                    'mapped'=>false,
+                    'required'=> false,
+                    'label' => 'Seleccionar para emplear contador, en caso contrario debará introducir los dígitos base manualmente'
+            ))
+            ->add('Codigo_base', 'text', array(
+                'mapped'=>false,
+                'required'=> false,
+                'label' => 'Indica los cinco dígitos que servirán de código_base'
             ))
             //->add('code', null, array('label' => 'Código'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
@@ -108,5 +118,10 @@ class BarcodeAdmin extends Admin
             ->add('lastModificationDate')
             ->add('trademark')
         ;
+    }
+
+    public function prePersist($barcode)
+    {
+
     }
 }

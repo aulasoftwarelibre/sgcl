@@ -36,23 +36,27 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setTemplate, [edit, Barcode/CRUD/base_edit.html.twig]]
     sgcl.admin.category.tableLogisticVariables:
-            class: AppBundle\Admin\TableLogisticVariablesAdmin
-            tags:
-                - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "TableLogisticVarialbes" }
-            arguments:
-                - ~
-                - AppBundle\Entity\TableLogisticVariables
-                - ~
-            calls:
-                - [ setTranslationDomain, [AppBundle]]
+        class: AppBundle\Admin\TableLogisticVariablesAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "TableLogisticVarialbes" }
+        arguments:
+            - ~
+            - AppBundle\Entity\TableLogisticVariables
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
     sgcl.admin.category.product:
-                class: AppBundle\Admin\ProductAdmin
-                tags:
-                    - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Product" }
-                arguments:
-                    - ~
-                    - AppBundle\Entity\Product
-                    - AppBundle:ProductCRUD
-                calls:
-                    - [ setTranslationDomain, [AppBundle]]
-                    - [ setTemplate, [edit, Product/CRUD/base_edit.html.twig]]
+        class: AppBundle\Admin\ProductAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Product" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Product
+            - AppBundle:ProductCRUD
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setTemplate, [edit, Product/CRUD/base_edit.html.twig]]
+    sgcl.listener:
+        class: AppBundle\Listener\Listener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist, method: prePersist }

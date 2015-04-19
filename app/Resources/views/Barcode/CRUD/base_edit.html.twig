@@ -15,13 +15,31 @@
                     url: '{{ path("backend_barcode_trademark_tablelogisticvariables") }}',
                     data: data,
                     success: function(data) {
-                        var $logisticIndicator_selector = $("select[id$='_logisticIndicator']");
 
+                        var $logisticIndicator_selector = $("select[id$='_logisticIndicator']");
+                        var $type_selector = $("select[id$='_type']");
+
+                        //Inicializamos la variable para que NO contenga valores
                         $logisticIndicator_selector.html('');
 
-                        for (var i=0, total = data.length; i < total; i++) {
+                        //Solo mostramos/solicitamos el 'indicador logístico' cuando trabajamos con código de tipo GTING-14
+                        if($type_selector.val() == 'TYPECODE_GTIN_14') {
+
+                            $logisticIndicator_selector.html('');
+
+
+                        for (var i = 0, total = data.length; i < total; i++) {
                             $logisticIndicator_selector.append('<option value="' + data[i].id + '">' + data[i].logisticIndicator + '</option>');
                         }
+                        //cierre del if
+                        }
+                        //Si el tipo de código no es GTING-14, ocultamos el campo que solicita al usuario que indique el 'indicador logístico' puesto que NO es necesario
+                        else { $($logisticIndicator_selector).hide(); }
+                            //$($logisticIndicator_selector).hide();
+                            //$($logisticIndicator_selector).load($(this).attr("disabled"));
+                            //$($logisticIndicator_selector).toggle();
+
+
 
                     }
                 });
@@ -31,6 +49,7 @@
 
         $(document).ready(function(){
             $("select[id$='_trademark']").trigger('change');
+            $("select[id$='_type']").trigger('change');
         })
 
     </script>
