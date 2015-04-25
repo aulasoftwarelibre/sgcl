@@ -65,6 +65,11 @@ class Barcode
      */
     private $basecode;
 
+    /***
+     * @var integer
+     */
+    private $logisticIndicator;
+
     /**
      * @var \DateTime $created
      *
@@ -182,11 +187,34 @@ class Barcode
     }
 
     /**
-     * @param string $basecode
+     * @param integer $basecode
      */
     public function setBasecode( $basecode )
     {
         $this->basecode = $basecode;
+    }
+
+    /**
+     * Set logisticIndicator
+     *
+     * @param integer $logisticIndicator
+     * @return Barcode
+     */
+    public function setLogisticIndicator($logisticIndicator)
+    {
+        $this->logisticIndicator = $logisticIndicator;
+
+        return $this;
+    }
+
+    /**
+     * Get logisticIndicator
+     *
+     * @return integer
+     */
+    public function getLogisticIndicator()
+    {
+        return $this->logisticIndicator;
     }
 
     /**
@@ -267,6 +295,8 @@ class Barcode
         $barcodeOptions = array('text' => $subCode);
         $rendererOptions = array();
         //obtenemos el tipo de código y lo traducimos al parámetro de tipo de código de la librería gráfica
+        //ESTO DEBE IMPLEMENTARSE MEDIANTE TRADUCCIÓN DE NOMBRES... ahora mismo solo se puede trabajar con EAN13 y DUN14
+        $code_type = '';
         if($this->getType() == 'TYPECODE_GTIN_13')
         {
             $code_type = 'ean13';
