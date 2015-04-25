@@ -37,13 +37,26 @@
 
             });
 
+            //Se oculta la petición del indicador logístico cuando
+            //el tipo de código sea distinto del DUN14
             $("select[id$='_type']").change(function() {
                 console.log('Type change');
                 if ( $(this).val() === 'TYPECODE_GTIN_14' ) {
                     $("select[id$='_trademark']").trigger('change');
                     $("div[id$='_logisticIndicator']").show();
                 } else {
-                    $("div[id$='_logisticIndicator']").hide()
+                    $("div[id$='_logisticIndicator']").hide();
+                }
+            });
+
+            //Se oculta la solicitud del código base según se especifique en checkbox
+            $("select[id$='_contador']").change(function() {
+                console.log('contador change');
+                //if ( $(this).checked() ) {
+                if ( $(this).is(':checked')) {
+                    $("div[id$='_basecode']").show();
+                } else {
+                    $("div[id$='_basecode']").hide();
                 }
             });
         });
@@ -51,6 +64,7 @@
         $(document).ready(function(){
             $("select[id$='_trademark']").trigger('change');
             $("select[id$='_type']").trigger('change');
+            $("select[id$='_contador']").trigger('change');
         })
 
     </script>

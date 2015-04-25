@@ -56,6 +56,12 @@ class Barcode
 
     /**
      * @var string
+     *
+     * @Assert\Length(
+     *      max = "5",
+     *      min = "5",
+     *      exactMessage = "Recuerde que debe introducir cinco dígitos."
+     * )
      */
     private $basecode;
 
@@ -254,12 +260,26 @@ class Barcode
 
     public function getImage()
     {
+        //En primer lugar debemos recuperar el contenido del código sin el dígito de control,
+        //ya que este lo generará de nuevo la librería gráfica antes de generar la imagen
+        $subCode = substr($this->getCode(), 0, -1 );
         // Only the text to draw is required
-        $barcodeOptions = array('text' => $this->getCode());
+        $barcodeOptions = array('text' => $subCode);
         $rendererOptions = array();
+        //obtenemos el tipo de código y lo traducimos al parámetro de tipo de código de la librería gráfica
+        if($this->getType() == 'TYPECODE_GTIN_13')
+        {
+            $code_type = 'ean13';
+        }
+        if($this->getType() == 'TYPECODE_GTIN_14')
+        {
+            $code_type = 'itf14';
+        }
+
         /** @var Gd $image */
         $image = \Zend\Barcode\Barcode::factory(
-            'ean13', 'image', $barcodeOptions, $rendererOptions
+            //'ean13', 'image', $barcodeOptions, $rendererOptions
+            $code_type, 'image', $barcodeOptions, $rendererOptions
         )->draw();
 
         ob_start();

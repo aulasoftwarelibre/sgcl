@@ -4,6 +4,7 @@
 {% block show %}
     {{ parent() }}
 
+    <img src="{{ path('backend_barcode_render_codebar', {'barcode_id': object.barcodeCU.id}) }}">
     <img src="{{ path('backend_barcode_render_codebar', {'barcode_id': object.barcodeSU.id}) }}">
 
 {% endblock %}

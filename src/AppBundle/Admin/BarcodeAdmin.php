@@ -55,10 +55,10 @@ class BarcodeAdmin extends Admin
                 'placeholder' => 'Selecciona el código logístico para la Unidad de Venta',
                 'label' => 'Número logístico'
             ))
-            ->add('Contador', 'checkbox',array(
+            ->add('contador', 'checkbox', array(
                     'mapped'=>false,
                     'required'=> false,
-                    'label' => 'Seleccionar para emplear contador, en caso contrario debará introducir los dígitos base manualmente'
+                    'label' => 'Seleccionar para emplear el contador de productos de la marca, en caso contrario debará introducir los dígitos base manualmente'
             ))
             ->add('basecode', 'text', array(
                 'required'=> false,
@@ -120,8 +120,4 @@ class BarcodeAdmin extends Admin
         ;
     }
 
-    public function prePersist($barcode)
-    {
-
-    }
 }
