@@ -13,10 +13,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class TrademarkAdmin extends Admin
 {
-    protected $baseRouteName = 'trademark';
-
-    protected $baseRoutePattern = 'trademark';
-
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC

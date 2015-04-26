@@ -9,6 +9,7 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CodeType extends AbstractType
@@ -22,7 +23,9 @@ class CodeType extends AbstractType
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array('choices' => $this->codeTypeChoices));
+        $resolver->setDefaults([
+           'choices' => $this->codeTypeChoices
+        ]);
     }
 
     public function getParent()
@@ -40,7 +43,6 @@ class CodeType extends AbstractType
         return 'codeType';
     }
 
-
     //public function getDefaultOptions(array $options)
     public function getDefaultOptions()
     {
@@ -50,6 +52,4 @@ class CodeType extends AbstractType
             'choices' => array(),
         );
     }
-
-
 }

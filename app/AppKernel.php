@@ -31,7 +31,6 @@ class AppKernel extends Kernel
             new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
-            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new AppBundle\AppBundle(),
         );
 
@@ -41,7 +40,6 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
-            $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
             $bundles[] = new h4cc\AliceFixturesBundle\h4ccAliceFixturesBundle();
         }
 

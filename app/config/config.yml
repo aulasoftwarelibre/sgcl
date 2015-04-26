@@ -2,7 +2,16 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: sonata.yml }
+
+    # FriendOfSymfony Bundles
+    - { resource: fos/fos_user.yml }
+
+    # Sonata Core Bundles
+    - { resource: sonata/sonata_block.yml }
+
+    # Sonata Feature Bundles
+    - { resource: sonata/sonata_admin.yml }
+    - { resource: sonata/sonata_user.yml }
 
 framework:
     #esi:             ~
@@ -75,24 +84,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-fos_user:
-    db_driver:      orm # can be orm or odm
-    firewall_name:  main
-    user_class:     Application\Sonata\UserBundle\Entity\User
-
-    group:
-        group_class:   Application\Sonata\UserBundle\Entity\Group
-        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
-
-    service:
-        user_manager: sonata.user.orm.user_manager                      # If you're So far, this entry has assumed that you have a very simple custom field type. But if you need access to configuration, a database connection, or some other service, then you'll want to register your custom type as a service. For example, suppose that you're storing the gender parameters in configuration:using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
-
-    profile:  # Authentication Form
-        form:
-            type:               fos_user_profile
-            handler:            fos_user.profile.form.handler.default
-            name:               fos_user_profile_form
-            validation_groups:  [Authentication] # Please note : this is not the default value
 
 stof_doctrine_extensions:
     orm:

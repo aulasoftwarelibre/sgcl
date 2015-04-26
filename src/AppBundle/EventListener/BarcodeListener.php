@@ -29,19 +29,10 @@ class BarcodeListener
         if(!empty($barcode->getBasecode())){
             $base_code = (string) $barcode->getBasecode();
             $use_counter = False;
-        }
-        else{
+        } else {
             //Se toma como código base el SIGUIENTE valor del contador de productos de la marca
             $base_code = (string) ($barcode->getTrademark()->getCounter() + 1);
-            //Recordar que la variable contador es un entero y al pasarlo a cadena, debe
-            //contener cinco caracteres (numéricos)
-            if(strlen($base_code) != 5){
-                if(strlen($base_code) == 1) $base_code = '0000' . $base_code;
-                if(strlen($base_code) == 2) $base_code = '000' . $base_code;
-                if(strlen($base_code) == 3) $base_code = '00' . $base_code;
-                if(strlen($base_code) == 4) $base_code = '0' . $base_code;
-            }
-
+            $base_code = sprintf("%05d", $base_code);
             $use_counter = True;
         }
 
@@ -75,7 +66,7 @@ class BarcodeListener
                 //$codeWithoutChecksum = $barcode->getLogisticIndicator() . $barcode->getTrademark()->getPrefix() . $barcode->getBasecode();
 
                 //Almacenamos el código sin el dígito de verificación
-                $codeWithoutChecksum = ((string) $barcode->getLogisticIndicator()) . $barcode->getTrademark()->getPrefix() . $base_code;
+                $codeWithoutChecksum = ((string) $barcode->getTableLogisticVariables()->getLogisticIndicator() ) . $barcode->getTrademark()->getPrefix() . $base_code;
                 //Obtenemos el código de barras, es decir, incluido el dígito de verificación
                 $options = array('text' => $codeWithoutChecksum);
                 $new_code = new \Zend\Barcode\Object\Itf14($options);

@@ -9,7 +9,7 @@
 namespace AppBundle\Behat;
 
 
-use Application\Sonata\UserBundle\Entity\User;
+use AppBundle\Entity\User;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 

@@ -66,9 +66,9 @@ class Barcode
     private $basecode;
 
     /***
-     * @var integer
+     * @var TableLogisticVariables
      */
-    private $logisticIndicator;
+    private $tableLogisticVariables;
 
     /**
      * @var \DateTime $created
@@ -195,26 +195,26 @@ class Barcode
     }
 
     /**
-     * Set logisticIndicator
+     * Set tableLogisticVariables
      *
-     * @param integer $logisticIndicator
+     * @param TableLogisticVariables $tableLogisticVariables
      * @return Barcode
      */
-    public function setLogisticIndicator($logisticIndicator)
+    public function setTableLogisticVariables( $tableLogisticVariables)
     {
-        $this->logisticIndicator = $logisticIndicator;
+        $this->tableLogisticVariables = $tableLogisticVariables;
 
         return $this;
     }
 
     /**
-     * Get logisticIndicator
+     * Get tableLogisticVariables
      *
-     * @return integer
+     * @return TableLogisticVariables
      */
-    public function getLogisticIndicator()
+    public function getTableLogisticVariables()
     {
-        return $this->logisticIndicator;
+        return $this->tableLogisticVariables;
     }
 
     /**

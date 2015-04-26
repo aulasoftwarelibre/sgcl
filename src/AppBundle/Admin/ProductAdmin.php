@@ -22,11 +22,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class ProductAdmin extends Admin
 {
-
-    protected $baseRouteName = 'backend_product';
-
-    protected $baseRoutePattern = 'product';
-
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC
@@ -57,7 +52,7 @@ class ProductAdmin extends Admin
                 'label' => 'Código de barras para la Unidad de Consumo',
                 //'class' => 'AppBundle:Barcode',
                 //'query' => $this->getConfigurationPool()->getContainer()->get('doctrine.orm.default_entity_manager')->getRepository('AppBundle:Barcode')->getBarcodeAsList('TYPECODE_GTIN_8'),
-                'attr'=>array('data-sonata-select2'=>'false'),
+                //'attr'=>array('data-sonata-select2'=>'false'),
                 'required' => false
             ))
             ->add('barcodeSU', null, array(

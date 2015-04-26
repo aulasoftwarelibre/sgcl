@@ -12,10 +12,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class CompanyAdmin extends Admin
 {
-    protected $baseRouteName = 'company';
-
-    protected $baseRoutePattern = 'company';
-
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC

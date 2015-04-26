@@ -23,10 +23,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class BarcodeAdmin extends Admin
 {
-    protected $baseRouteName = 'backend_barcode';
-
-    protected $baseRoutePattern = 'barcode';
-
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC
@@ -48,10 +44,9 @@ class BarcodeAdmin extends Admin
                 'placeholder' => 'Selecciona la marca del producto',
             ))
             ->add('type', 'codeType', array('label' => 'Tipo'))
-            ->add('logisticIndicator', 'entity', array(
+            ->add('tableLogisticVariables', 'entity', array(
                 'class' => 'AppBundle:TableLogisticVariables',
-                'mapped'=>false,
-                'required'=> false,
+                'required' => false,
                 'placeholder' => 'Selecciona el código logístico para la Unidad de Venta',
                 'label' => 'Número logístico'
             ))

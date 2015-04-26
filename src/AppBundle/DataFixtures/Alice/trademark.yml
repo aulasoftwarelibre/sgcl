@@ -1,6 +1,6 @@
 \AppBundle\Entity\Trademark:
   trademark{1..40}:
-    name (uniue): <company()>
-    prefix (uniue): <randomNumber(7)>
-    prefixUPC (uniue): <randomNumber(6)>
+    name (unique): <company()>
+    prefix (unique): <numerify('#######')>
+    prefixUPC (unique): <numerify('######')>
     company: @company*

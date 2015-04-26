@@ -1,5 +1,5 @@
 \AppBundle\Entity\Company:
   company{1..10}:
-    name (uniue): <company()>
+    name (unique): <company()>
     nif (unique): <randomLetter()><numerify('########')>
     company_address (unique): <address()>
