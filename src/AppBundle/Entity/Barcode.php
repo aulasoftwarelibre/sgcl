@@ -291,21 +291,17 @@ class Barcode
         //En primer lugar debemos recuperar el contenido del código sin el dígito de control,
         //ya que este lo generará de nuevo la librería gráfica antes de generar la imagen
         $subCode = substr($this->getCode(), 0, -1 );
-        // Only the text to draw is required
-        $barcodeOptions = array('text' => $subCode);
-        $rendererOptions = array();
         //obtenemos el tipo de código y lo traducimos al parámetro de tipo de código de la librería gráfica
         //ESTO DEBE IMPLEMENTARSE MEDIANTE TRADUCCIÓN DE NOMBRES... ahora mismo solo se puede trabajar con EAN13 y DUN14
         $code_type = '';
-        if($this->getType() == 'TYPECODE_GTIN_13')
-        {
-            $code_type = 'ean13';
-        }
-        if($this->getType() == 'TYPECODE_GTIN_14')
-        {
-            $code_type = 'itf14';
-        }
+        if($this->getType() == 'TYPECODE_GTIN_12') $code_type = 'upca';
+        if($this->getType() == 'TYPECODE_GTIN_13') $code_type = 'ean13';
+        if($this->getType() == 'TYPECODE_GTIN_14') $code_type = 'itf14';
 
+        //Si se dibuja código tipo ITF debe enmarcarse en un cuadro como indica la norma
+        if($this->getType() == 'TYPECODE_GTIN_14') $barcodeOptions = array('text' => $subCode, 'withBorder' => true, 'factor' => 1);
+        else $barcodeOptions = array('text' => $subCode, 'factor' => 1);
+        $rendererOptions = array();
         /** @var Gd $image */
         $image = \Zend\Barcode\Barcode::factory(
             //'ean13', 'image', $barcodeOptions, $rendererOptions

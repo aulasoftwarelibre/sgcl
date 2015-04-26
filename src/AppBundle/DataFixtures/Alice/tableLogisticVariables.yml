@@ -1,0 +1,5 @@
+\AppBundle\Entity\TableLogisticVariables:
+    tableLogisticIndicator{1..6}:
+        logisticIndicator (unique): <numberBetween($min = 1, $max = 9)>
+        description (uneque): <text($maxNbChars = 50)>
+        trademark: @trademark*

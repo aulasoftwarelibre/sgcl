@@ -45,6 +45,9 @@ class BarcodeListener
             $use_counter = True;
         }
 
+        //Para el tipo de código solicitado: se completa el código sin incluir el dígito de verificación,
+        //posteriormente se genera el código, se fija en la varialbe correspondiente de Barcode,
+        //y si se empleó, se incrementa el contador de la marca
         switch($barcode->getType()) {
             case 'TYPECODE_GTIN_12':
                 //Almacenamos el código sin el dígito de verificación
@@ -72,7 +75,7 @@ class BarcodeListener
                 //$codeWithoutChecksum = $barcode->getLogisticIndicator() . $barcode->getTrademark()->getPrefix() . $barcode->getBasecode();
 
                 //Almacenamos el código sin el dígito de verificación
-                $codeWithoutChecksum = $barcode->getLogisticIndicator() . $barcode->getTrademark()->getPrefix() . $base_code;
+                $codeWithoutChecksum = ((string) $barcode->getLogisticIndicator()) . $barcode->getTrademark()->getPrefix() . $base_code;
                 //Obtenemos el código de barras, es decir, incluido el dígito de verificación
                 $options = array('text' => $codeWithoutChecksum);
                 $new_code = new \Zend\Barcode\Object\Itf14($options);
@@ -82,8 +85,7 @@ class BarcodeListener
                 break;
             default:
                 //console.log('Error TYPO DE CÓDIGO NO CNENCOTRADO - archivo BarcodeListener.php');
-                echo "ESTOY EN DEFAULT";
+                echo "ESTOY EN DEFAULT - ERROR al generar el código - archivo BarcodeListener.php";
         }
-//$barcode->setCode( mt_rand( 10000, 10000000 ) );
     }
 }

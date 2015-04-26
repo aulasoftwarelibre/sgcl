@@ -1,9 +1,6 @@
 \AppBundle\Entity\Trademark:
   trademark{1..40}:
-    name: <company()>
-    prefix: <randomNumber(7)>
+    name (uniue): <company()>
+    prefix (uniue): <randomNumber(7)>
+    prefixUPC (uniue): <randomNumber(6)>
     company: @company*
-\AppBundle\Entity\Barcode:
-    barcodes{1..200}:
-        type: 'TYPECODE_GTIN_8'
-        trademark: @trademark*

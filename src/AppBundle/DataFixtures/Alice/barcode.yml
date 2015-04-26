@@ -1,0 +1,5 @@
+\AppBundle\Entity\Barcode:
+    barcodes{1..200}:
+        #type: randomElement($array = array ('TYPECODE_GTIN_12', 'TYPECODE_GTIN_13'))
+        type: TYPECODE_GTIN_13
+        trademark: @trademark*
