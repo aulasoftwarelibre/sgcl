@@ -2230,12 +2230,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "b98f7273972886e7b89e5cbc7943ed2317839825"
+                "reference": "4f23e1a30e49681bf8ebdbbae549848784be7699"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/b98f7273972886e7b89e5cbc7943ed2317839825",
-                "reference": "b98f7273972886e7b89e5cbc7943ed2317839825",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/4f23e1a30e49681bf8ebdbbae549848784be7699",
+                "reference": "4f23e1a30e49681bf8ebdbbae549848784be7699",
                 "shasum": ""
             },
             "require": {
@@ -2306,7 +2306,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2015-04-24 11:45:19"
+            "time": "2015-04-29 09:05:01"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -2603,12 +2603,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "de2366fb067ea10c43fd51976ecb2adf05b3fd3c"
+                "reference": "e114b10f5c62cbc361633d666fef281b5240ed27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/de2366fb067ea10c43fd51976ecb2adf05b3fd3c",
-                "reference": "de2366fb067ea10c43fd51976ecb2adf05b3fd3c",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/e114b10f5c62cbc361633d666fef281b5240ed27",
+                "reference": "e114b10f5c62cbc361633d666fef281b5240ed27",
                 "shasum": ""
             },
             "require": {
@@ -2666,7 +2666,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2015-04-24 08:31:30"
+            "time": "2015-04-27 14:54:55"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -2842,12 +2842,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "34a9a7f1020daba1b292ceab2379a762ef167b46"
+                "reference": "65558a80d0b8268d27bc811b40fa2c2cbd315d99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/34a9a7f1020daba1b292ceab2379a762ef167b46",
-                "reference": "34a9a7f1020daba1b292ceab2379a762ef167b46",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/65558a80d0b8268d27bc811b40fa2c2cbd315d99",
+                "reference": "65558a80d0b8268d27bc811b40fa2c2cbd315d99",
                 "shasum": ""
             },
             "require": {
@@ -2907,7 +2907,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2015-04-20 21:23:21"
+            "time": "2015-04-27 14:57:54"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -4352,12 +4352,12 @@
             "version": "v1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Behat/MinkBrowserKitDriver.git",
+                "url": "https://github.com/minkphp/MinkBrowserKitDriver.git",
                 "reference": "aed8f4a596b79014a75254c3e337511c33e38cbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/aed8f4a596b79014a75254c3e337511c33e38cbd",
+                "url": "https://api.github.com/repos/minkphp/MinkBrowserKitDriver/zipball/aed8f4a596b79014a75254c3e337511c33e38cbd",
                 "reference": "aed8f4a596b79014a75254c3e337511c33e38cbd",
                 "shasum": ""
             },
@@ -4466,12 +4466,12 @@
             "version": "v1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Behat/MinkSelenium2Driver.git",
+                "url": "https://github.com/minkphp/MinkSelenium2Driver.git",
                 "reference": "8018fee80bf6573f909ece3e0dfc07d0eb352210"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/8018fee80bf6573f909ece3e0dfc07d0eb352210",
+                "url": "https://api.github.com/repos/minkphp/MinkSelenium2Driver/zipball/8018fee80bf6573f909ece3e0dfc07d0eb352210",
                 "reference": "8018fee80bf6573f909ece3e0dfc07d0eb352210",
                 "shasum": ""
             },
