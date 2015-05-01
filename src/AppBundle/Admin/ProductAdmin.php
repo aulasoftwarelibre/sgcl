@@ -82,11 +82,11 @@ class ProductAdmin extends Admin
             ->add('description')
             ->add('changeHistory')
             ->add('numberConsumerUnit')
+            ->add('trademark')
             ->add('barcodeCU')
             ->add('barcodeSU')
             ->add('creationDate')
             ->add('lastModificationDate')
-            ->add('trademark')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -105,11 +105,11 @@ class ProductAdmin extends Admin
             ->add('description')
             ->add('changeHistory')
             ->add('numberConsumerUnit')
+            ->add('trademark')
             ->add('barcodeCU')
             ->add('barcodeSU')
             ->add('creationDate')
             ->add('lastModificationDate')
-            ->add('trademark')
         ;
     }
 
@@ -121,11 +121,11 @@ class ProductAdmin extends Admin
             ->add('description')
             ->add('changeHistory')
             ->add('numberConsumerUnit')
+            ->add('trademark')
             ->add('barcodeCU')
             ->add('barcodeSU')
             ->add('creationDate')
             ->add('lastModificationDate')
-            ->add('trademark')
         ;
     }
 }

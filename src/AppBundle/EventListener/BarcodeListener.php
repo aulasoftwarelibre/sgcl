@@ -21,6 +21,10 @@ class BarcodeListener
 
     public function prePersist(Barcode $barcode, LifecycleEventArgs $args)
     {
+        if(!empty($barcode->getCode())){
+            //Solo para la carga inicial de datos, si se indica un código específico,
+            //este se carga en la base de datos tal cual, es decir, si generarlo
+        } else{
         //En primer lugar, definimos si vamos emplear el contador de códigos de la marca, y
         //el código base
         $use_counter = True; //Variable para indicar si emplearemos o no el contador de cóndigos de la marca
@@ -32,9 +36,9 @@ class BarcodeListener
         } else {
             //Se toma como código base el SIGUIENTE valor del contador de productos de la marca
             $base_code = (string) ($barcode->getTrademark()->getCounter() + 1);
-            $base_code = sprintf("%05d", $base_code);
             $use_counter = True;
         }
+        $base_code = sprintf("%05d", $base_code);
 
         //Para el tipo de código solicitado: se completa el código sin incluir el dígito de verificación,
         //posteriormente se genera el código, se fija en la varialbe correspondiente de Barcode,
@@ -77,6 +81,6 @@ class BarcodeListener
             default:
                 //console.log('Error TYPO DE CÓDIGO NO CNENCOTRADO - archivo BarcodeListener.php');
                 echo "ESTOY EN DEFAULT - ERROR al generar el código - archivo BarcodeListener.php";
-        }
+        }}
     }
 }

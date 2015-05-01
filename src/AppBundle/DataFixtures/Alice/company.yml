@@ -1,5 +1,13 @@
 \AppBundle\Entity\Company:
-  company{1..10}:
-    name (unique): <company()>
-    nif (unique): <randomLetter()><numerify('########')>
-    company_address (unique): <address()>
+  company1:
+    name: deoleo S.A.
+    nif: A48012009'
+    company_address: CTRA MADRID N-IV, KM. 0388,0 - 14610 - ALCOLEA (CORDOBA) ESPAÑA
+  company2:
+    name: LACTALIS PULEVA, SL
+    nif: B18975599
+    company_address: CMNO DE PURCHIL 66 (GRANADA) ESPAÑA
+  company3:
+    name: SOCIEDAD COOPERATIVA ANDALUZA GANADERA DEL VALLE DE LOS PEDROCHES
+    nif: A10000001
+    company_address: CALLE MAYOR, 56 – 14400 - POZOBLANCO (CORDOBA) ESPAÑA

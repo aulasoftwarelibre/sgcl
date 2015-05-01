@@ -1,6 +1,24 @@
 \AppBundle\Entity\Trademark:
-  trademark{1..40}:
-    name (unique): <company()>
-    prefix (unique): <numerify('#######')>
-    prefixUPC (unique): <numerify('######')>
-    company: @company*
+  trademark1:
+    name: 'CARBONELL'
+    prefix: 8410010
+    prefixUPC: '078336'
+    company: @company1
+  trademark2:
+    name: 'ELOSUA / FIGARO'
+    prefix: '8410125'
+    prefixUPC: '028661'
+    company: @company1
+  trademark3:
+    name: 'HOJIBLANCA'
+    prefix: '8422767'
+    prefixUPC: '687224'
+    company: @company1
+  trademark4:
+    name: 'PULEVA'
+    prefix: '8480000'
+    company: @company2
+  trademark5:
+    name: 'COVAP'
+    prefix: '8411585'
+    company: @company3

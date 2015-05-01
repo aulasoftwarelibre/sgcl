@@ -1,0 +1,127 @@
+\AppBundle\Entity\Product:
+  product1:
+    code: 18
+    name: CARBONELL ACEITE OLIVA 0.4 PET 15x1 L.
+    description: CARBONELL ACEITE OLIVA 0.4 PET 15x1 L. [M.I.]
+    changeHistory: - 2014. Producto histórico Carbonell 0.4 PET 1L, sustituido por nuevo envase bajo código 26378.
+    numberConsumerUnit: 15
+    trademark: @trademark1
+    barcodeCU: @barcode1
+    barcodeSU: @barcode7
+  product2:
+    code: 26380
+    name: CARBONELL 0.4 PET MEZQ. 280x1L. 1/2 EXPO
+    description: CARBONELL ACEITE OLIVA 0.4 PET CUADRADA MEZQUITA 280x1 L. 1/2 EXPOBANDEJA [M.I.]
+    changeHistory: - 10/12/2013. Alta del producto.
+    numberConsumerUnit: 308
+    trademark: @trademark1
+    barcodeCU: @barcode1
+    barcodeSU: @barcode22
+  product3:
+    code: 27734
+    name: CAR T12 V.E PET MEZQ 15x1L HOLANDA FOOD
+    description: CARBONELL ACEITE OLIVA T12 V.E. PET MEZQUITA 15x1L HOLANDA FOODSERVICE
+    changeHistory: - 13/04/2015. Alta del producto.
+    numberConsumerUnit: 15
+    trademark: @trademark1
+    barcodeCU: @barcode2
+    barcodeSU: @barcode8
+  product4:
+    code: 26449
+    name: CAR V.E. 5xPACK(PET MEZQ 2x1L)
+    description: CARBONELL ACEITE DE OLIVA V.E. 5xPACK(PET MEZQUITA 2x1L) [M.I.]
+    changeHistory: - 10/02/2015. Alta del producto.
+    numberConsumerUnit: 5
+    trademark: @trademark1
+    barcodeCU: @barcode3
+    barcodeSU: @barcode9
+  product5:
+    code: 27730
+    name: CAR T23 V.E PET RECT 3x5L. GDC/BRASIL
+    description: CARBONELL ACEITE OLIVA T23 V.E. PET RECTANGULAR 3x5L. GDC/BRASIL
+    changeHistory:  - 10/02/2015. Alta del producto.
+    numberConsumerUnit: 3
+    trademark: @trademark1
+    barcodeCU: @barcode4
+    barcodeSU: @barcode10
+  product6:
+    code: 27727
+    name: CARBONELL T01 0.4 VID 12x8.5OZ USA
+    description: CARBONELL ACEITE OLIVA T01 0.4 VID 12x8.5OZ USA
+    changeHistory: - 05/01/2015. Alta del producto.
+    numberConsumerUnit: 12
+    trademark: @trademark1
+    barcodeCU: @barcode5
+    barcodeSU: @barcode11
+  product7:
+    code: 27728
+    name: CARBONELL T23 V.E. VID. 12x8.5 OZ USA
+    description: ACEITE OLIVA CARBONELL T23 V.E. VID. 12x8.5 OZ USA
+    changeHistory:  - 05/01/2015. Alta del producto.
+    numberConsumerUnit: 12
+    trademark: @trademark1
+    barcodeCU: @barcode6
+    barcodeSU: @barcode12
+  product8:
+    code: 21087
+    name: ELOSUA V.E. PET 15x750ml. SLEEVER
+    description: ELOSUA ACEITE OLIVA V.E. PET 15x750ml. SLEEVER [M.I.]
+    changeHistory:  - 11/02/2015. Alta del producto.
+    numberConsumerUnit: 15
+    trademark: @trademark2
+    barcodeCU: @barcode13
+    barcodeSU: @barcode14
+  product9:
+    code: 24552
+    name: FIGARO T23 V.E. VID 6x750ml R.DOMINICANA
+    description: FIGARO ACEITE OLIVA T23 V.E. VID 6x750ml REPUBLICA DOMINICANA
+    changeHistory:  - 08/10/2014. Alta del producto.
+    numberConsumerUnit: 6
+    trademark: @trademark2
+    barcodeCU: @barcode15
+    barcodeSU: @barcode16
+  product10:
+    code: 12008005
+    name: AOVE HOJIBLANCA 6X500ML DAMA USA
+    description: AOVE HOJIBLANCA 6X500ML DAMA USA
+    changeHistory:  - 05/01/2015. Alta del producto.
+    numberConsumerUnit: 6
+    trademark: @trademark3
+    barcodeCU: @barcode17
+    barcodeSU: @barcode18
+  product11:
+    code: 12008007
+    name: AOVE HOJIBLANCA 308x1L M.BOX
+    description: AOVE HOJIBLANCA 308x1L M.BOX
+    changeHistory:  - 02/12/2013. Alta del producto.
+    numberConsumerUnit: 308
+    trademark: @trademark3
+    barcodeCU: @barcode19
+    barcodeSU: @barcode20
+  product12:
+    code: 12000051
+    name: AOVE HOJIBLANCA 15X1L PET
+    description: AOVE HOJIBLANCA 15X1L PET
+    changeHistory:  - 07/06/2013. Alta del producto.
+    numberConsumerUnit: 15
+    trademark: @trademark3
+    barcodeCU: @barcode19
+    barcodeSU: @barcode21
+  product13:
+    code: C10008
+    name: COVAP ENTERA UHT BRICK 6x1L
+    description: COVAP LECHE ENTERA UHT BRICK 6x1L CAJA CARTON
+    changeHistory:  - 2000. Alta del producto.
+    numberConsumerUnit: 15
+    trademark: @trademark5
+    barcodeCU: @barcode23
+    barcodeSU: @barcode24
+  product14:
+    code: C10009
+    name: COVAP ENTERA UHT 100x(BRICK 6x1L)
+    description: COVAP LECHE ENTERA UHT 100x(BRICK 6x1L) 1/2 EXPOBANDEJA
+    changeHistory:  - 2000. Alta del producto.
+    numberConsumerUnit: 100
+    trademark: @trademark5
+    barcodeCU: @barcode23
+    barcodeSU: @barcode25

@@ -1,5 +1,101 @@
 \AppBundle\Entity\TableLogisticVariables:
-    tableLogisticIndicator{1..6}:
-        logisticIndicator (unique): <numberBetween($min = 1, $max = 9)>
-        description (uneque): <text($maxNbChars = 50)>
-        trademark: @trademark*
+    tableLogisticVariables1:
+        logisticIndicator: 1
+        description: 8, 9 o 10 Unidades de Consumo por Agrupación
+        trademark: @trademark1
+    tableLogisticVariables2:
+        logisticIndicator: 2
+        description: 12 Unidades de Consumo por Agrupación
+        trademark: @trademark1
+    tableLogisticVariables3:
+        logisticIndicator: 3
+        description: 2, 3 o 5 Unidades de Consumo por Agrupación
+        trademark: @trademark1
+    tableLogisticVariables4:
+        logisticIndicator: 4
+        description: 24 o 40 Unidades de Consumo por Agrupación
+        trademark: @trademark1
+    tableLogisticVariables5:
+        logisticIndicator: 5
+        description: 15 o 16 Unidades de Consumo por Agrupación
+        trademark: @trademark1
+    tableLogisticVariables6:
+        logisticIndicator: 6
+        description: 4 o 6 Unidades de Consumo por Agrupación
+        trademark: @trademark1
+    tableLogisticVariables7:
+        logisticIndicator: 7
+        description: Agrupación en formato de EXPOBANDEJAS
+        trademark: @trademark1
+    tableLogisticVariables8:
+        logisticIndicator: 8
+        description: 48, 49 o 72 Unidades de Consumo por Agrupación
+        trademark: @trademark1
+    tableLogisticVariables9:
+        logisticIndicator: 9
+        description: Agrupación de granel de SEMITERMINADO
+        trademark: @trademark1
+    tableLogisticVariables10:
+        logisticIndicator: 1
+        description: 8, 9 o 10 Unidades de Consumo por Agrupación
+        trademark: @trademark2
+    tableLogisticVariables11:
+        logisticIndicator: 2
+        description: 12 Unidades de Consumo por Agrupación
+        trademark: @trademark2
+    tableLogisticVariables12:
+        logisticIndicator: 3
+        description: 2, 3 o 5 Unidades de Consumo por Agrupación
+        trademark: @trademark2
+    tableLogisticVariables13:
+        logisticIndicator: 4
+        description: 24 o 40 Unidades de Consumo por Agrupación
+        trademark: @trademark2
+    tableLogisticVariables14:
+        logisticIndicator: 5
+        description: 15 o 16 Unidades de Consumo por Agrupación
+        trademark: @trademark2
+    tableLogisticVariables15:
+        logisticIndicator: 6
+        description: 4 o 6 Unidades de Consumo por Agrupación
+        trademark: @trademark2
+    tableLogisticVariables16:
+        logisticIndicator: 7
+        description: Agrupación en formato de EXPOBANDEJAS
+        trademark: @trademark2
+    tableLogisticVariables17:
+        logisticIndicator: 8
+        description: 48, 49 o 72 Unidades de Consumo por Agrupación
+        trademark: @trademark2
+    tableLogisticVariables18:
+        logisticIndicator: 9
+        description: Agrupación de granel de SEMITERMINADO
+        trademark: @trademark2
+    tableLogisticVariables19:
+        logisticIndicator: 1
+        description: 8, 9 o 10 Unidades de Consumo por Agrupación
+        trademark: @trademark3
+    tableLogisticVariables20:
+        logisticIndicator: 2
+        description: 12 Unidades de Consumo por Agrupación
+        trademark: @trademark3
+    tableLogisticVariables21:
+        logisticIndicator: 3
+        description: 2, 3 o 5 Unidades de Consumo por Agrupación
+        trademark: @trademark3
+    tableLogisticVariables22:
+        logisticIndicator: 5
+        description: 15 o 16 Unidades de Consumo por Agrupación
+        trademark: @trademark3
+    tableLogisticVariables23:
+        logisticIndicator: 6
+        description: 4 o 6 Unidades de Consumo por Agrupación
+        trademark: @trademark3
+    tableLogisticVariables24:
+        logisticIndicator: 7
+        description: Agrupación en formato de EXPOBANDEJAS
+        trademark: @trademark3
+    tableLogisticVariables25:
+        logisticIndicator: 7
+        description: Agrupación en formato de EXPOBANDEJAS
+        trademark: @trademark5
