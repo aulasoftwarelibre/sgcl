@@ -371,15 +371,22 @@ class Barcode
     public function getPDFBarcode()
     {
         $code_type = '';
-        if($this->getType() == 'TYPECODE_GTIN_12') $code_type = 'UPCA';
-        if($this->getType() == 'TYPECODE_GTIN_13') $code_type = 'ean13';
-        if($this->getType() == 'TYPECODE_GTIN_14') $code_type = 'itf14';
+        $formatted_code = '';
+        if($this->getType() == 'TYPECODE_GTIN_12'){
+            $code_type = 'UPCA'; $formatted_code = sprintf("%012s", $this->getCode());
+        }
+        if($this->getType() == 'TYPECODE_GTIN_13'){
+            $code_type = 'EAN13'; $formatted_code = sprintf("%013s", $this->getCode());
+        }
+        if($this->getType() == 'TYPECODE_GTIN_14'){
+            $code_type = 'CODABAR'; $formatted_code = sprintf("%014s", $this->getCode());
+        }
 
 
         $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->setBarcode(date('Y-m-d H:i:s'));
         $pdf->AddPage();
-        $txt = "Proyecto Fin de Carrera 'SGCL'.\n";
+        $txt = "Proyecto Fin de Carrera 'SGCL'.\n Se imprime código " . $formatted_code . " de tipo " . $this->getType() . "\n";
         $pdf->MultiCell(70, 50, $txt, 0, 'J', false, 1, 125, 30, true, 0, false, true, 0, 'T', false);
         $pdf->SetY(30);
 
@@ -399,14 +406,14 @@ class Barcode
             'fontsize' => 8,
             'stretchtext' => 4
         );
-        $pdf->write1DBarcode($this->getCode(), 'EAN13', '', '', '', 18, 0.4, $style, 'N');
+        $pdf->write1DBarcode( $formatted_code , $code_type, '', '', '', 18, 0.4, $style, 'N');
         $pdf->Ln();
         $pdf->write1DBarcode('1234567890128', 'EAN13', '', '', '', 18, 0.4, $style, 'N');
         $pdf->Ln();
         $pdf->Cell(0, 0, 'UPC-A', 0, 1);
         $pdf->write1DBarcode('12345678901', 'UPCA', '', '', '', 18, 0.4, $style, 'N');
 
-        $pdf->Output('example_'. $this->getCode() . '.pdf', 'I');
+        $pdf->Output('example_'. $formatted_code . '.pdf', 'I');
         return $pdf;
     }
 
