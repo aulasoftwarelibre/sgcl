@@ -38,7 +38,8 @@
         "sylius/resource-bundle":                       "0.12.*",
 	    "stof/doctrine-extensions-bundle":              "1.2.*@dev",
         "zendframework/zend-servicemanager":            "2.4.*",
-        "zendframework/zend-barcode":                   "2.4.*"
+        "zendframework/zend-barcode":                   "2.4.*",
+        "tecnick.com/tcpdf":                            "*"
     },
     "require-dev": {
         "sensio/generator-bundle":              "~2.4",

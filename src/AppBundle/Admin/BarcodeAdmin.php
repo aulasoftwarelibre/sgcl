@@ -59,6 +59,7 @@ class BarcodeAdmin extends Admin
                 'required'=> false,
                 'label' => 'Indica los cinco dígitos que servirán de código_base'
             ))
+            ->add('comment', null, array('label' => 'Comentarios'))
             //->add('code', null, array('label' => 'Código'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
@@ -77,6 +78,7 @@ class BarcodeAdmin extends Admin
             ->addIdentifier('code')
             ->add('type')
             ->add('trademark')
+            ->add('comment')
             ->add('creationDate')
             ->add('lastModificationDate')
             ->add('_action', 'actions', array(
@@ -94,6 +96,7 @@ class BarcodeAdmin extends Admin
         $filter
             ->add('type', 'string', array())
             ->add('code')
+            ->add('comment')
             ->add('creationDate')
             ->add('lastModificationDate')
             ->add('trademark')
@@ -110,6 +113,7 @@ class BarcodeAdmin extends Admin
                 )
             )
             ->add('code')
+            ->add('comment')
             ->add('creationDate')
             ->add('lastModificationDate')
             ->add('trademark')

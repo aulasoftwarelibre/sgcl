@@ -1,101 +1,126 @@
 \AppBundle\Entity\Barcode:
     barcode1:
         trademark: @trademark1
+        comment: Puro en botella PET 1L, inicialmente código 18.
         type: TYPECODE_GTIN_13
         code: 8410010000181
     barcode2:
         trademark: @trademark1
+        comment: V.E. en botella PET 1L personalizado Holanda, inicialmente código 27734.
         type: TYPECODE_GTIN_13
         code: 8410010277347
     barcode3:
         trademark: @trademark1
+        comment: Pack de DOS botellas PET 1L del código 26334, inicialmente código 26449.
         type: TYPECODE_GTIN_13
         code: 8410010264491
     barcode4:
         trademark: @trademark1
+        comment: V.E. en botella PET 5L personalizado para Brasil, inicialmente código 27730.
         type: TYPECODE_GTIN_13
         code: 8410010277309
     barcode5:
         trademark: @trademark1
+        comment: Puro en botella vidrio estándar 250ml personalizada USA, inicialmente código 27774.
         type: TYPECODE_GTIN_12
         code: 78336277274
     barcode6:
         trademark: @trademark1
+        comment: V.E. en botella vidrio estándar 250ml personalizada USA, inicialmente código 27728.
         type: TYPECODE_GTIN_12
         code: 78336277281
     barcode7:
         trademark: @trademark1
+        comment: Caja 15x1 de Puro en PET 1L, código 18, inicialmente código 26380.
         type: TYPECODE_GTIN_14
         code: 58410010000186
     barcode8:
         trademark: @trademark1
+        comment: Caja 15x1 de V.E. en PET 1L personalizado Holanda código 27734, inicialmente código 27734.
         type: TYPECODE_GTIN_14
         code: 58410010277342
     barcode9:
         trademark: @trademark1
+        comment: Caja CINCO pack de V.E. PET 2x1L, inicialmente código 26449.
         type: TYPECODE_GTIN_14
         code: 38410010264492
     barcode10:
         trademark: @trademark1
+        comment: Caja 3x5 de V.E. en PET 5L personalizado Brasil código 27730, inicialmente código 27730.
         type: TYPECODE_GTIN_14
         code: 38410010277300
     barcode11:
         trademark: @trademark1
+        comment: Caja 12x250ml de Puro en vidrio 250ml personalizado USA código 27727, inicialmente código 27727.
         type: TYPECODE_GTIN_14
         code: 28410010277273
     barcode12:
         trademark: @trademark1
+        comment: Caja 12x250ml de V.E. en vidrio 250ml personalizado USA código 27728, inicialmente código 27728.
         type: TYPECODE_GTIN_14
         code: 28410010277280
     barcode13:
         trademark: @trademark2
+        comment: V.E. PET 750ml código 21087, inicialmente código 27087.
         type: TYPECODE_GTIN_13
         code: 8410125210871
     barcode14:
         trademark: @trademark2
+        comment: Caja 15x750ml de V.E. PET 750ml código 21087, inicialmente código 27087.
         type: TYPECODE_GTIN_14
         code: 58410125210876
     barcode15:
         trademark: @trademark2
+        comment: V.E. vidrio estándar 750ml personalizado R.Dominicana, inicialmente código 24552.
         type: TYPECODE_GTIN_12
         code: 28661245523
     barcode16:
         trademark: @trademark2
+        comment: Caja 6x750 personalizado R.Dominicana código 24553, inicialmente código 24552.
         type: TYPECODE_GTIN_14
         code: 68410125245523
     barcode17:
         trademark: @trademark3
+        comment: V.E. vidrio dama 500ml personalizado USA, inicialmente código 12008005.
         type: TYPECODE_GTIN_12
         code: 687224200227
     barcode18:
         trademark: @trademark3
+        comment: Caja 6x500m personalizado USA personalizado USA código 12008005, inicialmente código 12008005.
         type: TYPECODE_GTIN_14
         code: 68422767200228
     barcode19:
         trademark: @trademark3
+        comment: V.E. PET 1L, inicialmente código 12000051.
         type: TYPECODE_GTIN_13
         code: 8422767123167
     barcode20:
         trademark: @trademark3
+        comment: 1/2 expobandeja de V.E. PET 1L código 12000051, inicialmente código 12008007.
         type: TYPECODE_GTIN_14
         code: 78422767200089
     barcode21:
         trademark: @trademark3
+        comment: Caja de 15x1 de V.E. PET 1L, inicialmente código 12000051.
         type: TYPECODE_GTIN_14
         code: 18422767123164
     barcode22:
         trademark: @trademark1
+        comment: 1/2 expobandeja de Puro en botella PET 1L código 18, inicialmente código 26380.
         type: TYPECODE_GTIN_14
         code: 78410010263806
     barcode23:
-        trademark: @trademark4
+        trademark: @trademark5
+        comment: Leche entera UHT Brick 1L, inicialmente código C10008.
         type: TYPECODE_GTIN_13
         code: 8411585465030
     barcode24:
-        trademark: @trademark4
+        trademark: @trademark5
         type: TYPECODE_GTIN_13
+        comment: Caja cartón PACK 6x1 de leche entera UHT Brick 1L código C10008, inicialmente código C10008.
         code: 8411585100085
     barcode25:
-        trademark: @trademark4
+        trademark: @trademark5
+        comment: PALET de 100xPACK 6x1L de código C10008, inicialmente código C10009.
         type: TYPECODE_GTIN_14
         code: 78411585100091

@@ -57,6 +57,13 @@ class Barcode
     /**
      * @var string
      *
+     * @ORM\Column(name="comment", type="text", nullable=false)
+     */
+    private $comment;
+
+    /**
+     * @var string
+     *
      * @Assert\Length(
      *      max = "5",
      *      min = "5",
@@ -64,6 +71,11 @@ class Barcode
      * )
      */
     private $basecode;
+
+    /**
+     * @var boolean
+     */
+    private $contador;
 
     /***
      * @var TableLogisticVariables
@@ -179,6 +191,29 @@ class Barcode
     }
 
     /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Barcode
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
      * @return string
      */
     public function getBasecode()
@@ -192,6 +227,23 @@ class Barcode
     public function setBasecode( $basecode )
     {
         $this->basecode = $basecode;
+    }
+
+    //****************************************
+    /**
+     * @return boolean
+     */
+    public function getContador()
+    {
+        return $this->contador;
+    }
+
+    /**
+     * @param boolean $contador
+     */
+    public function setContador( $contador )
+    {
+        $this->contador = $contador;
     }
 
     /**

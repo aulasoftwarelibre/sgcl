@@ -21,9 +21,9 @@ class BarcodeListener
 
     public function prePersist(Barcode $barcode, LifecycleEventArgs $args)
     {
-        if(!empty($barcode->getCode())){
+        if( !empty($barcode->getCode()) ){
             //Solo para la carga inicial de datos, si se indica un código específico,
-            //este se carga en la base de datos tal cual, es decir, si generarlo
+            //este se carga en la base de datos tal cual, es decir, sin generarlo
         } else{
         //En primer lugar, definimos si vamos emplear el contador de códigos de la marca, y
         //el código base
@@ -82,5 +82,22 @@ class BarcodeListener
                 //console.log('Error TYPO DE CÓDIGO NO CNENCOTRADO - archivo BarcodeListener.php');
                 echo "ESTOY EN DEFAULT - ERROR al generar el código - archivo BarcodeListener.php";
         }}
+    }
+
+    public function postUpdate(Barcode $barcode, LifecycleEventArgs $args)
+    {
+        if(!empty($barcode->getBasecode())){
+        } else {
+            $entity = $args->getEntity();
+            $entityMaganger = $args->getEntityManager();
+
+            $huevo = $barcode->getTrademark()->getCounter();
+            dump($huevo);
+            throw new \Exception();
+
+            $barcode->getTrademark()->setCounter( 1 + $barcode->getTrademark()->getCounter());
+            $entityMaganger->persist($barcode);
+            $entityMaganger->flush();
+        }
     }
 }
