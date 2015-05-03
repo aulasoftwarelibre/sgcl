@@ -33,6 +33,7 @@ class BarcodeAdmin extends Admin
     {
         $collection->add('trademark_tablelogisticvariables', 'trademark/tablelogisticvariables');
         $collection->add('render_codebar', 'image');
+        $collection->add('print_pdfbarcode', 'pdf');
     }
 
     protected function configureFormFields(FormMapper $form)

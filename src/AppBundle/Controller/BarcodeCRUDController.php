@@ -37,4 +37,17 @@ class BarcodeCRUDController extends CRUDController
             'Content-Disposition' => 'inline; filename="'.$barcode->getCode().'"');
         return new Response($image, 200, $headers);
     }
+
+    public function printPDFBarcodeAction(Request $request)
+    {
+        $barcode_id = $request->get('barcode_id');
+        $em = $this->getDoctrine();
+        $barcode = $em->getRepository('AppBundle:Barcode')->find($barcode_id);
+        $pdf = $barcode->getPDFBarcode();
+
+        $headers = array(
+            'Content-Type'     => 'image/png',
+            'Content-Disposition' => 'inline; filename="'.$barcode->getCode().'"');
+        return new Response($pdf, 200, $headers);
+    }
 }

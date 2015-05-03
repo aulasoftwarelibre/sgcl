@@ -6,4 +6,6 @@
 
     <img src="{{ path('admin_app_barcode_render_codebar', {'barcode_id': object.barcodeCU.id}) }}">
     <img src="{{ path('admin_app_barcode_render_codebar', {'barcode_id': object.barcodeSU.id}) }}">
+    <img src="{{ path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.barcodeCU.id}) }}">
+    <img src="{{ path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.barcodeSU.id}) }}">
 {% endblock %}
