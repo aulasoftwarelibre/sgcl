@@ -6,8 +6,8 @@
     roles: [ ROLE_ADMIN ]
     enabled: true
   pepe:
-      username: pepe
-      email: pepe@localhost
-      plainPassword: pepe
-      roles: [ ROLE_STAFF ]
-      enabled: true
+    username: pepe
+    email: pepe@localhost
+    plainPassword: pepe
+    roles: [ ROLE_STAFF ]
+    enabled: true

@@ -15,16 +15,25 @@
                     data: data,
                     success: function(data) {
                         var $barcodeSU_selector = $("select[id$='_barcodeSU']");
+                        var $selectedSU_value = $barcodeSU_selector.val();
                         var $barcodeCU_selector = $("select[id$='_barcodeCU']");
+                        var $selectedCU_value = $barcodeCU_selector.val();
 
                         $barcodeSU_selector.html('');
                         $barcodeCU_selector.html('');
 
                         for (var i=0, total = data.length; i < total; i++) {
-                            $barcodeSU_selector.append('<option value="' + data[i].id + '">' + data[i].code + '</option>');
-                            $barcodeCU_selector.append('<option value="' + data[i].id + '">' + data[i].code + '</option>');
+                            if (data[i].id == $selectedCU_value) {
+                                $barcodeCU_selector.append('<option selected value="' + data[i].id + '">' + data[i].code + '</option>');
+                            } else {
+                                $barcodeCU_selector.append('<option value="' + data[i].id + '">' + data[i].code + '</option>');
+                            }
+                            if (data[i].id == $selectedSU_value) {
+                                $barcodeSU_selector.append('<option selected value="' + data[i].id + '">' + data[i].code + '</option>');
+                            } else {
+                                $barcodeSU_selector.append('<option value="' + data[i].id + '">' + data[i].code + '</option>');
+                            }
                         }
-
                     }
                 });
             });

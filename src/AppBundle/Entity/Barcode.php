@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 //Para los ASSERT .. las validaciones
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 //Para asignar 'datatime'
 use Gedmo\Mapping\Annotation as Gedmo;
 //Para el uso del tipo de dado "codetype"
@@ -19,6 +20,7 @@ use AppBundle\Form\Type;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\BarcodeRepository")
  * @ORM\EntityListeners({ "AppBundle\EventListener\BarcodeListener" })
+ * @UniqueEntity("code")
  */
 class Barcode
 {
