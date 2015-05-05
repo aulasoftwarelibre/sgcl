@@ -5,4 +5,13 @@
     {{ parent() }}
 
     <img src="{{ path('admin_app_barcode_render_codebar', {'barcode_id': object.id}) }}">
+    <a href="{{ asset(path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.id})) }}" download="{{ "archivo" }}">
+        Descargar PDF del código barras
+    </a>
+
+    <button>
+        <a href="{{ asset(path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.id})) }}" download="{{ "archivo" }}">
+            Descargar PDF del código barras
+        </a>
+    </button>
 {% endblock %}

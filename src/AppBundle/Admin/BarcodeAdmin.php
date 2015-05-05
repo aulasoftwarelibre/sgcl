@@ -51,7 +51,7 @@ class BarcodeAdmin extends Admin
                 'placeholder' => 'Selecciona el código logístico para la Unidad de Venta',
                 'label' => 'Número logístico'
             ))
-            ->add('contador', 'checkbox', array(
+            ->add('withCounter', 'checkbox', array(
                     'mapped'=>false,
                     'required'=> false,
                     'label' => 'Seleccionar para emplear el contador de productos de la marca, en caso contrario debará introducir los dígitos base manualmente'
@@ -64,7 +64,7 @@ class BarcodeAdmin extends Admin
             //->add('code', null, array('label' => 'Código'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
-            ->add('code', null, array('mapped'=>false, 'required'=> false,))
+            ->add('code', null, array('mapped'=> false, 'required'=> false,))
             ->setHelps(array(
                 'type'=>'Introduce el tipo de código',
                 'code'=>'Introduce el código',

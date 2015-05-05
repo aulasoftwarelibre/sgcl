@@ -77,7 +77,7 @@ class Barcode
     /**
      * @var boolean
      */
-    private $contador;
+    private $withCounter;
 
     /***
      * @var TableLogisticVariables
@@ -235,17 +235,17 @@ class Barcode
     /**
      * @return boolean
      */
-    public function getContador()
+    public function getWithCounter()
     {
-        return $this->contador;
+        return $this->withCounter;
     }
 
     /**
-     * @param boolean $contador
+     * @param boolean $withCounter
      */
-    public function setContador( $contador )
+    public function setWithCounter( $withCounter )
     {
-        $this->contador = $contador;
+        $this->withCounter = $withCounter;
     }
 
     /**
@@ -318,7 +318,7 @@ class Barcode
     }
 
     /**
-     * Set trademark
+     * Set trademarkDon't forget to comment out any existing LoadModule php5_module... line that might be present from Yosemite's own PHP version!
      *
      * @param Trademark $trademark
      * @return Barcode
@@ -338,6 +338,46 @@ class Barcode
     public function getTrademark()
     {
         return $this->trademark;
+    }
+
+
+    public function generateCode(Barcode $barcode)
+    {
+        $use_counter = True;
+        $base_code = '';
+        $new_code = '';
+
+        if ($barcode->getBasecode()) {
+            $base_code = (string)$barcode->getBasecode();
+            $use_counter = False;
+        } else {
+            //Se toma como código base el SIGUIENTE valor del contador de productos de la marca
+            $base_code = (string)($barcode->getTrademark()->getCounter() + 1);
+            $use_counter = True;
+        }
+        $base_code = sprintf("%05d", $base_code);
+
+        switch ($barcode->getType()) {
+            case 'TYPECODE_GTIN_12':
+                $codeWithoutChecksum = $barcode->getTrademark()->getPrefixUPC() . $base_code;
+                $options = array('text' => $codeWithoutChecksum);
+                $new_code = new \Zend\Barcode\Object\Upca($options);
+                break;
+            case 'TYPECODE_GTIN_13':
+                $codeWithoutChecksum = $barcode->getTrademark()->getPrefix() . $base_code;
+                $options = array('text' => $codeWithoutChecksum);
+                $new_code = new \Zend\Barcode\Object\Ean13($options);
+                break;
+            case 'TYPECODE_GTIN_14':
+                $codeWithoutChecksum = ((string)$barcode->getTableLogisticVariables()->getLogisticIndicator()) . $barcode->getTrademark()->getPrefix() . $base_code;
+                $options = array('text' => $codeWithoutChecksum);
+                $new_code = new \Zend\Barcode\Object\Itf14($options);
+                break;
+            default:
+                throw new \InvalidArgumentException("Tipo de código no soportado: " . $barcode->getType());
+        }
+
+        return $new_code->getText();
     }
 
     public function getImage()

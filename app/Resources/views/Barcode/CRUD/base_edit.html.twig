@@ -49,8 +49,7 @@
             });
 
             //Se oculta la solicitud del código base según se especifique en checkbox
-            $("input[id$='_contador']").change(function() {
-                //if ( $(this).checked() ) {
+            $("input[id$='_withCounter']").change(function() {
                 if ( $(this).is(':checked')) {
                     $("div[id$='_basecode']").show();
                 } else {
@@ -62,7 +61,7 @@
         $(document).ready(function(){
             $("select[id$='_trademark']").trigger('change');
             $("select[id$='_type']").trigger('change');
-            $("input[id$='_contador']").trigger('change');
+            $("input[id$='_withCounter']").trigger('change');
             $("div[id$='_code']").hide(); //Se oculta en el formulario, única utilidad es la carga inicial de datos
         })
 
