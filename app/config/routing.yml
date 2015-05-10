@@ -30,4 +30,7 @@ _sonata_admin:
     type: sonata_admin
     prefix: /
 
-
+products:
+    type:     rest
+    resource: AppBundle\Controller\Api\ProductController
+    prefix: /api

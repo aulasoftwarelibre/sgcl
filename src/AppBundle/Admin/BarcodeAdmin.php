@@ -17,7 +17,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use AppBundle\Form\Type;
 //Para "query"
 use AppBundle\Doctrine\ORM;
-use AppBundle\Entity;
+use AppBundle\Entity\Barcode;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 
@@ -52,7 +52,6 @@ class BarcodeAdmin extends Admin
                 'label' => 'Número logístico'
             ))
             ->add('withCounter', 'checkbox', array(
-                    'mapped'=>false,
                     'required'=> false,
                     'label' => 'Seleccionar para emplear el contador de productos de la marca, en caso contrario debará introducir los dígitos base manualmente'
             ))
@@ -64,13 +63,25 @@ class BarcodeAdmin extends Admin
             //->add('code', null, array('label' => 'Código'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
-            ->add('code', null, array('mapped'=> false, 'required'=> false,))
+//            ->add('code', null, array('mapped'=> false, 'required'=> false,))
             ->setHelps(array(
                 'type'=>'Introduce el tipo de código',
                 'code'=>'Introduce el código',
                 'trademark' =>'Selecciona la marca que corresponde este código',
             ))
             ->end();
+    }
+
+    /**
+     * @param Barcode $barcode
+     */
+    public function prePersist($barcode)
+    {
+        $barcode->setCode( $barcode->generateCode() );
+
+        if ($barcode->getWithCounter()) {
+            $barcode->getTrademark()->incCounter();
+        }
     }
 
     protected function configureListFields(ListMapper $list)

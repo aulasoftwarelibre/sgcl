@@ -45,6 +45,10 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        api:
+            pattern: ^/api/
+            security: false
+
         # -> custom firewall for the admin area of the URL
         admin:
             pattern:            /(.*)
@@ -79,6 +83,7 @@ security:
 
     access_control:
         # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/api$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

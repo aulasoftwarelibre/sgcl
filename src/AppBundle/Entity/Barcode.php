@@ -19,9 +19,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\BarcodeRepository")
- * @ORM\EntityListeners({ "AppBundle\EventListener\BarcodeListener" })
- * @ORM\HasLifecycleCallbacks()
- * @Assert\Callback(methods={"exist_barcode"})
+ * @UniqueEntity("code")
  */
 class Barcode
 {
@@ -342,59 +340,69 @@ class Barcode
         return $this->trademark;
     }
 
-
-    public function generateCode(Barcode $barcode)
+    /**
+     * @return string
+     *
+     * This function generates a barcode.
+     * If the counter brand registered as code base is used, this should be increased (and updated).
+     * This function only generates GTIN-12, GTIN-13 and GTIN-14 codes.
+     *
+    */
+    public function generateCode()
     {
-        $use_counter = True;
+        $use_counter = true;
         $base_code = '';
         $new_code = '';
 
-        if ($barcode->getBasecode()) {
-            $base_code = (string)$barcode->getBasecode();
-            $use_counter = False;
-        } else {
-            //Se toma como código base el SIGUIENTE valor del contador de productos de la marca
-            $base_code = (string)($barcode->getTrademark()->getCounter() + 1);
-            $use_counter = True;
+        if ($this->getWithCounter())
+        {
+            $base_code = (string)($this->getTrademark()->getCounter() + 1);
+        }
+        else
+        {
+            $base_code = (string)$this->getBasecode();
         }
         $base_code = sprintf("%05d", $base_code);
 
-        switch ($barcode->getType()) {
+        switch ($this->getType()) {
             case 'TYPECODE_GTIN_12':
-                $codeWithoutChecksum = $barcode->getTrademark()->getPrefixUPC() . $base_code;
+                $codeWithoutChecksum = $this->getTrademark()->getPrefixUPC() . $base_code;
                 $options = array('text' => $codeWithoutChecksum);
                 $new_code = new \Zend\Barcode\Object\Upca($options);
                 break;
             case 'TYPECODE_GTIN_13':
-                $codeWithoutChecksum = $barcode->getTrademark()->getPrefix() . $base_code;
+                $codeWithoutChecksum = $this->getTrademark()->getPrefix() . $base_code;
                 $options = array('text' => $codeWithoutChecksum);
                 $new_code = new \Zend\Barcode\Object\Ean13($options);
                 break;
             case 'TYPECODE_GTIN_14':
-                $codeWithoutChecksum = ((string)$barcode->getTableLogisticVariables()->getLogisticIndicator()) . $barcode->getTrademark()->getPrefix() . $base_code;
+                $codeWithoutChecksum = ((string)$this->getTableLogisticVariables()->getLogisticIndicator()) . $this->getTrademark()->getPrefix() . $base_code;
                 $options = array('text' => $codeWithoutChecksum);
                 $new_code = new \Zend\Barcode\Object\Itf14($options);
                 break;
             default:
-                throw new \InvalidArgumentException("Tipo de código no soportado: " . $barcode->getType());
+                throw new \InvalidArgumentException("Tipo de código no soportado: " . $this->getType());
         }
 
         return $new_code->getText();
     }
 
+    /**
+     * This function returns the bar code represented in a PNG image.
+     * The Zend\Barcode library is used, and receives a string with the barcode
+     * excluding the check digit (checksum).
+     * This function only generates GTIN-12, GTIN-13 and GTIN-14 codes.
+    */
     public function getImage()
     {
-        //En primer lugar debemos recuperar el contenido del código sin el dígito de control,
-        //ya que este lo generará de nuevo la librería gráfica antes de generar la imagen
         $subCode = substr($this->getCode(), 0, -1 );
-        //obtenemos el tipo de código y lo traducimos al parámetro de tipo de código de la librería gráfica
-        //ESTO DEBE IMPLEMENTARSE MEDIANTE TRADUCCIÓN DE NOMBRES... ahora mismo solo se puede trabajar con EAN13 y DUN14
+
         $code_type = '';
         if($this->getType() == 'TYPECODE_GTIN_12') $code_type = 'upca';
         if($this->getType() == 'TYPECODE_GTIN_13') $code_type = 'ean13';
         if($this->getType() == 'TYPECODE_GTIN_14') $code_type = 'itf14';
 
-        //Si se dibuja código tipo ITF debe enmarcarse en un cuadro como indica la norma
+        //When working with type code ITF, it should be framed.
         if($this->getType() == 'TYPECODE_GTIN_14') $barcodeOptions = array('text' => $subCode, 'withBorder' => true, 'factor' => 1);
         else $barcodeOptions = array('text' => $subCode, 'factor' => 1);
         $rendererOptions = array();
@@ -412,6 +420,10 @@ class Barcode
         return $contents;
     }
 
+    /**
+     * This function returns a PDF file, where the barcode is shown.
+     * This function only generates GTIN-12, GTIN-13 and GTIN-14 codes.
+    */
     public function getPDFBarcode()
     {
         $code_type = '';
@@ -425,7 +437,6 @@ class Barcode
         if($this->getType() == 'TYPECODE_GTIN_14'){
             $code_type = 'CODABAR'; $formatted_code = sprintf("%014s", $this->getCode());
         }
-
 
         $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->setBarcode(date('Y-m-d H:i:s'));
@@ -459,20 +470,6 @@ class Barcode
 
         $pdf->Output('example_'. $formatted_code . '.pdf', 'I');
         return $pdf;
-    }
-
-    /**
-     * @Assert\Callback
-     */
-    public function exist_barcode(ExecutionContextInterface $context)
-    {
-        if ( '078336000018' === $this->generateCode( $this ) )
-        {
-            $context->buildViolation('¡Este código ya existe en el sistema!')
-                ->atPath('code')
-                ->addViolation()
-            ;
-        }
     }
 
     /**

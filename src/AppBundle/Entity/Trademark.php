@@ -223,6 +223,14 @@ class Trademark
     }
 
     /**
+     * Increment counter
+     */
+    public function incCounter()
+    {
+        $this->counter++;
+    }
+
+    /**
      * Get counter
      *
      * @return integer

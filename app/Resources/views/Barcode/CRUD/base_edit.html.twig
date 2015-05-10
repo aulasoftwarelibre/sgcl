@@ -20,10 +20,8 @@
                         var $logisticIndicator_selector = $("select[id$='_tableLogisticVariables']");
                         var $type_selector = $("select[id$='_type']");
 
-                        //Inicializamos la variable para que NO contenga valores
                         $logisticIndicator_selector.html('');
 
-                        //Solo mostramos/solicitamos el 'indicador logístico' cuando trabajamos con código de tipo GTING-14
                         if($type_selector.val() == 'TYPECODE_GTIN_14') {
 
                             $logisticIndicator_selector.html('');
@@ -37,8 +35,6 @@
 
             });
 
-            //Se oculta la petición del indicador logístico cuando
-            //el tipo de código sea distinto del DUN14
             $("select[id$='_type']").change(function() {
                 if ( $(this).val() === 'TYPECODE_GTIN_14' ) {
                     $("select[id$='_trademark']").trigger('change');
@@ -48,12 +44,11 @@
                 }
             });
 
-            //Se oculta la solicitud del código base según se especifique en checkbox
             $("input[id$='_withCounter']").change(function() {
                 if ( $(this).is(':checked')) {
-                    $("div[id$='_basecode']").show();
-                } else {
                     $("div[id$='_basecode']").hide();
+                } else {
+                    $("div[id$='_basecode']").show();
                 }
             });
         });
@@ -62,7 +57,6 @@
             $("select[id$='_trademark']").trigger('change');
             $("select[id$='_type']").trigger('change');
             $("input[id$='_withCounter']").trigger('change');
-            $("div[id$='_code']").hide(); //Se oculta en el formulario, única utilidad es la carga inicial de datos
         })
 
     </script>

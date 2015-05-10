@@ -31,7 +31,7 @@ class ProductAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('trademark_barcode', 'trademark/barcode');
-        $collection->add('product_list', 'text');
+        //$collection->add('product_list', 'text');
     }
 
 

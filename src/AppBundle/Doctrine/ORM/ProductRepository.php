@@ -23,7 +23,6 @@ class ProductRepository extends CustomRepository
             OR product.barcodeSU = :code
         ")->setParameter('code', $barcode_id);
 
-        //return $query->getArrayResult();  // ¿PORQUE NO PUEDE EMPLEAR ESTA SENTENCIA?
-        return $query->getResult();
+        return $query->getArrayResult();
     }
 }
