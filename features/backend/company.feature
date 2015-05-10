@@ -79,7 +79,7 @@ Característica: Lista compañías
     Y presiono "Editar" cerca de "Compañía A"
     Y debería estar en la página edición de compañia con "name" denominado "Compañia A"
     Cuando sigo "Borrar"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de compañías
     Y debo ver "Elemento eliminado satisfactoriamente."
@@ -87,7 +87,7 @@ Característica: Lista compañías
   Escenario: Borrar organización desde el listado
     Dado estoy en la página de listado de compañías
     Cuando presiono "Borrar" cerca de "Compañía A"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de compañías
     Y debo ver "Elemento eliminado satisfactoriamente."

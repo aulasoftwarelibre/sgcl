@@ -23,8 +23,8 @@ class BarcodeListener
             $barcode->setCode( $barcode->generateCode($barcode) );
             if ($barcode->getWithCounter()) $barcode->getTrademark()->setCounter(1 + $barcode->getTrademark()->getCounter());
 
-            if( $barcode->getWithCounter() == true ){$j = 'SI';} else {$j = 'NO';}
-            throw new \InvalidArgumentException("El valor de la pregunta es: " . $j );
+            //if( $barcode->getWithCounter() == true ){$j = 'SI';} else {$j = 'NO';}
+            //throw new \InvalidArgumentException("El valor de la pregunta es: " . $j );
 
         }
     }

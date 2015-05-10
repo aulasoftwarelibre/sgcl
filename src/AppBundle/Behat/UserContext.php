@@ -22,7 +22,7 @@ class UserContext extends DefaultContext
     {
         $em = $this->getEntityManager();
         foreach ($usersTable->getHash() as $userHash) {
-            $user = $this->getEntityManager()->getRepository('ApplicationSonataUserBundle:User')->findOneByUsername($userHash['nombre']);
+            $user = $this->getEntityManager()->getRepository('AppBundle:User')->findOneByUsername($userHash['nombre']);
             if (!$user) {
                 $user = new User();
             }

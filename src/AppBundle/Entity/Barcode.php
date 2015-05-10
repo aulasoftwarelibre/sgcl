@@ -4,14 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-//Para los ASSERT .. las validaciones
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-//Para asignar 'datatime'
 use Gedmo\Mapping\Annotation as Gedmo;
-//Para el uso del tipo de dado "codetype"
 use AppBundle\Form\Type;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 
 
 /**
@@ -20,7 +20,8 @@ use AppBundle\Form\Type;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\BarcodeRepository")
  * @ORM\EntityListeners({ "AppBundle\EventListener\BarcodeListener" })
- * @UniqueEntity("code")
+ * @ORM\HasLifecycleCallbacks()
+ * @Assert\Callback(methods={"exist_barcode"})
  */
 class Barcode
 {
@@ -53,6 +54,7 @@ class Barcode
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=128, unique=true, nullable=false)
+     * @Assert\Callback({"Vendor\Package\Validator", "exist_code"})
      */
     private $code;
 
@@ -457,6 +459,20 @@ class Barcode
 
         $pdf->Output('example_'. $formatted_code . '.pdf', 'I');
         return $pdf;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function exist_barcode(ExecutionContextInterface $context)
+    {
+        if ( '078336000018' === $this->generateCode( $this ) )
+        {
+            $context->buildViolation('¡Este código ya existe en el sistema!')
+                ->atPath('code')
+                ->addViolation()
+            ;
+        }
     }
 
     /**

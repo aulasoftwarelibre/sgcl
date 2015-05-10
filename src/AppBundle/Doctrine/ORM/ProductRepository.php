@@ -14,4 +14,16 @@ use Doctrine\ORM\Query\Expr;
 class ProductRepository extends CustomRepository
 {
 
+    public function findByCodeId($barcode_id)
+    {
+        $query = $this->getEntityManager()->createQuery("
+            SELECT product
+            FROM AppBundle:Product product
+            WHERE product.barcodeCU = :code
+            OR product.barcodeSU = :code
+        ")->setParameter('code', $barcode_id);
+
+        //return $query->getArrayResult();  // ¿PORQUE NO PUEDE EMPLEAR ESTA SENTENCIA?
+        return $query->getResult();
+    }
 }

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 //Para los ASSERT .. las validaciones
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 //Para asignar 'datatime'
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -18,6 +19,7 @@ use Doctrine\ORM\EntityManager;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\ProductRepository")
+ * @UniqueEntity("code")
  */
 class Product
 {

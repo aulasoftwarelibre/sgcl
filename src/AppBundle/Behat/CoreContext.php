@@ -25,7 +25,7 @@ class CoreContext extends DefaultContext
      */
     public function iAmOnCompanyList()
     {
-        $this->getSession()->visit($this->generatePageUrl('company_list'));
+        $this->getSession()->visit($this->generatePageUrl('admin_app_company_list'));
     }
 
     /**
@@ -49,7 +49,7 @@ class CoreContext extends DefaultContext
      */
     public function iAmOnCompanyCreate()
     {
-        $this->getSession()->visit($this->generatePageUrl('company_create'));
+        $this->getSession()->visit($this->generatePageUrl('admin_app_company_create'));
     }
 
     /**
@@ -75,7 +75,9 @@ class CoreContext extends DefaultContext
     {
         $em = $this->getEntityManager();
         $company = $em->getRepository('AppBundle:Company')->findOneBy(array($campo => $valor));
-        $this->assertSession()->addressEquals($this->generatePageUrl('company_edit', array('id' => $company->getId())));
+        $this->assertSession()->addressEquals(
+            $this->generatePageUrl('admin_app_company_edit', array('id' => $company->getId()))
+        );
     }
 
     /**
@@ -83,7 +85,7 @@ class CoreContext extends DefaultContext
      */
     public function iShouldBeOnCompanyList()
     {
-        $this->assertSession()->addressEquals($this->generatePageUrl('company_list'));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_company_list'));
     }
 
     /**
@@ -107,10 +109,10 @@ class CoreContext extends DefaultContext
      */
     public function iAmLoggedAs($user, $password)
     {
-        $this->getSession()->visit('/admin/login');
+        $this->getSession()->visit('/login');
         $this->fillField('_username', $user);
         $this->fillField('_password', $password);
-        $this->pressButton('_submit');
+        $this->pressButton('Entrar');
     }
 
     /**
@@ -136,7 +138,9 @@ class CoreContext extends DefaultContext
     {
         $em = $this->getEntityManager();
         $company = $em->getRepository('AppBundle:Company')->findOneBy(array($campo => $valor));
-        $this->assertSession()->addressEquals($this->generatePageUrl('company_edit', array('id' => $company->getId())));
+        $this->assertSession()->addressEquals(
+            $this->generatePageUrl('admin_app_company_edit', array('id' => $company->getId()))
+        );
     }
 
     /**

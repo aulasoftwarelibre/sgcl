@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 //Para los ASSERT .. las validaciones
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -13,6 +14,8 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\CompanyRepository")
+ * @UniqueEntity("name")
+ * @UniqueEntity("nif")
  */
 class Company
 {

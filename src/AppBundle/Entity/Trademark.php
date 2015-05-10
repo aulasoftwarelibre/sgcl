@@ -7,12 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 //Para los ASSERT .. las validaciones
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Trademark
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\TrademarkRepository")
+ * @UniqueEntity("name")
+ * @UniqueEntity("prefix")
+ * @UniqueEntity("prefixUPC")
  */
 class Trademark
 {

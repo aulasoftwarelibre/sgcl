@@ -11,6 +11,9 @@ namespace AppBundle\Doctrine\ORM;
 use AppBundle\Entity;
 use Doctrine\ORM\Query\Expr;
 use Symfony\Component\Validator\Constraints\False;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 
 class BarcodeRepository extends CustomRepository
 {
@@ -48,4 +51,38 @@ class BarcodeRepository extends CustomRepository
         return $query->getArrayResult();
     }
 
+    public function findByCode($code)
+    {
+        $query = $this->getEntityManager()->createQuery("
+            SELECT barcode
+            FROM AppBundle:Barcode barcode
+            LEFT JOIN barcode.code code
+            WHERE barcode.code = :code
+        ")->setParameter('code', $code);
+
+        return $query->getArrayResult();
+    }
+
+    public function buscarrrr($code)
+    {
+        $query = $this->getEntityManager()->createQuery("
+            SELECT barcode
+            FROM AppBundle:Barcode barcode
+            WHERE barcode.code = :code
+        ")->setParameter('code', $code);
+
+        return $query->getArrayResult();
+    }
+
+    public function findProdutByBarcode($code)
+    {
+        $query = $this->getEntityManager()->createQuery("
+            SELECT product
+            FROM AppBundle:Product product
+            LEFT JOIN product.barcodeCU barcodeCU
+            WHERE product.barcodeCU = : barcodeCU
+        ")->setParameter('barcodeCU', $code);
+
+        return $query->getArrayResult();
+    }
 }
