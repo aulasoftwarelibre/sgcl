@@ -26,11 +26,11 @@ class TableLogisticVariablesAdmin extends Admin
     {
         $form
             ->with('Añadir una nueva variable logística')
+            ->add('trademark', null, array('label' => 'Marca que corresponde'))
             ->add('logisticIndicator', null, array('label' => 'Dígito logístico'))
             ->add('description', null, array('label' => 'Descripción'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
-            ->add('trademark', null, array('label' => 'Marca que corresponde'))
             ->setHelps(array(
                 'logisticIndicator'=>'Introduce el dígito logístico',
                 'code'=>'Introduce una descripción que explique la correspondencia con la UC',

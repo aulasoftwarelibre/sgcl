@@ -23,13 +23,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  */
 class Barcode
 {
-    /*const TYPE_GTIN_8 = 'GTIN-8';
-    const TYPE_GTIN_12 = 'GTIN-12';
-    const TYPE_GTIN_13 = 'GTIN-13';
-    const TYPE_GTIN_14 = 'GTIN-14';
-    const TYPE_GS1_128 = 'GTIN-128';
-    */
-
     /**
      * @var integer
      *
@@ -45,7 +38,7 @@ class Barcode
      * @ORM\Column(name="type", type="string", length=20, nullable=false)
      *
      */
-//@Assert\Choice(choices={"GTIN-8", "GTIN-12", "GTIN-13", "GTIN-14", "GTIN-128"})
+
     private $type;
 
     /**
@@ -123,10 +116,6 @@ class Barcode
      * @return array
      */
 
-    public static function getTypees()
-    {
-        return array(self::TYPE_GTIN_8, self::TYPE_GTIN_12, self::TYPE_GTIN_13, self::TYPE_GTIN_14, self::TYPE_GS1_128);
-    }
 
     public function getId()
     {
@@ -141,20 +130,6 @@ class Barcode
      */
     public function setType($type)
     {
-    /*    if (!in_array($type, self::getTypees())) {
-            throw new \InvalidArgumentException('Error, es un tipo incorrecto.');
-        }
-        $this->type = $type;
-
-        return $this;
-    */
-    /*    $codeType = new Type\CodeType(array());
-        if (!in_array($type, $codeType->getDefaultOptions(array())))
-        {
-            throw new \InvalidArgumentException('Error, es un tipo incorrecto.');
-        }
-        $this->type = $type;
-    */
         $this->type = $type;
         return $this;
     }
@@ -231,7 +206,6 @@ class Barcode
         $this->basecode = $basecode;
     }
 
-    //****************************************
     /**
      * @return boolean
      */

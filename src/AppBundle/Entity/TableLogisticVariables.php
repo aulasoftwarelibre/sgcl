@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 //Para los ASSERT .. las validaciones
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 //Para asignar 'datatime'
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -16,6 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Doctrine\ORM\TableLogisticVariablesRepository")
+ * @UniqueEntity(fields={"logisticIndicator", "trademark"})
  */
 class TableLogisticVariables
 {
@@ -37,7 +39,7 @@ class TableLogisticVariables
      *      match=true,
      *      message="Recuerda que es un sólo dígito positivo distinto de cero."
      * )
-     *@Assert\Regex(
+     * @Assert\Regex(
      *      pattern="/^0{1}$/",
      *      match=false,
      *      message="Recuerda que la variable logística NO puede ser cero."
