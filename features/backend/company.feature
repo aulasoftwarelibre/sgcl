@@ -19,13 +19,13 @@ Característica: Lista compañías
 
   Escenario: Listar compañías
     Dado estoy en la página del escritorio
-    Cuando presiono "Listar" cerca de "Company"
+    Cuando presiono "Listar" cerca de "Compañía"
     Entonces debo estar en la página de listado de compañías
     Y debo ver "3 resultados"
 
   Esquema del escenario: Buscar compañías
     Dado estoy en la página de listado de compañías
-    Cuando relleno "Name" con "<nombre>"
+    Cuando relleno "Nombre" con "<nombre>"
     Y presiono "Filtrar"
     Entonces debo estar en la página de listado de compañías
     Y debo ver "<resultados>"
@@ -38,7 +38,7 @@ Característica: Lista compañías
 
   Esquema del escenario: Buscar nif
     Dado estoy en la página de listado de compañías
-    Cuando relleno "Nif" con "<nif>"
+    Cuando relleno "NIF" con "<nif>"
     Y presiono "Filtrar"
     Entonces debo estar en la página de listado de compañías
     Y debo ver "<resultados>"

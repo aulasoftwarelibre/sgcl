@@ -25,6 +25,7 @@ class BarcodeContext extends DefaultContext{
             $barcode = new Barcode();
             $barcode->setType( $barcodeHash['tipo'] );
             $barcode->setCode( $barcodeHash['codigo'] );
+            $barcode->setComment( $barcodeHash['comentario'] );
 
             //Primero tenemos que obtener el valor 'company_id' correspondiente al nombre de la compañía
             $em = $this->getEntityManager();

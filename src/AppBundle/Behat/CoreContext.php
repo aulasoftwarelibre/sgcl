@@ -33,7 +33,7 @@ class CoreContext extends DefaultContext
      */
     public function iAmOnTrademarkList()
     {
-        $this->getSession()->visit($this->generatePageUrl('trademark_list'));
+        $this->getSession()->visit($this->generatePageUrl('admin_app_trademark_list'));
     }
 
     /**
@@ -57,7 +57,7 @@ class CoreContext extends DefaultContext
      */
     public function iAmOnTrademarkCreate()
     {
-        $this->getSession()->visit($this->generatePageUrl('trademark_create'));
+        $this->getSession()->visit($this->generatePageUrl('admin_app_trademark_create'));
     }
 
     /**
@@ -93,7 +93,7 @@ class CoreContext extends DefaultContext
      */
     public function iShouldBeOnTrademarkList()
     {
-        $this->assertSession()->addressEquals($this->generatePageUrl('trademark_list'));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_trademark_list'));
     }
 
     /**
@@ -150,7 +150,7 @@ class CoreContext extends DefaultContext
     {
         $em = $this->getEntityManager();
         $trademark = $em->getRepository('AppBundle:Trademark')->findOneBy(array($campo => $valor));
-        $this->assertSession()->addressEquals($this->generatePageUrl('trademark_edit', array('id' => $trademark->getId())));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_trademark_edit', array('id' => $trademark->getId())));
     }
 
     /**

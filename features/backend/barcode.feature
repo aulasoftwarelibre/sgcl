@@ -20,17 +20,17 @@ Característica: Lista códigos de barras
   | Compañía C  | A00000003  |
   Y existen las siguientes marcas:
   | nombre    | prefijo | prefijoUPC  | compañía    |
-  | marca_1   | 1234567 |             | Compañía A  |
-  | marca_11  | 1134567 |             | Compañía A  |
-  | marca_2   | 2123456 | 012345      | Compañía C  |
-  | marca_22  | 2212345 |             | Compañía C  |
+  | marca_1   | 1230001 |             | Compañía A  |
+  | marca_11  | 1230011 |             | Compañía A  |
+  | marca_2   | 1230002 | 123456      | Compañía C  |
+  | marca_22  | 1230022 |             | Compañía C  |
   Y existen los siguientes códigos de barras:
-  | tipo              | codigo        | marca     |
-  | TYPECODE_GS1_12   | 123456789123  | marca_11  |
-  | TYPECODE_GS1_12   | 123456789124  | marca_11  |
-  | TYPECODE_GS1_12   | 123456789125  | marca_2   |
-  | TYPECODE_GS1_128  | 123456789126  | marca_2   |
-  | TYPECODE_GS1_128  | 123456789127  | marca_2   |
+  | tipo              | codigo          | marca     | comentario                        |
+  | TYPECODE_GS1_13   | 1230011000013   | marca_11  | Alta cod. EAN para marca marca_11 |
+  | TYPECODE_GS1_13   | 1230011000020   | marca_11  | Alta cod. EAN para marca marca_11 |
+  | TYPECODE_GS1_12   | 123456000018    | marca_2   | Alta cod. UPC para marca marca_2  |
+  | TYPECODE_GS1_13   | 1230002000022   | marca_2   | Alta cod. EAN para marca marca_2  |
+  | TYPECODE_GS1_14   | 51230002000034  | marca_2   | Alta cod. DUN para marca marca_2  |
 
   Escenario: Listar códigos de barras
     Dado estoy en la página del escritorio

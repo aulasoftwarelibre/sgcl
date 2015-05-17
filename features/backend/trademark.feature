@@ -24,15 +24,15 @@ Característica: Lista marcas
     | marca_2   | 2123456 | 012345      | Compañía C  |
     | marca_22  | 2212345 |             | Compañía C  |
 
-  Escenario: Listar compañías
+  Escenario: Listar marcas
     Dado estoy en la página del escritorio
-    Cuando presiono "Listar" cerca de "Trademark"
+    Cuando presiono "Listar" cerca de "Marca"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "4 resultados"
 
   Esquema del escenario: Buscar marcas
     Dado estoy en la página de listado de marcas
-    Cuando relleno "Name" con "<nombre>"
+    Cuando relleno "Nombre" con "<nombre>"
     Y presiono "Filtrar"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "<resultados>"
@@ -45,7 +45,7 @@ Característica: Lista marcas
 
   Esquema del escenario: Buscar prefijo
     Dado estoy en la página de listado de marcas
-    Cuando relleno "Prefix" con "<prefijo>"
+    Cuando relleno "Prefijo" con "<prefijo>"
     Y presiono "Filtrar"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "<resultados>"
@@ -86,7 +86,7 @@ Característica: Lista marcas
     Y presiono "Editar" cerca de "marca_11"
     Y debería estar en la página edición de marca con "name" denominado "marca_11"
     Cuando sigo "Borrar"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "Elemento eliminado satisfactoriamente."
@@ -94,7 +94,7 @@ Característica: Lista marcas
   Escenario: Borrar marca desde el listado
     Dado estoy en la página de listado de marcas
     Cuando presiono "Borrar" cerca de "marca_11"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado "marca_11"?"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "Elemento eliminado satisfactoriamente."

@@ -1,5 +1,7 @@
 security:
 
+    ##handler: sonata.admin.security.handler.role
+
     access_decision_manager:
         strategy: unanimous
 
@@ -7,10 +9,10 @@ security:
         connection: default
 
     encoders:
-        "FOS\UserBundle\Model\UserInterface": sha512
+        FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_SGCL_ADMIN_STAFF:
+        ROLE_SGCL_ADMIN_OPERATOR:
             - ROLE_SGCL_ADMIN_CATEGORY_COMPANY_LIST
             - ROLE_SGCL_ADMIN_CATEGORY_COMPANY_VIEW
             - ROLE_SGCL_ADMIN_CATEGORY_TRADEMARK_LIST
@@ -21,7 +23,7 @@ security:
             - ROLE_SGCL_ADMIN_CATEGORY_BARCODE_VIEW
             - ROLE_SGCL_ADMIN_CATEGORY_PRODUCT_LIST
             - ROLE_SGCL_ADMIN_CATEGORY_PRODUCT_VIEW
-        ROLE_SGCL_ADMIN_OPERATOR:
+        ROLE_SGCL_ADMIN_STAFF:
             - ROLE_SGCL_ADMIN_CATEGORY_COMPANY_CREATE
             - ROLE_SGCL_ADMIN_CATEGORY_TRADEMARK_CREATE
             - ROLE_SGCL_ADMIN_CATEGORY_TABLE_LOGISTIC_VARIABLES_CREATE
@@ -29,8 +31,8 @@ security:
             - ROLE_SGCL_ADMIN_CATEGORY_PRODUCT_CREATE
 
         ROLE_ADMIN: [ROLE_USER, ROLE_SONATA_ADMIN, ROLE_OPERATOR]
-        ROLE_OPERATOR: [ROLE_SGCL_ADMIN_OPERATOR, ROLE_STAFF]
-        ROLE_STAFF: [ROLE_SGCL_ADMIN_STAFF]
+        ROLE_STAFF: [ROLE_SGCL_ADMIN_OPERATOR, ROLE_STAFF]
+        ROLE_OPERATOR: [ROLE_SGCL_ADMIN_OPERATOR]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
         #SONATA:
         #    - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT  # if you are using acl then this line must be commented
@@ -62,6 +64,19 @@ security:
             logout:
                 path:           /logout
             anonymous:          true
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                ##csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
+            remember_me:
+                key:  "%secret%"
+                lifetime: 3153600
+                path: /
+                domain: ~
 
         # -> end custom configuration
 
@@ -96,5 +111,6 @@ security:
         # Secured part of the site
         # This config requires being logged for the whole site and having the admin role for the admin part.
         # Change these rules to adapt them to your needs
-        - { path: ^/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
-        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        ###- { path: ^/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/, role: ROLE_USER }
+        ###- { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
