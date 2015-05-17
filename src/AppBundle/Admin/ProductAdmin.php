@@ -38,8 +38,8 @@ class ProductAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->with('Datos del producto')
-            ->add('code', null, array('label' => 'Código del nuevo producto'))
+            ->with('Edición de PRODUCTO')
+            ->add('code', null, array('label' => 'Código del producto'))
             ->add('name', null, array('label' => 'Descripción breve'))
             ->add('description', null, array('label' => 'Descripción completa'))
             ->add('changeHistory', null, array('label' => 'Historíal de modificaciones'))
@@ -63,7 +63,7 @@ class ProductAdmin extends Admin
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
             ->setHelps(array(
-                'code'=>'Introduce el código del nuevo producto',
+                'code'=>'Introduce el código del producto',
                 'name'=>'Introduce la descripción breve del producto',
                 'description'=>'Introduce la descripción del producto',
                 'changeHistory'=>'Introduce cualquier información útil sobre los cambios que sufra el producto',
@@ -78,16 +78,16 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('code')
-            ->add('name')
-            ->add('description')
-            ->add('changeHistory')
-            ->add('numberConsumerUnit')
-            ->add('trademark')
-            ->add('barcodeCU')
-            ->add('barcodeSU')
-            ->add('creationDate')
-            ->add('lastModificationDate')
+            ->addIdentifier('code', null, array('label' => 'Código producto'))
+            ->add('name', null, array('label' => 'Descripción'))
+            ->add('description', null, array('label' => 'Descripción completa'))
+            ->add('changeHistory', null, array('label' => 'Historial'))
+            ->add('numberConsumerUnit', null, array('label' => 'Número de UC por UV'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('barcodeCU', null, array('label' => 'Código de UC'))
+            ->add('barcodeSU', null, array('label' => 'Código de UV'))
+            ->add('creationDate', null, array('label' => 'Fecha de creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -101,32 +101,32 @@ class ProductAdmin extends Admin
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
-            ->add('code')
-            ->add('name')
-            ->add('description')
-            ->add('changeHistory')
-            ->add('numberConsumerUnit')
-            ->add('trademark')
-            ->add('barcodeCU')
-            ->add('barcodeSU')
-            ->add('creationDate')
-            ->add('lastModificationDate')
+            ->add('code', null, array('label' => 'Código producto'))
+            ->add('name', null, array('label' => 'Descripción'))
+            ->add('description', null, array('label' => 'Descripción completa'))
+            ->add('changeHistory', null, array('label' => 'Historial de modificaciones'))
+            ->add('numberConsumerUnit', null, array('label' => 'Número de UC por Unidad de Venta'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('barcodeCU', null, array('label' => 'Código de barras para la UC'))
+            ->add('barcodeSU', null, array('label' => 'Código de barras para la UV'))
+            ->add('creationDate', null, array('label' => 'Fecha de Creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
         ;
     }
 
     protected function configureDatagridFilters( DatagridMapper $filter )
     {
         $filter
-            ->add('code')
-            ->add('name')
-            ->add('description')
-            ->add('changeHistory')
-            ->add('numberConsumerUnit')
-            ->add('trademark')
-            ->add('barcodeCU')
-            ->add('barcodeSU')
-            ->add('creationDate')
-            ->add('lastModificationDate')
+            ->add('code', null, array('label' => 'Código producto'))
+            ->add('name', null, array('label' => 'Nombre'))
+            ->add('description', null, array('label' => 'Descripción breve'))
+            ->add('changeHistory', null, array('label' => 'Descripción completa'))
+            ->add('numberConsumerUnit', null, array('label' => 'Número de UC por Unidad de Venta'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('barcodeCU', null, array('label' => 'Código de barras para la UC'))
+            ->add('barcodeSU', null, array('label' => 'Código de barras para la UV'))
+            ->add('creationDate', null, array('label' => 'Fecha de Creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
         ;
     }
 }

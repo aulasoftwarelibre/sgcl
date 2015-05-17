@@ -39,7 +39,7 @@ class BarcodeAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->with('Crear un nuevo código de barras')
+            ->with('Generar un nuevo código de barras')
             ->add('trademark', null, array(
                 'label' => 'Marca que corresponde este código',
                 'placeholder' => 'Selecciona la marca del producto',
@@ -52,22 +52,24 @@ class BarcodeAdmin extends Admin
                 'label' => 'Número logístico'
             ))
             ->add('withCounter', 'checkbox', array(
-                    'required'=> false,
-                    'label' => 'Seleccionar para emplear el contador de productos de la marca, en caso contrario debará introducir los dígitos base manualmente'
+                'required'=> false,
+                'label' => 'Seleccionar para emplear el contador de productos de la marca, en caso contrario debará introducir los dígitos base manualmente'
             ))
             ->add('basecode', 'text', array(
                 'required'=> false,
-                'label' => 'Indica los cinco dígitos que servirán de código_base'
+                'label' => 'código_base'
             ))
             ->add('comment', null, array('label' => 'Comentarios'))
             //->add('code', null, array('label' => 'Código'))
+            ->add('code', null, array('mapped'=> false, 'required'=> false, 'label' => 'Código'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
-            ->add('code', null, array('mapped'=> false, 'required'=> false,))
             ->setHelps(array(
                 'type'=>'Introduce el tipo de código',
-                'code'=>'Introduce el código',
+                'basecode'=>'Introduce los cinco dígitos qué servirán de código_base',
+                'code'=>'Introduce el código (incluido el dígito del control)',
                 'trademark' =>'Selecciona la marca que corresponde este código',
+                'comment' => 'Indicación breve sobre el motivo de este código',
             ))
             ->end();
     }
@@ -87,12 +89,12 @@ class BarcodeAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('code')
-            ->add('type')
-            ->add('trademark')
-            ->add('comment')
-            ->add('creationDate')
-            ->add('lastModificationDate')
+            ->addIdentifier('code', null, array('label' => 'Código'))
+            ->add('type', null, array('label' => 'Tipo'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('comment', null, array('label' => 'Comentario'))
+            ->add('creationDate', null, array('label' => 'Fecha de creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -106,12 +108,12 @@ class BarcodeAdmin extends Admin
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
-            ->add('type', 'string', array())
-            ->add('code')
-            ->add('comment')
-            ->add('creationDate')
-            ->add('lastModificationDate')
-            ->add('trademark')
+            ->add('type', 'string', array('label' => 'Tipo'))
+            ->add('code', null, array('label' => 'Código'))
+            ->add('comment', null, array('label' => 'Comentarios'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('creationDate', null, array('label' => 'Fecha de creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
         ;
     }
 
@@ -124,11 +126,11 @@ class BarcodeAdmin extends Admin
                     'constraints' => array()
                 )
             )
-            ->add('code')
-            ->add('comment')
-            ->add('creationDate')
-            ->add('lastModificationDate')
-            ->add('trademark')
+            ->add('code', null, array('label' => 'Código'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('comment', null, array('label' => 'Comentarios'))
+            ->add('creationDate', null, array('label' => 'Fecha de creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
         ;
     }
 

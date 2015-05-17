@@ -22,7 +22,7 @@ class TrademarkAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->with('Crear nueva marca')
+            ->with('Edición de MARCA')
             ->add('name', null, array('label' => 'Nombre'))
             ->add('prefix', null, array('label' => 'Prefijo codificación'))
             ->add('prefixUPC', null, array('label' => 'Prefijo codificación para código UPC'))
@@ -38,11 +38,11 @@ class TrademarkAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('name')
-            ->add('prefix')
-            ->add('prefixUPC')
-            ->add('counter')
-            ->add('company')
+            ->addIdentifier('name', null, array('label' => 'Nombre'))
+            ->add('prefix', null, array('label' => 'Prefijo'))
+            ->add('prefixUPC', null, array('label' => 'Prefijo UPC'))
+            ->add('counter', null, array('label' => 'Contador'))
+            ->add('company', null, array('label' => 'Compañía'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -56,22 +56,21 @@ class TrademarkAdmin extends Admin
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
-            ->add('name')
-            ->add('prefix')
-            ->add('prefixUPC')
-            ->add('counter')
-            ->add('company')
+            ->add('name', null, array('label' => 'Nombre'))
+            ->add('prefix', null, array('label' => 'Prefijo'))
+            ->add('prefixUPC', null, array('label' => 'Prefijo UPC'))
+            ->add('counter', null, array('label' => 'Contador'))
+            ->add('company', null, array('label' => 'Compañía'))
         ;
     }
 
     protected function configureDatagridFilters( DatagridMapper $filter )
     {
         $filter
-            ->add('name')
-            ->add('prefix')
-            ->add('prefixUPC')
-            ->add('company')
+            ->add('name', null, array('label' => 'Nombre'))
+            ->add('prefix', null, array('label' => 'Prefijo'))
+            ->add('prefixUPC', null, array('label' => 'Prefijo UPC'))
+            ->add('company', null, array('label' => 'Compañía'))
         ;
     }
 }
-

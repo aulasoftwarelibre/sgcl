@@ -21,7 +21,7 @@ class CompanyAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->with('Crear nueva COMPAÑÍA')
+            ->with('Edición de COMPAÑÍA')
                 ->add('name', null, array('label' => 'Nombre'))
                 ->add('nif', null, array('label' => 'NIF'))
                 ->add('company_address', 'textarea', array(
@@ -29,10 +29,10 @@ class CompanyAdmin extends Admin
                 ))
                 ->add('phone', null, array('label' => 'Telefono'))
                 ->setHelps(array(
-                    'name'=>'Introduce el nombre de la empresa',
-                    'nif'=>'Introduce el NIF de la empresa (recuerde que son nueve caracteres)',
-                    'company_address'=>'Introduce la dirección de la empresa',
-                    'phone'=>'Introduce el teléfono de la empresa',
+                    'name'=>'Nombre de la empresa',
+                    'nif'=>'NIF de la empresa (recuerde que son nueve caracteres)',
+                    'company_address'=>'Dirección de la empresa',
+                    'phone'=>'Número de eléfono de la empresa',
                 ))
             ->end();
     }
@@ -40,10 +40,10 @@ class CompanyAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('name')
-            ->add('nif')
-            ->add('company_address')
-            ->add('phone')
+            ->addIdentifier('name', null, array('label' => 'Nombre'))
+            ->add('nif', null, array('label' => 'NIF'))
+            ->add('company_address', null, array('label' => 'Dirección'))
+            ->add('phone', null, array('label' => 'Teléfono'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -57,18 +57,18 @@ class CompanyAdmin extends Admin
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
-            ->add('name')
-            ->add('nif')
-            ->add('company_address')
-            ->add('phone')
+            ->add('name', null, array('label' => 'Nombre'))
+            ->add('nif', null, array('label' => 'NIF'))
+            ->add('company_address', null, array('label' => 'Dirección'))
+            ->add('phone', null, array('label' => 'Teléfono'))
         ;
     }
 
     protected function configureDatagridFilters( DatagridMapper $filter )
     {
         $filter
-            ->add('name')
-            ->add('nif')
+            ->add('name', null, array('label' => 'Nombre'))
+            ->add('nif', null, array('label' => 'NIF'))
         ;
     }
 }

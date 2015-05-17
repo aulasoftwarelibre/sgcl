@@ -25,7 +25,7 @@ class TableLogisticVariablesAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->with('Añadir una nueva variable logística')
+            ->with('Edición de VARIABLE LOGÍSTICA')
             ->add('trademark', null, array('label' => 'Marca que corresponde'))
             ->add('logisticIndicator', null, array('label' => 'Dígito logístico'))
             ->add('description', null, array('label' => 'Descripción'))
@@ -33,7 +33,7 @@ class TableLogisticVariablesAdmin extends Admin
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
             ->setHelps(array(
                 'logisticIndicator'=>'Introduce el dígito logístico',
-                'code'=>'Introduce una descripción que explique la correspondencia con la UC',
+                'description'=>'Introduce una indicación que explique la correspondencia con la UC',
                 'trademark' =>'Selecciona la marca que corresponde este código',
             ))
             ->end();
@@ -42,11 +42,11 @@ class TableLogisticVariablesAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('logisticIndicator')
-            ->add('description')
-            ->add('creationDate')
-            ->add('lastModificationDate')
-            ->add('trademark')
+            ->addIdentifier('logisticIndicator', null, array('label' => 'Indicador logístico'))
+            ->add('description', null, array('label' => 'Descripción'))
+            ->add('creationDate', null, array('label' => 'Fecha de creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
+            ->add('trademark', null, array('label' => 'Marca'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -60,11 +60,11 @@ class TableLogisticVariablesAdmin extends Admin
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
-            ->add('logisticIndicator', 'string', array())
-            ->add('description')
-            ->add('creationDate')
-            ->add('lastModificationDate')
-            ->add('trademark')
+            ->add('logisticIndicator', 'string', array('label' => 'Indicador logístico'))
+            ->add('description', null, array('label' => 'Descripción'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('creationDate', null, array('label' => 'Fecha de Creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
         ;
     }
 
@@ -77,10 +77,10 @@ class TableLogisticVariablesAdmin extends Admin
                     'constraints' => array()
                 )
             )
-            ->add('description')
-            ->add('creationDate')
-            ->add('lastModificationDate')
-            ->add('trademark')
+            ->add('description', null, array('label' => 'Descripción'))
+            ->add('trademark', null, array('label' => 'Marca'))
+            ->add('creationDate', null, array('label' => 'Fecha de creación'))
+            ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
         ;
     }
 }

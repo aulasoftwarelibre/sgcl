@@ -7,7 +7,7 @@ services:
     sgcl.admin.category.company:
         class: AppBundle\Admin\CompanyAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Company" }
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Compañía" }
         arguments:
             - ~
             - AppBundle\Entity\Company
@@ -17,7 +17,7 @@ services:
     sgcl.admin.category.trademark:
         class: AppBundle\Admin\TrademarkAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Trademark" }
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Marca" }
         arguments:
             - ~
             - AppBundle\Entity\Trademark
@@ -27,7 +27,7 @@ services:
     sgcl.admin.category.barcode:
         class: AppBundle\Admin\BarcodeAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Barcode" }
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Código de Barras" }
         arguments:
             - ~
             - AppBundle\Entity\Barcode
@@ -39,7 +39,7 @@ services:
     sgcl.admin.category.table_logistic_variables:
         class: AppBundle\Admin\TableLogisticVariablesAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "TableLogisticVariables" }
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Tabla de variables logísticas" }
         arguments:
             - ~
             - AppBundle\Entity\TableLogisticVariables
@@ -49,7 +49,7 @@ services:
     sgcl.admin.category.product:
         class: AppBundle\Admin\ProductAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Product" }
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Producto" }
         arguments:
             - ~
             - AppBundle\Entity\Product
