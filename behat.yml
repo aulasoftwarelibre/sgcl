@@ -25,25 +25,45 @@ default:
             filters:
                 tags: "@company"
         trademark:
-                    contexts:
-                        - AppBundle\Behat\CompanyContext
-                        - AppBundle\Behat\TrademarkContext
-                        - AppBundle\Behat\CoreContext
-                        - AppBundle\Behat\UserContext
-                        - Behat\MinkExtension\Context\MinkContext
-                    filters:
-                        tags: "@trademark"
+            contexts:
+                - AppBundle\Behat\CompanyContext
+                - AppBundle\Behat\TrademarkContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UserContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@trademark"
         barcode:
-                    contexts:
-                        - AppBundle\Behat\CompanyContext
-                        - AppBundle\Behat\TrademarkContext
-                        - AppBundle\Behat\BarcodeContext
-                        - AppBundle\Behat\CoreContext
-                        - AppBundle\Behat\UserContext
-                        - Behat\MinkExtension\Context\MinkContext
-                    filters:
-                        tags: "@barcode"
-
+            contexts:
+                - AppBundle\Behat\CompanyContext
+                - AppBundle\Behat\TrademarkContext
+                - AppBundle\Behat\BarcodeContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UserContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@barcode"
+        tablelogisticvariables:
+            contexts:
+                - AppBundle\Behat\CompanyContext
+                - AppBundle\Behat\TrademarkContext
+                - AppBundle\Behat\TableLogisticVariablesContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UserContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@tablelogisticvariables"
+        product:
+            contexts:
+                - AppBundle\Behat\CompanyContext
+                - AppBundle\Behat\TrademarkContext
+                - AppBundle\Behat\BarcodeContext
+                - AppBundle\Behat\TableLogisticVariablesContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UserContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@product"
 javascript:
     gherkin:
         filters:

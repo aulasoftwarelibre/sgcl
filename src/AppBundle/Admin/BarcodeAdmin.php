@@ -34,6 +34,7 @@ class BarcodeAdmin extends Admin
         $collection->add('trademark_tablelogisticvariables', 'trademark/tablelogisticvariables');
         $collection->add('render_codebar', 'image');
         $collection->add('print_pdfbarcode', 'pdf');
+        //$collection->remove('delete');
     }
 
     protected function configureFormFields(FormMapper $form)
@@ -89,7 +90,7 @@ class BarcodeAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('code', null, array('label' => 'Código'))
+            ->addIdentifier('code', null, array('label' => 'Código', 'route' => array('name' => 'show')))
             ->add('type', null, array('label' => 'Tipo'))
             ->add('trademark', null, array('label' => 'Marca'))
             ->add('comment', null, array('label' => 'Comentario'))

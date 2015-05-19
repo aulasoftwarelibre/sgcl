@@ -1,8 +1,8 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sergio
- * Date: 8/10/14
+ * User: jmb
+ * Date: 04/01/15
  * Time: 9:57
  */
 
@@ -41,7 +41,15 @@ class CoreContext extends DefaultContext
      */
     public function iAmOnbarcodeList()
     {
-        $this->getSession()->visit($this->generatePageUrl('barcode_list'));
+        $this->getSession()->visit($this->generatePageUrl('admin_app_barcode_list'));
+    }
+
+    /**
+     * @Given estoy en la página de listado de variables logísticas
+     */
+    public function iAmOnTableLogisticVariablesList()
+    {
+        $this->getSession()->visit($this->generatePageUrl('admin_app_tablelogisticvariables_list'));
     }
 
     /**
@@ -65,7 +73,15 @@ class CoreContext extends DefaultContext
      */
     public function iAmOnBarcodeCreate()
     {
-        $this->getSession()->visit($this->generatePageUrl('barcode_create'));
+        $this->getSession()->visit($this->generatePageUrl('admin_app_barcode_create'));
+    }
+
+    /**
+     * @Given estoy en la página de creación variables logísticas
+     */
+    public function iAmOnTableLogisticVariablesCreate()
+    {
+        $this->getSession()->visit($this->generatePageUrl('admin_app_tablelogisticvariables_create'));
     }
 
     /**
@@ -101,7 +117,15 @@ class CoreContext extends DefaultContext
      */
     public function iShouldBeOnBarcodeList()
     {
-        $this->assertSession()->addressEquals($this->generatePageUrl('barcode_list'));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_barcode_list'));
+    }
+
+    /**
+     * @Then debo estar en la página de listado de variables logísticas
+     */
+    public function iShouldBeOnTableLogisticVariablesList()
+    {
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_tablelogisticvariables_list '));
     }
 
     /**
@@ -161,5 +185,25 @@ class CoreContext extends DefaultContext
         $em = $this->getEntityManager();
         $barcode = $em->getRepository('AppBundle:Barcode')->findOneBy(array($campo => $valor));
         $this->assertSession()->addressEquals($this->generatePageUrl('barcode_edit', array('id' => $barcode->getId())));
+    }
+
+    /**
+     * @Then /^debería estar en la página edición de variables logísticas con "([^".]*)" denominado "([^".]*)"$/
+     */
+    public function iShouldBeOnTableLogisticVariablesEdit($campo, $valor)
+    {
+        $em = $this->getEntityManager();
+        $tablelogisticvariables = $em->getRepository('AppBundle:TableLogisticVariables')->findOneBy(array($campo => $valor));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_tablelogisticvariables_edit', array('id' => $tablelogisticvariables->getId())));
+    }
+
+    /**
+     * @Then /^debería estar en la página edición de variables logísticas con "([^".]*)" denominado "([^".]*)" y "([^".]*)" denominada "([^".]*)"$/
+     */
+    public function iShouldBeOnTableLogisticVariablesEdit_indicatorAndDescription($campo1, $valor1, $campo2, $valor2)
+    {
+        $em = $this->getEntityManager();
+        $tablelogisticvariables = $em->getRepository('AppBundle:TableLogisticVariables')->findOneBy(array($campo1 => $valor1, $campo2 => $valor2));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_tablelogisticvariables_edit', array('id' => $tablelogisticvariables->getId())));
     }
 }

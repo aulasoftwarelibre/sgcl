@@ -42,7 +42,7 @@ class TableLogisticVariablesAdmin extends Admin
     protected function configureListFields(ListMapper $list)
     {
         $list
-            ->addIdentifier('logisticIndicator', null, array('label' => 'Indicador logístico'))
+            ->addIdentifier('logisticIndicator', null, array('label' => 'Dígito logístico'))
             ->add('description', null, array('label' => 'Descripción'))
             ->add('creationDate', null, array('label' => 'Fecha de creación'))
             ->add('lastModificationDate', null, array('label' => 'Fecha de última modificación'))
@@ -60,7 +60,7 @@ class TableLogisticVariablesAdmin extends Admin
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
-            ->add('logisticIndicator', 'string', array('label' => 'Indicador logístico'))
+            ->add('logisticIndicator', 'string', array('label' => 'Dígito logístico'))
             ->add('description', null, array('label' => 'Descripción'))
             ->add('trademark', null, array('label' => 'Marca'))
             ->add('creationDate', null, array('label' => 'Fecha de Creación'))
@@ -72,7 +72,7 @@ class TableLogisticVariablesAdmin extends Admin
     {
         $filter
             ->add('logisticIndicator', null, array(
-                'label'=> 'Código logístico'),
+                'label'=> 'Dígito logístico'),
                 null, array(
                     'constraints' => array()
                 )

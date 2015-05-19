@@ -27,7 +27,7 @@ services:
     sgcl.admin.category.barcode:
         class: AppBundle\Admin\BarcodeAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Código de Barras" }
+            - { name: sonata.admin, manager_type: orm, group: "Personal Data", label: "Código de barras" }
         arguments:
             - ~
             - AppBundle\Entity\Barcode
@@ -35,6 +35,7 @@ services:
         calls:
             - [ setTranslationDomain, [AppBundle]]
             - [ setTemplate, [edit, Barcode/CRUD/base_edit.html.twig] ]
+            - [ setTemplate, [create, Barcode/CRUD/base_create.html.twig] ]
             - [ setTemplate, [show, Barcode/CRUD/base_show.html.twig] ]
     sgcl.admin.category.table_logistic_variables:
         class: AppBundle\Admin\TableLogisticVariablesAdmin

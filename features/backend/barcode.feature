@@ -34,26 +34,26 @@ Característica: Lista códigos de barras
 
   Escenario: Listar códigos de barras
     Dado estoy en la página del escritorio
-    Cuando presiono "Listar" cerca de "Barcode"
+    Cuando presiono "Listar" cerca de "Código de barras"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "5 resultados"
 
   Esquema del escenario: Buscar códigos de barras
     Dado estoy en la página de listado de códigos de barras
-    Cuando relleno "Code" con "<codigo>"
+    Cuando relleno "Código" con "<codigo>"
     Y presiono "Filtrar"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "<resultados>"
 
     Ejemplos:
     | codigo        | resultados        |
-    | 1234567       | 5 resultados      |
-    | 123456789126  | 1 resultado       |
+    | 12300         | 4 resultados      |
+    | 1230011000020 | 1 resultado       |
     | 123456789129  | No hay resultados |
 
   Esquema del escenario: Buscar códigos de barras asociados a una marca
     Dado estoy en la página de listado de códigos de barras
-    Cuando selecciono "<marca>" de "Trademark"
+    Cuando selecciono "<marca>" de "Marca"
     Y presiono "Filtrar"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "<resultados>"
@@ -67,20 +67,21 @@ Característica: Lista códigos de barras
   Escenario: Crear nuevo código de barras
     Dado estoy en la página de creación códigos de barras
     Cuando relleno lo siguiente:
-    | Tipo                              | TYPECODE_GTIN_8 |
-    | Código                            | 123321456654    |
+    | Tipo                              | TYPECODE_GTIN_13                      |
+    | código_base                       | 44444                                 |
+    | Comentarios                       | Producto x, inicialmente código 4444  |
     Y selecciono "marca_22" de "Marca que corresponde este código"
     Y presiono "Crear y regresar al listado"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "Elemento creado satisfactoriamente"
-    Y debo ver "123321456654"
+    Y debo ver "1230022444448"
 
-  Escenario: Acceder al formulario de edición de códigos de barras desde el listado de códigos de barras
+  Escenario: Acceder al formulario de edición de códigos de barras desde el listado de códigos de barras NO-CORRESPONDE
     Dado estoy en la página de listado de códigos de barras
     Cuando presiono "Editar" cerca de "123456789126"
     Entonces debería estar en la página edición de códigos de barras con "code" denominado "123456789126"
 
-  Escenario: Actualizar código de barras
+  Escenario: Actualizar código de barras NO-CORRESPONDE
     Dado estoy en la página de listado de códigos de barras
     Y presiono "Editar" cerca de "123456789125"
     Y debería estar en la página edición de códigos de barras con "code" denominado "123456789125"
@@ -90,10 +91,10 @@ Característica: Lista códigos de barras
     Y debo ver "Elemento actualizado satisfactoriamente."
     Y el campo "Código" debe contener "222212222112"
 
-  Escenario: Borrar código de barras desde la página de edición
+  Escenario: Borrar código de barras desde la página de edición NO-CORRESPONDE
     Dado estoy en la página de listado de códigos de barras
-    Y presiono "Editar" cerca de "123456789124"
-    Y debería estar en la página edición de códigos de barras con "code" denominado "123456789124"
+    Y presiono "Editar" cerca de "1230002000022"
+    Y debería estar en la página edición de códigos de barras con "code" denominado "1230002000022"
     Cuando sigo "Borrar"
     Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
     Cuando presiono "Sí, borrar"
@@ -102,9 +103,9 @@ Característica: Lista códigos de barras
 
   Escenario: Borrar código de barras desde el listado
     Dado estoy en la página de listado de códigos de barras
-    Cuando presiono "Borrar" cerca de "123456789127"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Cuando presiono "Borrar" cerca de "1230002000022"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "Elemento eliminado satisfactoriamente."
-    Pero no debo ver "123456789127"
+    Pero no debo ver "1230002000022"

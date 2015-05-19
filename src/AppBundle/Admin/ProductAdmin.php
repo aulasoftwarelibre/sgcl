@@ -40,7 +40,7 @@ class ProductAdmin extends Admin
         $form
             ->with('Edición de PRODUCTO')
             ->add('code', null, array('label' => 'Código del producto'))
-            ->add('name', null, array('label' => 'Descripción breve'))
+            ->add('name', null, array('label' => 'Descripción'))
             ->add('description', null, array('label' => 'Descripción completa'))
             ->add('changeHistory', null, array('label' => 'Historíal de modificaciones'))
             ->add('numberConsumerUnit', null, array('label' => 'Número de UC por Unidad de Venta'))
@@ -64,8 +64,8 @@ class ProductAdmin extends Admin
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
             ->setHelps(array(
                 'code'=>'Introduce el código del producto',
-                'name'=>'Introduce la descripción breve del producto',
-                'description'=>'Introduce la descripción del producto',
+                'name'=>'Introduce la descripción breve del producto (máximo 40 caracteres)',
+                'description'=>'Introduce la descripción completa del producto',
                 'changeHistory'=>'Introduce cualquier información útil sobre los cambios que sufra el producto',
                 'numberConsumerUnit'=>'Introduce el número de UC que agrupa la Unidad de Venta',
                 'barcodeCU'=>'Código de barras para la UNIDAD DE CONSUMO',
@@ -118,9 +118,9 @@ class ProductAdmin extends Admin
     {
         $filter
             ->add('code', null, array('label' => 'Código producto'))
-            ->add('name', null, array('label' => 'Nombre'))
-            ->add('description', null, array('label' => 'Descripción breve'))
-            ->add('changeHistory', null, array('label' => 'Descripción completa'))
+            ->add('name', null, array('label' => 'Descripción'))
+            ->add('description', null, array('label' => 'Descripción completa'))
+            ->add('changeHistory', null, array('label' => 'Historial'))
             ->add('numberConsumerUnit', null, array('label' => 'Número de UC por Unidad de Venta'))
             ->add('trademark', null, array('label' => 'Marca'))
             ->add('barcodeCU', null, array('label' => 'Código de barras para la UC'))

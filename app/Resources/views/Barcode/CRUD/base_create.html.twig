@@ -1,0 +1,80 @@
+{% extends '@SonataAdmin/CRUD/create.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript">
+        $(function(){
+
+            $("select[id$='_trademark']").change(function() {
+                var data = {
+                    trademark_id: $(this).val()
+                };
+                console.log(data);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path("admin_app_barcode_trademark_tablelogisticvariables") }}',
+                    data: data,
+                    success: function(data) {
+
+                        var $logisticIndicator_selector = $("select[id$='_tableLogisticVariables']");
+                        var $type_selector = $("select[id$='_type']");
+
+                        $logisticIndicator_selector.html('');
+
+                        if($type_selector.val() == 'TYPECODE_GTIN_14') {
+
+                            $logisticIndicator_selector.html('');
+
+                            for (var i = 0, total = data.length; i < total; i++) {
+                                $logisticIndicator_selector.append('<option value="' + data[i].id + '">' + data[i].logisticIndicator + '</option>');
+                            }
+                        }
+                    }
+                });
+
+            });
+
+
+            $("select[id$='_type']").change(function() {
+                if ( $(this).val() === 'TYPECODE_GTIN_8' ) {
+                    $("div[id$='_code']").show();
+                    $("div[id$='_withCounter']").hide();
+                    $("div[id$='_basecode']").hide();
+                    $("div[id$='_tableLogisticVariables']").hide();
+                }
+                else {
+                    $("input[id$='_withCounter']").trigger('change');
+                    $("div[id$='_withCounter']").show();
+                    $("div[id$='_code']").hide();
+                    if ($(this).val() === 'TYPECODE_GTIN_14') {
+                        $("select[id$='_trademark']").trigger('change');
+                        $("div[id$='_tableLogisticVariables']").show();
+                    }
+                    else{
+                        $("div[id$='_tableLogisticVariables']").hide();
+                    }
+                }
+            });
+
+
+            $("input[id$='_withCounter']").change(function() {
+                if ( $(this).is(':checked')) {
+                    $("div[id$='_basecode']").hide();
+                } else {
+                    $("div[id$='_basecode']").show();
+                    if ( $("select[id$='_type']").val() === 'TYPECODE_GTIN_8' ) {
+                        $("div[id$='_basecode']").hide();
+                    }
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $("select[id$='_trademark']").trigger('change');
+            $("select[id$='_type']").trigger('change');
+            $("input[id$='_withCounter']").trigger('change');
+        })
+
+    </script>
+{% endblock javascripts %}
