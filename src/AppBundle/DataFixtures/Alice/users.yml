@@ -9,5 +9,5 @@
     username: pepe
     email: pepe@localhost
     plainPassword: pepe
-    roles: [ ROLE_STAFF ]
+    roles: [ ROLE_OPERATOR ]
     enabled: true

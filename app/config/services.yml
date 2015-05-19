@@ -35,7 +35,6 @@ services:
         calls:
             - [ setTranslationDomain, [AppBundle]]
             - [ setTemplate, [edit, Barcode/CRUD/base_edit.html.twig] ]
-            - [ setTemplate, [create, Barcode/CRUD/base_create.html.twig] ]
             - [ setTemplate, [show, Barcode/CRUD/base_show.html.twig] ]
     sgcl.admin.category.table_logistic_variables:
         class: AppBundle\Admin\TableLogisticVariablesAdmin

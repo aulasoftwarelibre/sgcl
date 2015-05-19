@@ -76,6 +76,7 @@ Característica: Lista códigos de barras
     Y debo ver "Elemento creado satisfactoriamente"
     Y debo ver "1230022444448"
 
+  @javascript
   Escenario: Acceder al formulario de edición de códigos de barras desde el listado de códigos de barras NO-CORRESPONDE
     Dado estoy en la página de listado de códigos de barras
     Cuando presiono "Editar" cerca de "123456789126"

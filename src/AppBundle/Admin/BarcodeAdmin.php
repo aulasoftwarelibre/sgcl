@@ -13,6 +13,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 //Para el uso del tipo de dado "codetype"
 use AppBundle\Form\Type;
 //Para "query"
@@ -34,35 +36,47 @@ class BarcodeAdmin extends Admin
         $collection->add('trademark_tablelogisticvariables', 'trademark/tablelogisticvariables');
         $collection->add('render_codebar', 'image');
         $collection->add('print_pdfbarcode', 'pdf');
-        //$collection->remove('delete');
     }
 
     protected function configureFormFields(FormMapper $form)
     {
+        //$disabled = $this->getSubject()->isNew() ? false : true;
+        //$this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getSubject()->getId());
+
         $form
             ->with('Generar un nuevo código de barras')
             ->add('trademark', null, array(
                 'label' => 'Marca que corresponde este código',
                 'placeholder' => 'Selecciona la marca del producto',
+                'disabled' => $disabled,
             ))
-            ->add('type', 'codeType', array('label' => 'Tipo'))
+            ->add('type', 'codeType', array('label' => 'Tipo', 'disabled' => $disabled))
             ->add('tableLogisticVariables', 'entity', array(
                 'class' => 'AppBundle:TableLogisticVariables',
                 'required' => false,
                 'placeholder' => 'Selecciona el código logístico para la Unidad de Venta',
-                'label' => 'Número logístico'
+                'label' => 'Número logístico',
+                'disabled' => $disabled,
             ))
             ->add('withCounter', 'checkbox', array(
                 'required'=> false,
-                'label' => 'Seleccionar para emplear el contador de productos de la marca, en caso contrario debará introducir los dígitos base manualmente'
+                'label' => 'Seleccionar para emplear el contador de productos de la marca,
+                    en caso contrario debará introducir los dígitos base manualmente',
+                'disabled' => $disabled,
             ))
             ->add('basecode', 'text', array(
                 'required'=> false,
-                'label' => 'código_base'
+                'label' => 'código_base',
+                'disabled' => $disabled,
             ))
             ->add('comment', null, array('label' => 'Comentarios'))
             //->add('code', null, array('label' => 'Código'))
-            ->add('code', null, array('mapped'=> false, 'required'=> false, 'label' => 'Código'))
+            ->add('code', null, array(
+                'mapped'=> false,
+                'required'=> false,
+                'label' => 'Código',
+                'disabled' => $disabled,
+            ))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
             ->setHelps(array(

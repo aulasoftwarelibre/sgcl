@@ -5,6 +5,9 @@ sonata_admin:
         html5_validate:     true
         use_icheck:         false
 
+    security:
+        handler: sonata.admin.security.handler.role
+
     templates:
         # default global templates
         # the layout template include javascript/stylesheet to the formatter bundle,

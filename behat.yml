@@ -78,11 +78,21 @@ javascript:
             sessions:
                 javascript:
                     selenium2: ~
-            browser_name: chrome
+            browser_name: firefox
             base_url: http://localhost:8000/app_test.php
             default_session: javascript
         Behat\Symfony2Extension: ~
-#    suites:
+    suites:
+        barcode:
+            contexts:
+                - AppBundle\Behat\CompanyContext
+                - AppBundle\Behat\TrademarkContext
+                - AppBundle\Behat\BarcodeContext
+                - AppBundle\Behat\CoreContext
+                - AppBundle\Behat\UserContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: "@barcode"
 #        name:
 #            contexts:
 #                - Behat\MinkExtension\Context\MinkContext
