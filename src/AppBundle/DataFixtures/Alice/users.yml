@@ -5,9 +5,15 @@
     plainPassword: admin
     roles: [ ROLE_ADMIN ]
     enabled: true
-  pepe:
-    username: pepe
-    email: pepe@localhost
-    plainPassword: pepe
+  ustaff:
+    username: ustaff
+    email: staff@localhost
+    plainPassword: ustaffpw
+    roles: [ ROLE_STAFF ]
+    enabled: true
+  uoperator:
+    username: uoperator
+    email: operator@localhost
+    plainPassword: uoperatorpw
     roles: [ ROLE_OPERATOR ]
     enabled: true
