@@ -40,8 +40,7 @@ class BarcodeAdmin extends Admin
 
     protected function configureFormFields(FormMapper $form)
     {
-        //$disabled = $this->getSubject()->isNew() ? false : true;
-        //$this->getConfigurationPool()->getContainer()->get('ladybug')->log($this->getSubject()->getId());
+        $disabled = $this->getSubject()->isNew() ? false : true;
 
         $form
             ->with('Generar un nuevo código de barras')
