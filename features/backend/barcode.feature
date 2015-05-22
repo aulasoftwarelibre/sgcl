@@ -10,8 +10,8 @@ Característica: Lista códigos de barras
 
   Antecedentes:
   Dado existen los siguientes usuarios:
-  | nombre    | clave     | email                 | activado  | rol         |
-  | admin     | adminpw   | admin@latejedora.com  | 1         | ROLE_ADMIN  |
+  | nombre    | clave     | email       | activado  | rol         |
+  | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
   Y estoy conectado como usuario "admin" y contraseña "adminpw"
   Y existen las siguientes compañías:
   | nombre      | nif        |
