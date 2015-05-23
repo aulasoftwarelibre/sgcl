@@ -45,7 +45,6 @@ class Barcode
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=128, unique=true, nullable=false)
-     * @Assert\Callback({"Vendor\Package\Validator", "exist_code"})
      */
     private $code;
 

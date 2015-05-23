@@ -43,7 +43,7 @@ class BarcodeAdmin extends Admin
         $disabled = $this->getSubject()->isNew() ? false : true;
 
         $form
-            ->with('Generar un nuevo código de barras')
+            ->with('Edición de CÓDIGO DE BARRAS')
             ->add('trademark', null, array(
                 'label' => 'Marca que corresponde este código',
                 'placeholder' => 'Selecciona la marca del producto',

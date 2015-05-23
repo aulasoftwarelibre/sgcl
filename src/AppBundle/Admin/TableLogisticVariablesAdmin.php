@@ -24,9 +24,14 @@ class TableLogisticVariablesAdmin extends Admin
 
     protected function configureFormFields(FormMapper $form)
     {
+        $disabled = $this->getSubject()->isNew() ? false : true;
+
         $form
             ->with('Edición de VARIABLE LOGÍSTICA')
-            ->add('trademark', null, array('label' => 'Marca que corresponde'))
+            ->add('trademark', null, array(
+                'label' => 'Marca que corresponde',
+                'disabled' => $disabled,
+            ))
             ->add('logisticIndicator', null, array('label' => 'Dígito logístico'))
             ->add('description', null, array('label' => 'Descripción'))
             //->add('creationDate', null, array('label' => 'Fecha de creación'))

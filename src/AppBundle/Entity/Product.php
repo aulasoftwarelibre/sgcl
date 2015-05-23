@@ -364,6 +364,16 @@ class Product
     }
 
     /**
+     * Get is a new entity
+     *
+     * @return bool
+     */
+    public function isNew()
+    {
+        return $this->id === null ? true : false;
+    }
+
+    /**
      * To String
      *
      * @return string

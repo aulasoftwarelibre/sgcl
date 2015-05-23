@@ -37,9 +37,14 @@ class ProductAdmin extends Admin
 
     protected function configureFormFields(FormMapper $form)
     {
+        $disabled = $this->getSubject()->isNew() ? false : true;
+
         $form
             ->with('Edición de PRODUCTO')
-            ->add('code', null, array('label' => 'Código del producto'))
+            ->add('code', null, array(
+                'label' => 'Código del producto',
+                'disabled' => $disabled,
+            ))
             ->add('name', null, array('label' => 'Descripción'))
             ->add('description', null, array('label' => 'Descripción completa'))
             ->add('changeHistory', null, array('label' => 'Historíal de modificaciones'))
@@ -47,6 +52,7 @@ class ProductAdmin extends Admin
             ->add('trademark', null, array(
                 'label' => 'Marca que corresponde',
                 'placeholder' => 'Selecciona la marca del producto',
+                'disabled' => $disabled,
             ))
             ->add('barcodeCU', null, array(
                 'placeholder' => 'Selecciona el código de barras para la UNIDAD DE CONSUMO',

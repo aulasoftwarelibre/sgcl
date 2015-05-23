@@ -5,16 +5,15 @@
     {{ parent() }}
 
     <img src="{{ path('admin_app_barcode_render_codebar', {'barcode_id': object.barcodeCU.id}) }}">
+    <a class="btn btn-default"
+       href="{{ asset(path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.barcodeCU.id})) }}"
+       download="{{ "archivo" }}">
+        Descargar PDF del código barras <br /> de la <b>Unidad de Consumo</b>
+    </a>
     <img src="{{ path('admin_app_barcode_render_codebar', {'barcode_id': object.barcodeSU.id}) }}">
-
-    <button>
-        <a href="{{ asset(path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.barcodeCU.id})) }}" download="{{ "archivo" }}">
-            Descargar PDF del código barras de la Unidad de Consumo
-        </a>
-    </button>
-    <button>
-        <a href="{{ asset(path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.barcodeSU.id})) }}" download="{{ "archivo" }}">
-            Descargar PDF del código barras de la Unidad de Venta
-        </a>
-    </button>
+    <a class="btn btn-default"
+       href="{{ asset(path('admin_app_barcode_print_pdfbarcode', {'barcode_id': object.barcodeSU.id})) }}"
+       download="{{ "archivo" }}">
+        Descargar PDF del código barras <br /> de la <b>Unidad de Venta</b>
+    </a>
 {% endblock %}
