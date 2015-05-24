@@ -97,7 +97,7 @@ Característica: Lista códigos de barras
     Y presiono "Editar" cerca de "1230002000022"
     Y debería estar en la página edición de códigos de barras con "code" denominado "1230002000022"
     Cuando sigo "Borrar"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "Elemento eliminado satisfactoriamente."

@@ -184,7 +184,7 @@ class CoreContext extends DefaultContext
     {
         $em = $this->getEntityManager();
         $barcode = $em->getRepository('AppBundle:Barcode')->findOneBy(array($campo => $valor));
-        $this->assertSession()->addressEquals($this->generatePageUrl('barcode_edit', array('id' => $barcode->getId())));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_barcode_edit', array('id' => $barcode->getId())));
     }
 
     /**

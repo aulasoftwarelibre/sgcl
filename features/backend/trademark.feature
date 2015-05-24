@@ -94,7 +94,7 @@ Característica: Lista marcas
   Escenario: Borrar marca desde el listado
     Dado estoy en la página de listado de marcas
     Cuando presiono "Borrar" cerca de "marca_11"
-    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado "marca_11"?"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "Elemento eliminado satisfactoriamente."
