@@ -401,6 +401,7 @@ class Barcode
     {
         $code_type = '';
         $formatted_code = '';
+        $scale = 1.0;
         if($this->getType() == 'TYPECODE_GTIN_12'){
             $code_type = 'UPCA'; $formatted_code = sprintf("%012s", $this->getCode());
         }
@@ -408,40 +409,30 @@ class Barcode
             $code_type = 'EAN13'; $formatted_code = sprintf("%013s", $this->getCode());
         }
         if($this->getType() == 'TYPECODE_GTIN_14'){
-            $code_type = 'CODABAR'; $formatted_code = sprintf("%014s", $this->getCode());
+            $code_type = 'DUN14'; $formatted_code = sprintf("%014s", $this->getCode());  $scale = 0.5;
         }
 
         $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->setBarcode(date('Y-m-d H:i:s'));
+        $pdf->setImageScale($scale);
         $pdf->AddPage();
-        $txt = "Proyecto Fin de Carrera 'SGCL'.\n Se imprime código " . $formatted_code . " de tipo " . $this->getType() . "\n";
-        $pdf->MultiCell(70, 50, $txt, 0, 'J', false, 1, 125, 30, true, 0, false, true, 0, 'T', false);
-        $pdf->SetY(30);
-
-        $style = array(
-            'position' => '',
-            'align' => 'C',
-            'stretch' => false,
-            'fitwidth' => true,
-            'cellfitalign' => '',
-            'border' => true,
-            'hpadding' => 'auto',
-            'vpadding' => 'auto',
-            'fgcolor' => array(0,0,0),
-            'bgcolor' => false, //array(255,255,255),
-            'text' => true,
-            'font' => 'helvetica',
-            'fontsize' => 8,
-            'stretchtext' => 4
+        $txt1 = "Proyecto Fin de Carrera 'SGCL'.";
+        $txt2 = "Código '" . $formatted_code .
+            "' de tipo " . substr($this->getType(), 9) . " (". $code_type ."), " .
+            "marca " . $this->getTrademark() . ".";
+        $pdf->Cell(0, 20, $txt1, 0, 1);
+        $pdf->Ln();
+        $pdf->Cell(0, 0, $txt2, 0, 1);
+        $pdf->Ln();
+        //$pdf->SetY(30);
+        $pdf->Image(
+            '@'.$this->getImage(),
+            '', '', '', '',
+            'PNG', '', '', true, 300, '', false, false, 1, false, false, false
         );
-        $pdf->write1DBarcode( $formatted_code , $code_type, '', '', '', 18, 0.4, $style, 'N');
-        $pdf->Ln();
-        $pdf->write1DBarcode('1234567890128', 'EAN13', '', '', '', 18, 0.4, $style, 'N');
-        $pdf->Ln();
-        $pdf->Cell(0, 0, 'UPC-A', 0, 1);
-        $pdf->write1DBarcode('12345678901', 'UPCA', '', '', '', 18, 0.4, $style, 'N');
 
         $pdf->Output('example_'. $formatted_code . '.pdf', 'I');
+
         return $pdf;
     }
 
