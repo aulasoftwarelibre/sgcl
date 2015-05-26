@@ -10,7 +10,6 @@ namespace AppBundle\Behat;
 
 use AppBundle\Entity\Barcode;
 use AppBundle\Entity\Trademark;
-use AppBundle\Entity\Company;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
@@ -18,7 +17,7 @@ class BarcodeContext extends DefaultContext{
     /**
      * @Given existen los siguientes códigos de barras:
      */
-    public function createTrademarks(TableNode $tableNode)
+    public function createBarcodes(TableNode $tableNode)
     {
         $em = $this->getEntityManager();
         foreach ($tableNode->getHash() as $barcodeHash) {
@@ -27,7 +26,7 @@ class BarcodeContext extends DefaultContext{
             $barcode->setCode( $barcodeHash['codigo'] );
             $barcode->setComment( $barcodeHash['comentario'] );
 
-            //Primero tenemos que obtener el valor 'company_id' correspondiente al nombre de la compañía
+            //We obtain the corresponding identifier to the trademark name
             $em = $this->getEntityManager();
             $trademark = $em->getRepository('AppBundle:Trademark')->findOneBy(array('name' => $barcodeHash['marca']));
             $barcode->setTrademark( $trademark );

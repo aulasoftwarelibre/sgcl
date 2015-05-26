@@ -27,94 +27,99 @@ Característica: Lista productos
   | marca_22  | 1230022 |             | Compañía C  |
   Y existen los siguientes códigos de barras:
   | tipo              | codigo          | marca     | comentario                        |
-  | TYPECODE_GS1_13   | 1230011000013   | marca_11  | Alta cod. EAN para marca marca_11 |
-  | TYPECODE_GS1_13   | 1230011000020   | marca_11  | Alta cod. EAN para marca marca_11 |
-  | TYPECODE_GS1_12   | 123456000018    | marca_2   | Alta cod. UPC para marca marca_2  |
-  | TYPECODE_GS1_13   | 1230002000022   | marca_2   | Alta cod. EAN para marca marca_2  |
-  | TYPECODE_GS1_14   | 51230002000034  | marca_2   | Alta cod. DUN para marca marca_2  |
-  Y existen los siguientes códigos de barras:
-  | codigo  | descripcion   | descripcion completa  | historial           | numero UC | marca     | codigo UC | codigo UV |
-  | A1      | 10x1 ESPAÑA   | PET 10x1L ESPAÑA      | 1l para España      | 10        | marca_11  | 1230011000013 | 1230011000020 |
-  | A123    | 6x500 USA     | VID 6x500ml USA       | 500ml para USA      | 6         | marca_2   | 123456000018 | |
-  | A1234   | 6x500 HOLANDA | VID 6x500ml HOLANDA   | 500ml para Holanda  | 6         | marca_2   | |  |
+  | TYPECODE_GTIN_13  | 1230011000013   | marca_11  | Alta cod. EAN para marca marca_11 |
+  | TYPECODE_GTIN_13  | 1230011000020   | marca_11  | Alta cod. EAN para marca marca_11 |
+  | TYPECODE_GTIN_14  | 51230011000032  | marca_11  | Alta cod. DUN para marca marca_11 |
+  | TYPECODE_GTIN_12  | 123456000018    | marca_2   | Alta cod. UPC para marca marca_2  |
+  | TYPECODE_GTIN_13  | 1230002000022   | marca_2   | Alta cod. EAN para marca marca_2  |
+  | TYPECODE_GTIN_14  | 51230002000034  | marca_2   | Alta cod. DUN para marca marca_2  |
+  Y existen los siguientes productos:
+  | codigo  | descripcion   | descripcion completa  | historial           | numero UC | marca     | codigo UC     | codigo UV       |
+  | A001    | 10x1 ESPAÑA   | PET 10x1L ESPAÑA      | 1L para España      | 10        | marca_11  | 1230011000013 | 1230011000020   |
+  | B123    | 6x500 USA     | VID 6x500ml USA       | 500ml para USA      | 6         | marca_2   | 123456000018  | 1230002000022   |
+  | B124    | 6x500 HOLANDA | VID 6x500ml HOLANDA   | 500ml para Holanda  | 6         | marca_2   | 123456000018  | 51230002000034  |
 
 
+  Escenario: Listar productos
+    Dado estoy en la página del escritorio
+    Cuando presiono "Listar" cerca de "Producto"
+    Entonces debo estar en la página de listado de productos
+    Y debo ver "3 resultados"
 
+  Esquema del escenario: Buscar productos
+    Dado estoy en la página de listado de productos
+    Cuando relleno "Código" con "<codigo>"
+    Y presiono "Filtrar"
+    Entonces debo estar en la página de listado de productos
+    Y debo ver "<resultados>"
 
-  Escenario: Listar códigos de barras
-  Dado estoy en la página del escritorio
-  Cuando presiono "Listar" cerca de "Código de barras"
-  Entonces debo estar en la página de listado de códigos de barras
-  Y debo ver "5 resultados"
+    Ejemplos:
+    | codigo  | resultados        |
+    | B       | 2 resultados      |
+    | 001     | 1 resultado       |
+    | 0002    | No hay resultados |
 
-  Esquema del escenario: Buscar códigos de barras
-  Dado estoy en la página de listado de códigos de barras
-  Cuando relleno "Código" con "<codigo>"
-  Y presiono "Filtrar"
-  Entonces debo estar en la página de listado de códigos de barras
-  Y debo ver "<resultados>"
+  Esquema del escenario: Buscar productos asociados a una marca
+    Dado estoy en la página de listado de productos
+    Cuando selecciono "<marca>" de "Marca"
+    Y presiono "Filtrar"
+    Entonces debo estar en la página de listado de productos
+    Y debo ver "<resultados>"
 
-  Ejemplos:
-  | codigo        | resultados        |
-  | 12300         | 4 resultados      |
-  | 1230011000020 | 1 resultado       |
-  | 123456789129  | No hay resultados |
+    Ejemplos:
+    | marca     | resultados        |
+    | marca_11  | 1 resultado       |
+    | marca_2   | 2 resultado       |
+    | marca_1   | No hay resultados |
 
-  Esquema del escenario: Buscar códigos de barras asociados a una marca
-  Dado estoy en la página de listado de códigos de barras
-  Cuando selecciono "<marca>" de "Marca"
-  Y presiono "Filtrar"
-  Entonces debo estar en la página de listado de códigos de barras
-  Y debo ver "<resultados>"
+  Escenario: Crear nuevo producto
+    Dado estoy en la página de creación de productos
+    Cuando relleno lo siguiente:
+    | Código del producto                         | 0002                              |
+    | Descripción                                 | Pack 5x(10x1) ESPAÑA              |
+    | Descripción completa                        | PACK 5x(PET 10x1L ESPAÑA)         |
+    | Historíal de modificaciones                 | agrupacion 5x(10x1L) para España  |
+    | Número de UC por Unidad de Venta            | 5                                 |
 
-  Ejemplos:
-  | marca     | resultados        |
-  | marca_11  | 2 resultados      |
-  | marca_2   | 3 resultado       |
-  | marca_1   | No hay resultados |
+    Y selecciono "marca_1" de "Marca que corresponde"
+    Y selecciono "1230011000020" de "Código de barras para la Unidad de Consumo"
+    Y selecciono "51230011000032" de "Código de barras para la Unidad de Venta"
+    Y presiono "Crear y regresar al listado"
+    Entonces debo estar en la página de listado de productos
+    Y debo ver "Elemento creado satisfactoriamente"
+    Y debo ver "0002"
 
-  Escenario: Crear nuevo código de barras
-  Dado estoy en la página de creación códigos de barras
-  Cuando relleno lo siguiente:
-  | Tipo                              | TYPECODE_GTIN_13                      |
-  | código_base                       | 44444                                 |
-  | Comentarios                       | Producto x, inicialmente código 4444  |
-  Y selecciono "marca_22" de "Marca que corresponde este código"
-  Y presiono "Crear y regresar al listado"
-  Entonces debo estar en la página de listado de códigos de barras
-  Y debo ver "Elemento creado satisfactoriamente"
-  Y debo ver "1230022444448"
+  Escenario: Acceder al formulario de edición de productos desde el listado de productos
+    Dado estoy en la página de listado de productos
+    Cuando presiono "Editar" cerca de "B123"
+    Entonces debería estar en la página edición de productos con "code" denominado "B123"
 
-  Escenario: Acceder al formulario de edición de códigos de barras desde el listado de códigos de barras NO-CORRESPONDE
-  Dado estoy en la página de listado de códigos de barras
-  Cuando presiono "Editar" cerca de "123456789126"
-  Entonces debería estar en la página edición de códigos de barras con "code" denominado "123456789126"
+  Escenario: Actualizar producto
+    Dado estoy en la página de listado de productos
+    Y presiono "Editar" cerca de "B124"
+    Y debería estar en la página edición de productos con "code" denominado "B124"
+    Cuando relleno "Descripción" con "VID 6x500 HOLANDA"
+    Y presiono "Actualizar"
+    Entonces debería estar en la página edición de productos con "code" denominado "B124"
+    Y debo ver "Elemento actualizado satisfactoriamente."
+    Y el campo "Descripción" debe contener "VID 6x500 HOLANDA"
 
-  Escenario: Actualizar código de barras NO-CORRESPONDE
-  Dado estoy en la página de listado de códigos de barras
-  Y presiono "Editar" cerca de "123456789125"
-  Y debería estar en la página edición de códigos de barras con "code" denominado "123456789125"
-  Cuando relleno "Código" con "222212222112"
-  Y presiono "Actualizar"
-  Entonces debería estar en la página edición de códigos de barras con "code" denominado "222212222112"
-  Y debo ver "Elemento actualizado satisfactoriamente."
-  Y el campo "Código" debe contener "222212222112"
+  Escenario: Borrar producto desde la página de edición
+    Dado estoy en la página de listado de productos
+    Y presiono "Editar" cerca de "0001"
+    Y debería estar en la página edición de productos con "code" denominado "A001"
+    Cuando sigo "Borrar"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
+    Cuando presiono "Sí, borrar"
+    Entonces debo estar en la página de listado de productos
+    Y debo ver "Elemento eliminado satisfactoriamente."
+    Pero no debo ver "A001"
 
-  Escenario: Borrar código de barras desde la página de edición NO-CORRESPONDE
-  Dado estoy en la página de listado de códigos de barras
-  Y presiono "Editar" cerca de "1230002000022"
-  Y debería estar en la página edición de códigos de barras con "code" denominado "1230002000022"
-  Cuando sigo "Borrar"
-  Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado?"
-  Cuando presiono "Sí, borrar"
-  Entonces debo estar en la página de listado de códigos de barras
-  Y debo ver "Elemento eliminado satisfactoriamente."
-
-  Escenario: Borrar código de barras desde el listado
-  Dado estoy en la página de listado de códigos de barras
-  Cuando presiono "Borrar" cerca de "1230002000022"
-  Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
-  Cuando presiono "Sí, borrar"
-  Entonces debo estar en la página de listado de códigos de barras
-  Y debo ver "Elemento eliminado satisfactoriamente."
-  Pero no debo ver "1230002000022"
+  Escenario: Borrar producto desde el listado
+    Dado estoy en la página de listado de productos
+    Cuando presiono "Borrar" cerca de "A001"
+    Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
+    Cuando presiono "Sí, borrar"
+    Entonces debo estar en la página de listado de productos
+    Y debo ver "Elemento eliminado satisfactoriamente."
+    Pero no debo ver "A001"

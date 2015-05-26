@@ -53,6 +53,14 @@ class CoreContext extends DefaultContext
     }
 
     /**
+     * @Given estoy en la página de listado de productos
+     */
+    public function iAmOnProductsList()
+    {
+        $this->getSession()->visit($this->generatePageUrl('admin_app_product_list'));
+    }
+
+    /**
      * @Given estoy en la página de creación de compañías
      */
     public function iAmOnCompanyCreate()
@@ -82,6 +90,14 @@ class CoreContext extends DefaultContext
     public function iAmOnTableLogisticVariablesCreate()
     {
         $this->getSession()->visit($this->generatePageUrl('admin_app_tablelogisticvariables_create'));
+    }
+
+    /**
+     * @Given estoy en la página de creación de productos
+     */
+    public function iAmOnProductCreate()
+    {
+        $this->getSession()->visit($this->generatePageUrl('admin_app_product_create'));
     }
 
     /**
@@ -126,6 +142,14 @@ class CoreContext extends DefaultContext
     public function iShouldBeOnTableLogisticVariablesList()
     {
         $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_tablelogisticvariables_list '));
+    }
+
+    /**
+     * @Then debo estar en la página de listado de productos
+     */
+    public function iShouldBeOnProductsList()
+    {
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_product_list '));
     }
 
     /**
@@ -205,5 +229,15 @@ class CoreContext extends DefaultContext
         $em = $this->getEntityManager();
         $tablelogisticvariables = $em->getRepository('AppBundle:TableLogisticVariables')->findOneBy(array($campo1 => $valor1, $campo2 => $valor2));
         $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_tablelogisticvariables_edit', array('id' => $tablelogisticvariables->getId())));
+    }
+
+    /**
+     * @Then /^debería estar en la página edición de productos con "([^".]*)" denominado "([^".]*)"$/
+     */
+    public function iShouldBeOnProductEdit($campo, $valor)
+    {
+        $em = $this->getEntityManager();
+        $product = $em->getRepository('AppBundle:Product')->findOneBy(array($campo => $valor));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_product_edit', array('id' => $product->getId())));
     }
 }

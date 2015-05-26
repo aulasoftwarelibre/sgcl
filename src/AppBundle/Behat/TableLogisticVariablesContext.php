@@ -8,7 +8,6 @@
 
 namespace AppBundle\Behat;
 
-use AppBundle\Entity\Company;
 use AppBundle\Entity\Trademark;
 use AppBundle\Entity\TableLogisticVariables;
 use Behat\Gherkin\Node\TableNode;
@@ -26,6 +25,7 @@ class TableLogisticVariablesContext extends DefaultContext{
             $tableLogisticVariable->setLogisticIndicator( $tableLogisticVariablesHash['indicador_logístico'] );
             $tableLogisticVariable->setDescription( $tableLogisticVariablesHash['descripcion'] );
 
+            //We obtain the corresponding identifier to the trademark name
             $em = $this->getEntityManager();
             $trademark = $em->getRepository('AppBundle:Trademark')->findOneBy(array('name' => $tableLogisticVariablesHash['marca']));
             $tableLogisticVariable->setTrademark( $trademark );

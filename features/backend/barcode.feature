@@ -26,11 +26,11 @@ Característica: Lista códigos de barras
   | marca_22  | 1230022 |             | Compañía C  |
   Y existen los siguientes códigos de barras:
   | tipo              | codigo          | marca     | comentario                        |
-  | TYPECODE_GS1_13   | 1230011000013   | marca_11  | Alta cod. EAN para marca marca_11 |
-  | TYPECODE_GS1_13   | 1230011000020   | marca_11  | Alta cod. EAN para marca marca_11 |
-  | TYPECODE_GS1_12   | 123456000018    | marca_2   | Alta cod. UPC para marca marca_2  |
-  | TYPECODE_GS1_13   | 1230002000022   | marca_2   | Alta cod. EAN para marca marca_2  |
-  | TYPECODE_GS1_14   | 51230002000034  | marca_2   | Alta cod. DUN para marca marca_2  |
+  | TYPECODE_GTIN_13  | 1230011000013   | marca_11  | Alta cod. EAN para marca marca_11 |
+  | TYPECODE_GTIN_13  | 1230011000020   | marca_11  | Alta cod. EAN para marca marca_11 |
+  | TYPECODE_GTIN_12  | 123456000018    | marca_2   | Alta cod. UPC para marca marca_2  |
+  | TYPECODE_GTIN_13  | 1230002000022   | marca_2   | Alta cod. EAN para marca marca_2  |
+  | TYPECODE_GTIN_14  | 51230002000034  | marca_2   | Alta cod. DUN para marca marca_2  |
 
   Escenario: Listar códigos de barras
     Dado estoy en la página del escritorio

@@ -59,6 +59,7 @@ default:
                 - AppBundle\Behat\TrademarkContext
                 - AppBundle\Behat\BarcodeContext
                 - AppBundle\Behat\TableLogisticVariablesContext
+                - AppBundle\Behat\ProductContext
                 - AppBundle\Behat\CoreContext
                 - AppBundle\Behat\UserContext
                 - Behat\MinkExtension\Context\MinkContext

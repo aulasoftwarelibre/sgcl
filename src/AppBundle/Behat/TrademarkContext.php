@@ -27,13 +27,12 @@ class TrademarkContext extends DefaultContext
             $trademark->setName( $trademarkHash['nombre'] );
             $trademark->setPrefix( $trademarkHash['prefijo'] );
 
-            //Si "prefixUPC" es distinto de NULL, entonces se guarda
             if($trademarkHash['prefijoUPC'] != NULL)
             {
                 $trademark->setPrefixUPC( $trademarkHash['prefijoUPC'] );
             }
 
-            //Primero tenemos que obtener el valor 'company_id' correspondiente al nombre de la compañía
+            //We obtain the corresponding identifier to the company name
             $em = $this->getEntityManager();
             $company = $em->getRepository('AppBundle:Company')->findOneBy(array('name' => $trademarkHash['compañía']));
             $trademark->setCompany( $company );

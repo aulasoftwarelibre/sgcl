@@ -18,7 +18,7 @@ class CompanyContext extends DefaultContext
     /**
      * @Given existen las siguientes compañías:
      */
-    public function createOrganizations(TableNode $tableNode)
+    public function createCompanies(TableNode $tableNode)
     {
         $em = $this->getEntityManager();
         foreach ($tableNode->getHash() as $companyHash) {
