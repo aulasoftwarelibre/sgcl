@@ -19,11 +19,11 @@ Característica: Lista variables logísticas
   | Compañía B  | A00000002  |
   | Compañía C  | A00000003  |
   Y existen las siguientes marcas:
-  | nombre    | prefijo | prefijoUPC  | compañía    |
-  | marca_1   | 1230001 |             | Compañía A  |
-  | marca_11  | 1230011 |             | Compañía A  |
-  | marca_2   | 1230002 | 123456      | Compañía C  |
-  | marca_22  | 1230022 |             | Compañía C  |
+  | nombre  | prefijo | prefijoUPC  | compañía    |
+  | marca_1 | 1000001 |             | Compañía A  |
+  | marca_2 | 2000002 | 123456      | Compañía C  |
+  | marca_3 | 3000003 |             | Compañía A  |
+  | marca_4 | 4000004 |             | Compañía C  |
   Y existen las siguientes variables logísticas:
   | indicador_logístico | descripcion                       | marca   |
   | 1                   | Diez UC por agrupación            | marca_1 |
@@ -61,14 +61,14 @@ Característica: Lista variables logísticas
     Ejemplos:
     | marca     | resultados        |
     | marca_1   | 3 resultados      |
-    | marca_11  | No hay resultados |
+    | marca_3   | No hay resultados |
     | marca_2   | 2 resultados      |
 
   Escenario: Crear un nuevo dígito logístico
     Dado estoy en la página de creación variables logísticas
     Cuando relleno lo siguiente:
     | Dígito logístico  | 2                       |
-    | Descripción      | Doce UC por agrupación  |
+    | Descripción       | Doce UC por agrupación  |
     Y selecciono "marca_1" de "Marca que corresponde"
     Y presiono "Crear y regresar al listado"
     Entonces debo estar en la página de listado de variables logísticas

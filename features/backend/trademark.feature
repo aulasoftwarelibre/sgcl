@@ -18,11 +18,11 @@ Característica: Lista marcas
     | Compañía B  | A00000002  |
     | Compañía C  | A00000003  |
     Y existen las siguientes marcas:
-    | nombre    | prefijo | prefijoUPC  | compañía    |
-    | marca_1   | 1234567 |             | Compañía A  |
-    | marca_11  | 1134567 |             | Compañía A  |
-    | marca_2   | 2123456 | 012345      | Compañía C  |
-    | marca_22  | 2212345 |             | Compañía C  |
+    | nombre  | prefijo | prefijoUPC  | compañía    |
+    | marca_1 | 1000001 |             | Compañía A  |
+    | marca_2 | 2000002 |             | Compañía A  |
+    | marca_3 | 3000003 | 123456      | Compañía C  |
+    | marca_4 | 4000004 |             | Compañía C  |
 
   Escenario: Listar marcas
     Dado estoy en la página del escritorio
@@ -38,10 +38,10 @@ Característica: Lista marcas
     Y debo ver "<resultados>"
 
     Ejemplos:
-    | nombre      | resultados        |
-    | marca       | 4 resultados      |
-    | marca_11    | 1 resultado       |
-    | marca_3     | No hay resultados |
+    | nombre  | resultados        |
+    | marca   | 4 resultados      |
+    | marca_1 | 1 resultado       |
+    | marca_6 | No hay resultados |
 
   Esquema del escenario: Buscar prefijo
     Dado estoy en la página de listado de marcas
@@ -52,19 +52,19 @@ Característica: Lista marcas
 
     Ejemplos:
     | prefijo   | resultados        |
-    | 567       | 2 resultados      |
-    | 22        | 1 resultado       |
+    | 0000      | 4 resultados      |
+    | 003       | 1 resultado       |
     | 9         | No hay resultados |
 
   Escenario: Crear nueva marca
     Dado estoy en la página de creación de marcas
     Cuando relleno lo siguiente:
-    | Nombre                | marca_4 |
-    | Prefijo codificación  | 0123456 |
+    | Nombre                | marca_5 |
+    | Prefijo codificación  | 5000005 |
     Y presiono "Crear y regresar al listado"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "Elemento creado satisfactoriamente"
-    Y debo ver "marca_4"
+    Y debo ver "marca_5"
 
   Escenario: Acceder al formulario de edición de marca desde el listado de marcas
     Dado estoy en la página de listado de marcas
@@ -73,18 +73,18 @@ Característica: Lista marcas
 
   Escenario: Actualizar marca
     Dado estoy en la página de listado de marcas
-    Y presiono "Editar" cerca de "marca_11"
-    Y debería estar en la página edición de marca con "name" denominado "marca_11"
-    Cuando relleno "Prefijo codificación para código UPC" con "111111"
+    Y presiono "Editar" cerca de "marca_2"
+    Y debería estar en la página edición de marca con "name" denominado "marca_2"
+    Cuando relleno "Prefijo codificación para código UPC" con "222222"
     Y presiono "Actualizar"
-    Entonces debería estar en la página edición de marca con "name" denominado "marca_11"
+    Entonces debería estar en la página edición de marca con "name" denominado "marca_2"
     Y debo ver "Elemento actualizado satisfactoriamente."
-    Y el campo "Prefijo codificación para código UPC" debe contener "111111"
+    Y el campo "Prefijo codificación para código UPC" debe contener "222222"
 
   Escenario: Borrar marca desde la página de edición
     Dado estoy en la página de listado de marcas
-    Y presiono "Editar" cerca de "marca_11"
-    Y debería estar en la página edición de marca con "name" denominado "marca_11"
+    Y presiono "Editar" cerca de "marca_2"
+    Y debería estar en la página edición de marca con "name" denominado "marca_2"
     Cuando sigo "Borrar"
     Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
@@ -93,9 +93,9 @@ Característica: Lista marcas
 
   Escenario: Borrar marca desde el listado
     Dado estoy en la página de listado de marcas
-    Cuando presiono "Borrar" cerca de "marca_11"
+    Cuando presiono "Borrar" cerca de "marca_2"
     Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de marcas
     Y debo ver "Elemento eliminado satisfactoriamente."
-    Pero no debo ver "marca_11"
+    Pero no debo ver "marca_2"

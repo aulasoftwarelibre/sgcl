@@ -19,24 +19,26 @@ Característica: Lista códigos de barras
   | Compañía B  | A00000002  |
   | Compañía C  | A00000003  |
   Y existen las siguientes marcas:
-  | nombre    | prefijo | prefijoUPC  | compañía    |
-  | marca_1   | 1230001 |             | Compañía A  |
-  | marca_11  | 1230011 |             | Compañía A  |
-  | marca_2   | 1230002 | 123456      | Compañía C  |
-  | marca_22  | 1230022 |             | Compañía C  |
+  | nombre  | prefijo | prefijoUPC  | compañía    |
+  | marca_1 | 1000001 |             | Compañía A  |
+  | marca_2 | 2000002 |             | Compañía A  |
+  | marca_3 | 3000003 | 123456      | Compañía C  |
+  | marca_4 | 4000004 |             | Compañía C  |
   Y existen los siguientes códigos de barras:
-  | tipo              | codigo          | marca     | comentario                        |
-  | TYPECODE_GTIN_13  | 1230011000013   | marca_11  | Alta cod. EAN para marca marca_11 |
-  | TYPECODE_GTIN_13  | 1230011000020   | marca_11  | Alta cod. EAN para marca marca_11 |
-  | TYPECODE_GTIN_12  | 123456000018    | marca_2   | Alta cod. UPC para marca marca_2  |
-  | TYPECODE_GTIN_13  | 1230002000022   | marca_2   | Alta cod. EAN para marca marca_2  |
-  | TYPECODE_GTIN_14  | 51230002000034  | marca_2   | Alta cod. DUN para marca marca_2  |
+  | tipo              | codigo          | marca     | comentario                      |
+  | TYPECODE_GTIN_12  | 1000001000015   | marca_1 | Alta cod. EAN para marca marca_1  |
+  | TYPECODE_GTIN_14  | 10000010000158  | marca_1 | Alta cod. EAN para marca marca_1  |
+  | TYPECODE_GTIN_12  | 300000300019    | marca_3 | Alta cod. UPC para marca marca_3  |
+  | TYPECODE_GTIN_13  | 3000003000028   | marca_3 | Alta cod. EAN para marca marca_3  |
+  | TYPECODE_GTIN_14  | 13000003000032  | marca_3 | Alta cod. DUN para marca marca_3  |
+  | TYPECODE_GTIN_14  | 23000003000046  | marca_3 | Alta cod. DUN para marca marca_3  |
+  | TYPECODE_GTIN_14  | 94000004000012  | marca_4 | Alta cod. DUN para marca marca_3  |
 
   Escenario: Listar códigos de barras
     Dado estoy en la página del escritorio
     Cuando presiono "Listar" cerca de "Código de barras"
     Entonces debo estar en la página de listado de códigos de barras
-    Y debo ver "5 resultados"
+    Y debo ver "7 resultados"
 
   Esquema del escenario: Buscar códigos de barras
     Dado estoy en la página de listado de códigos de barras
@@ -46,10 +48,10 @@ Característica: Lista códigos de barras
     Y debo ver "<resultados>"
 
     Ejemplos:
-    | codigo        | resultados        |
-    | 12300         | 4 resultados      |
-    | 1230011000020 | 1 resultado       |
-    | 123456789129  | No hay resultados |
+    | codigo          | resultados        |
+    | 00300           | 4 resultados      |
+    | 10000010000158  | 1 resultado       |
+    | 123456789129    | No hay resultados |
 
   Esquema del escenario: Buscar códigos de barras asociados a una marca
     Dado estoy en la página de listado de códigos de barras
@@ -60,42 +62,42 @@ Característica: Lista códigos de barras
 
     Ejemplos:
     | marca     | resultados        |
-    | marca_11  | 2 resultados      |
-    | marca_2   | 3 resultado       |
-    | marca_1   | No hay resultados |
+    | marca_1   | 2 resultados      |
+    | marca_2   | No hay resultados |
+    | marca_3   | 4 resultados      |
 
   Escenario: Crear nuevo código de barras
     Dado estoy en la página de creación códigos de barras
     Cuando relleno lo siguiente:
     | Tipo                              | TYPECODE_GTIN_13                      |
-    | código_base                       | 44444                                 |
+    | código_base                       | 22222                                 |
     | Comentarios                       | Producto x, inicialmente código 4444  |
-    Y selecciono "marca_22" de "Marca que corresponde este código"
+    Y selecciono "marca_2" de "Marca que corresponde este código"
     Y presiono "Crear y regresar al listado"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "Elemento creado satisfactoriamente"
-    Y debo ver "1230022444448"
+    Y debo ver "2000002222224"
 
   @javascript
-  Escenario: Acceder al formulario de edición de códigos de barras desde el listado de códigos de barras NO-CORRESPONDE
+  Escenario: Acceder al formulario de edición de códigos de barras desde el listado de códigos de barras
     Dado estoy en la página de listado de códigos de barras
-    Cuando presiono "Editar" cerca de "123456789126"
-    Entonces debería estar en la página edición de códigos de barras con "code" denominado "123456789126"
+    Cuando presiono "Editar" cerca de "10000010000158"
+    Entonces debería estar en la página edición de códigos de barras con "code" denominado "10000010000158"
 
-  Escenario: Actualizar código de barras NO-CORRESPONDE
+  Escenario: Actualizar código de barras
     Dado estoy en la página de listado de códigos de barras
-    Y presiono "Editar" cerca de "123456789125"
-    Y debería estar en la página edición de códigos de barras con "code" denominado "123456789125"
-    Cuando relleno "Código" con "222212222112"
+    Y presiono "Editar" cerca de "10000010000158"
+    Y debería estar en la página edición de códigos de barras con "code" denominado "10000010000158"
+    Cuando relleno "Comentarios" con "Prueba modificación de comentarios en 10000010000158"
     Y presiono "Actualizar"
-    Entonces debería estar en la página edición de códigos de barras con "code" denominado "222212222112"
+    Entonces debería estar en la página edición de códigos de barras con "code" denominado "10000010000158"
     Y debo ver "Elemento actualizado satisfactoriamente."
-    Y el campo "Código" debe contener "222212222112"
+    Y el campo "Comentarios" debe contener "Prueba modificación de comentarios en 10000010000158"
 
   Escenario: Borrar código de barras desde la página de edición NO-CORRESPONDE
     Dado estoy en la página de listado de códigos de barras
-    Y presiono "Editar" cerca de "1230002000022"
-    Y debería estar en la página edición de códigos de barras con "code" denominado "1230002000022"
+    Y presiono "Editar" cerca de "10000010000158"
+    Y debería estar en la página edición de códigos de barras con "code" denominado "10000010000158"
     Cuando sigo "Borrar"
     Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
@@ -104,9 +106,9 @@ Característica: Lista códigos de barras
 
   Escenario: Borrar código de barras desde el listado
     Dado estoy en la página de listado de códigos de barras
-    Cuando presiono "Borrar" cerca de "1230002000022"
+    Cuando presiono "Borrar" cerca de "10000010000158"
     Entonces debo ver "¿Está seguro de que quiere borrar el elemento seleccionado"
     Cuando presiono "Sí, borrar"
     Entonces debo estar en la página de listado de códigos de barras
     Y debo ver "Elemento eliminado satisfactoriamente."
-    Pero no debo ver "1230002000022"
+    Pero no debo ver "10000010000158"
