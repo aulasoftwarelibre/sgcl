@@ -78,7 +78,6 @@ Característica: Lista códigos de barras
     Y debo ver "Elemento creado satisfactoriamente"
     Y debo ver "2000002222224"
 
-  @javascript
   Escenario: Acceder al formulario de edición de códigos de barras desde el listado de códigos de barras
     Dado estoy en la página de listado de códigos de barras
     Cuando presiono "Editar" cerca de "10000010000158"
@@ -94,7 +93,7 @@ Característica: Lista códigos de barras
     Y debo ver "Elemento actualizado satisfactoriamente."
     Y el campo "Comentarios" debe contener "Prueba modificación de comentarios en 10000010000158"
 
-  Escenario: Borrar código de barras desde la página de edición NO-CORRESPONDE
+  Escenario: Borrar código de barras desde la página de edición
     Dado estoy en la página de listado de códigos de barras
     Y presiono "Editar" cerca de "10000010000158"
     Y debería estar en la página edición de códigos de barras con "code" denominado "10000010000158"
