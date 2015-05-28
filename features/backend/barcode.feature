@@ -10,29 +10,29 @@ Característica: Lista códigos de barras
 
   Antecedentes:
   Dado existen los siguientes usuarios:
-  | nombre    | clave     | email       | activado  | rol         |
-  | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
+    | nombre    | clave     | email       | activado  | rol         |
+    | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
   Y estoy conectado como usuario "admin" y contraseña "adminpw"
   Y existen las siguientes compañías:
-  | nombre      | nif        |
-  | Compañía A  | A00000001  |
-  | Compañía B  | A00000002  |
-  | Compañía C  | A00000003  |
+    | nombre      | nif        |
+    | Compañía A  | A00000001  |
+    | Compañía B  | A00000002  |
+    | Compañía C  | A00000003  |
   Y existen las siguientes marcas:
-  | nombre  | prefijo | prefijoUPC  | compañía    |
-  | marca_1 | 1000001 |             | Compañía A  |
-  | marca_2 | 2000002 |             | Compañía A  |
-  | marca_3 | 3000003 | 123456      | Compañía C  |
-  | marca_4 | 4000004 |             | Compañía C  |
+    | nombre  | prefijo | prefijoUPC  | compañía    |
+    | marca_1 | 1000001 |             | Compañía A  |
+    | marca_2 | 2000002 |             | Compañía A  |
+    | marca_3 | 3000003 | 123456      | Compañía C  |
+    | marca_4 | 4000004 |             | Compañía C  |
   Y existen los siguientes códigos de barras:
-  | tipo              | codigo          | marca     | comentario                      |
-  | TYPECODE_GTIN_12  | 1000001000015   | marca_1 | Alta cod. EAN para marca marca_1  |
-  | TYPECODE_GTIN_14  | 10000010000158  | marca_1 | Alta cod. EAN para marca marca_1  |
-  | TYPECODE_GTIN_12  | 300000300019    | marca_3 | Alta cod. UPC para marca marca_3  |
-  | TYPECODE_GTIN_13  | 3000003000028   | marca_3 | Alta cod. EAN para marca marca_3  |
-  | TYPECODE_GTIN_14  | 13000003000032  | marca_3 | Alta cod. DUN para marca marca_3  |
-  | TYPECODE_GTIN_14  | 23000003000046  | marca_3 | Alta cod. DUN para marca marca_3  |
-  | TYPECODE_GTIN_14  | 94000004000012  | marca_4 | Alta cod. DUN para marca marca_3  |
+    | tipo              | codigo          | marca     | comentario                      |
+    | TYPECODE_GTIN_12  | 1000001000015   | marca_1 | Alta cod. EAN para marca marca_1  |
+    | TYPECODE_GTIN_14  | 10000010000158  | marca_1 | Alta cod. EAN para marca marca_1  |
+    | TYPECODE_GTIN_12  | 300000300019    | marca_3 | Alta cod. UPC para marca marca_3  |
+    | TYPECODE_GTIN_13  | 3000003000028   | marca_3 | Alta cod. EAN para marca marca_3  |
+    | TYPECODE_GTIN_14  | 13000003000032  | marca_3 | Alta cod. DUN para marca marca_3  |
+    | TYPECODE_GTIN_14  | 23000003000046  | marca_3 | Alta cod. DUN para marca marca_3  |
+    | TYPECODE_GTIN_14  | 94000004000012  | marca_4 | Alta cod. DUN para marca marca_3  |
 
   Escenario: Listar códigos de barras
     Dado estoy en la página del escritorio
@@ -69,9 +69,9 @@ Característica: Lista códigos de barras
   Escenario: Crear nuevo código de barras
     Dado estoy en la página de creación códigos de barras
     Cuando relleno lo siguiente:
-    | Tipo                              | TYPECODE_GTIN_13                      |
-    | código_base                       | 22222                                 |
-    | Comentarios                       | Producto x, inicialmente código 4444  |
+      | Tipo                              | TYPECODE_GTIN_13                      |
+      | código_base                       | 22222                                 |
+      | Comentarios                       | Producto x, inicialmente código 4444  |
     Y selecciono "marca_2" de "Marca que corresponde este código"
     Y presiono "Crear y regresar al listado"
     Entonces debo estar en la página de listado de códigos de barras

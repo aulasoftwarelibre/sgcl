@@ -11,34 +11,34 @@ Característica: Lista productos
 
   Antecedentes:
   Dado existen los siguientes usuarios:
-  | nombre    | clave     | email       | activado  | rol         |
-  | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
+    | nombre    | clave     | email       | activado  | rol         |
+    | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
   Y estoy conectado como usuario "admin" y contraseña "adminpw"
   Y existen las siguientes compañías:
-  | nombre      | nif        |
-  | Compañía A  | A00000001  |
-  | Compañía B  | A00000002  |
-  | Compañía C  | A00000003  |
+    | nombre      | nif        |
+    | Compañía A  | A00000001  |
+    | Compañía B  | A00000002  |
+    | Compañía C  | A00000003  |
   Y existen las siguientes marcas:
-  | nombre  | prefijo | prefijoUPC  | compañía    |
-  | marca_1 | 1000001 |             | Compañía A  |
-  | marca_2 | 2000002 |             | Compañía A  |
-  | marca_3 | 3000003 | 123456      | Compañía C  |
-  | marca_4 | 4000004 |             | Compañía C  |
+    | nombre  | prefijo | prefijoUPC  | compañía    |
+    | marca_1 | 1000001 |             | Compañía A  |
+    | marca_2 | 2000002 |             | Compañía A  |
+    | marca_3 | 3000003 | 123456      | Compañía C  |
+    | marca_4 | 4000004 |             | Compañía C  |
   Y existen los siguientes códigos de barras:
-  | tipo              | codigo          | marca     | comentario                      |
-  | TYPECODE_GTIN_12  | 1000001000015   | marca_1 | Alta cod. EAN para marca marca_1  |
-  | TYPECODE_GTIN_14  | 10000010000158  | marca_1 | Alta cod. EAN para marca marca_1  |
-  | TYPECODE_GTIN_12  | 300000300019    | marca_3 | Alta cod. UPC para marca marca_3  |
-  | TYPECODE_GTIN_13  | 3000003000028   | marca_3 | Alta cod. EAN para marca marca_3  |
-  | TYPECODE_GTIN_14  | 13000003000032  | marca_3 | Alta cod. DUN para marca marca_3  |
-  | TYPECODE_GTIN_14  | 23000003000046  | marca_3 | Alta cod. DUN para marca marca_3  |
-| TYPECODE_GTIN_14  | 94000004000012  | marca_4 | Alta cod. DUN para marca marca_3  |
+    | tipo              | codigo          | marca     | comentario                      |
+    | TYPECODE_GTIN_12  | 1000001000015   | marca_1 | Alta cod. EAN para marca marca_1  |
+    | TYPECODE_GTIN_14  | 10000010000158  | marca_1 | Alta cod. EAN para marca marca_1  |
+    | TYPECODE_GTIN_12  | 300000300019    | marca_3 | Alta cod. UPC para marca marca_3  |
+    | TYPECODE_GTIN_13  | 3000003000028   | marca_3 | Alta cod. EAN para marca marca_3  |
+    | TYPECODE_GTIN_14  | 13000003000032  | marca_3 | Alta cod. DUN para marca marca_3  |
+    | TYPECODE_GTIN_14  | 23000003000046  | marca_3 | Alta cod. DUN para marca marca_3  |
+    | TYPECODE_GTIN_14  | 94000004000012  | marca_4 | Alta cod. DUN para marca marca_3  |
   Y existen los siguientes productos:
-  | codigo  | descripcion   | descripcion completa  | historial           | numero UC | marca   | codigo UC     | codigo UV       |
-  | A001    | 10x1 ESPAÑA   | PET 10x1L ESPAÑA      | 1L para España      | 10        | marca_1 | 1000001000015 | 10000010000158  |
-  | B123    | 6x500 USA     | VID 6x500ml USA       | 500ml para USA      | 6         | marca_3 | 300000300019  | 13000003000032  |
-  | B124    | 6x500 HOLANDA | VID 6x500ml HOLANDA   | 500ml para Holanda  | 6         | marca_3 | 3000003000028 | 13000003000032  |
+    | codigo  | descripcion   | descripcion completa  | historial           | numero UC | marca   | codigo UC     | codigo UV       |
+    | A001    | 10x1 ESPAÑA   | PET 10x1L ESPAÑA      | 1L para España      | 10        | marca_1 | 1000001000015 | 10000010000158  |
+    | B123    | 6x500 USA     | VID 6x500ml USA       | 500ml para USA      | 6         | marca_3 | 300000300019  | 13000003000032  |
+    | B124    | 6x500 HOLANDA | VID 6x500ml HOLANDA   | 500ml para Holanda  | 6         | marca_3 | 3000003000028 | 13000003000032  |
 
 
   Escenario: Listar productos
@@ -76,11 +76,11 @@ Característica: Lista productos
   Escenario: Crear nuevo producto
     Dado estoy en la página de creación de productos
     Cuando relleno lo siguiente:
-    | Código del producto                         | B003                              |
-    | Descripción                                 | 6x500 ALEMANIA                    |
-    | Descripción completa                        | VID 6x500ml ALEMANIA              |
-    | Historíal de modificaciones                 | agrupacion 5x(10x1L) para España  |
-    | Número de UC por Unidad de Venta            | 6                                 |
+      | Código del producto                         | B003                              |
+      | Descripción                                 | 6x500 ALEMANIA                    |
+      | Descripción completa                        | VID 6x500ml ALEMANIA              |
+      | Historíal de modificaciones                 | agrupacion 5x(10x1L) para España  |
+      | Número de UC por Unidad de Venta            | 6                                 |
 
     Y selecciono "marca_3" de "Marca que corresponde"
     Y selecciono "3000003000028" de "Código de barras para la Unidad de Consumo"

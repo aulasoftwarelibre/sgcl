@@ -9,20 +9,20 @@ Característica: Lista marcas
 
   Antecedentes:
     Dado existen los siguientes usuarios:
-    | nombre    | clave     | email       | activado  | rol         |
-    | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
+      | nombre    | clave     | email       | activado  | rol         |
+      | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
     Y estoy conectado como usuario "admin" y contraseña "adminpw"
     Y existen las siguientes compañías:
-    | nombre      | nif        |
-    | Compañía A  | A00000001  |
-    | Compañía B  | A00000002  |
-    | Compañía C  | A00000003  |
+      | nombre      | nif        |
+      | Compañía A  | A00000001  |
+      | Compañía B  | A00000002  |
+      | Compañía C  | A00000003  |
     Y existen las siguientes marcas:
-    | nombre  | prefijo | prefijoUPC  | compañía    |
-    | marca_1 | 1000001 |             | Compañía A  |
-    | marca_2 | 2000002 |             | Compañía A  |
-    | marca_3 | 3000003 | 123456      | Compañía C  |
-    | marca_4 | 4000004 |             | Compañía C  |
+      | nombre  | prefijo | prefijoUPC  | compañía    |
+      | marca_1 | 1000001 |             | Compañía A  |
+      | marca_2 | 2000002 |             | Compañía A  |
+      | marca_3 | 3000003 | 123456      | Compañía C  |
+      | marca_4 | 4000004 |             | Compañía C  |
 
   Escenario: Listar marcas
     Dado estoy en la página del escritorio

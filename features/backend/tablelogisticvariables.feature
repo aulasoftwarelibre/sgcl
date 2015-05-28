@@ -10,27 +10,27 @@ Característica: Lista variables logísticas
 
   Antecedentes:
   Dado existen los siguientes usuarios:
-  | nombre    | clave     | email       | activado  | rol         |
-  | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
+    | nombre    | clave     | email       | activado  | rol         |
+    | admin     | adminpw   | admin@sgcl  | 1         | ROLE_ADMIN  |
   Y estoy conectado como usuario "admin" y contraseña "adminpw"
   Y existen las siguientes compañías:
-  | nombre      | nif        |
-  | Compañía A  | A00000001  |
-  | Compañía B  | A00000002  |
-  | Compañía C  | A00000003  |
+    | nombre      | nif        |
+    | Compañía A  | A00000001  |
+    | Compañía B  | A00000002  |
+    | Compañía C  | A00000003  |
   Y existen las siguientes marcas:
-  | nombre  | prefijo | prefijoUPC  | compañía    |
-  | marca_1 | 1000001 |             | Compañía A  |
-  | marca_2 | 2000002 | 123456      | Compañía C  |
-  | marca_3 | 3000003 |             | Compañía A  |
-  | marca_4 | 4000004 |             | Compañía C  |
+    | nombre  | prefijo | prefijoUPC  | compañía    |
+    | marca_1 | 1000001 |             | Compañía A  |
+    | marca_2 | 2000002 | 123456      | Compañía C  |
+    | marca_3 | 3000003 |             | Compañía A  |
+    | marca_4 | 4000004 |             | Compañía C  |
   Y existen las siguientes variables logísticas:
-  | indicador_logístico | descripcion                       | marca   |
-  | 1                   | Diez UC por agrupación            | marca_1 |
-  | 3                   | Tres UC por agrupación            | marca_1 |
-  | 5                   | Veinte UC por agrupación          | marca_1 |
-  | 2                   | Agrupación en formato Expobandeja | marca_2 |
-  | 3                   | Cinco UC por agrupación           | marca_2 |
+    | indicador_logístico | descripcion                       | marca   |
+    | 1                   | Diez UC por agrupación            | marca_1 |
+    | 3                   | Tres UC por agrupación            | marca_1 |
+    | 5                   | Veinte UC por agrupación          | marca_1 |
+    | 2                   | Agrupación en formato Expobandeja | marca_2 |
+    | 3                   | Cinco UC por agrupación           | marca_2 |
 
   Escenario: Listar variables losgísticas
     Dado estoy en la página del escritorio
@@ -67,8 +67,8 @@ Característica: Lista variables logísticas
   Escenario: Crear un nuevo dígito logístico
     Dado estoy en la página de creación variables logísticas
     Cuando relleno lo siguiente:
-    | Dígito logístico  | 2                       |
-    | Descripción       | Doce UC por agrupación  |
+      | Dígito logístico  | 2                       |
+      | Descripción       | Doce UC por agrupación  |
     Y selecciono "marca_1" de "Marca que corresponde"
     Y presiono "Crear y regresar al listado"
     Entonces debo estar en la página de listado de variables logísticas
