@@ -37,22 +37,15 @@
 
 
             $("select[id$='_type']").change(function() {
-                if ( $(this).val() === 'TYPECODE_GTIN_8' ) {
-                    $("div[id$='_code']").show();
-                    $("div[id$='_withCounter']").hide();
-                    $("div[id$='_basecode']").hide();
+                $("div[id$='_withCounter']").show();
+                $("div[id$='_code']").hide();
+                if ( $(this).val() === 'TYPECODE_GTIN_12' || $(this).val() === 'TYPECODE_GTIN_13' ) {
                     $("div[id$='_tableLogisticVariables']").hide();
                 }
                 else {
-                    $("input[id$='_withCounter']").trigger('change');
-                    $("div[id$='_withCounter']").show();
-                    $("div[id$='_code']").hide();
                     if ($(this).val() === 'TYPECODE_GTIN_14') {
                         $("select[id$='_trademark']").trigger('change');
                         $("div[id$='_tableLogisticVariables']").show();
-                    }
-                    else{
-                        $("div[id$='_tableLogisticVariables']").hide();
                     }
                 }
             });
@@ -63,9 +56,6 @@
                     $("div[id$='_basecode']").hide();
                 } else {
                     $("div[id$='_basecode']").show();
-                    if ( $("select[id$='_type']").val() === 'TYPECODE_GTIN_8' ) {
-                        $("div[id$='_basecode']").hide();
-                    }
                 }
             });
         });
