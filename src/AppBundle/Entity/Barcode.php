@@ -416,17 +416,19 @@ class Barcode
         $pdf->setBarcode(date('Y-m-d H:i:s'));
         $pdf->setImageScale($scale);
         $pdf->AddPage();
-        $txt1 = "Proyecto Fin de Carrera 'SGCL'. Escuela Politécnica Superior de Córdoba, UCO.";
-        $txt2 = "Autores: María Jesús León García y Joaquín Millán Blanco.";
-        $txt3 = "Código '" . $formatted_code .
+        $txt1 = "Proyecto Fin de Carrera 'Sistema de Gestión de Códigos Logisticos'.";
+        $txt2 = "Escuela Politécnica Superior de Córdoba, Universidad de Cordoba.";
+        $txt3 = "Autores: María Jesús León García y Joaquín Millán Blanco.";
+        $txt4 = "Código '" . $formatted_code .
             "' de tipo " . substr($this->getType(), 9) . " (". $code_type ."), " .
-            "marca " . $this->getTrademark() . ".";
-        $pdf->Cell(0, 20, $txt1, 0, 1);
+            "marca '" . $this->getTrademark() . "'.";
+
+        $pdf->Cell(0, 0, $txt1, 0, 1);
         $pdf->Cell(0, 0, $txt2, 0, 1);
-        $pdf->Ln(); $pdf->Ln();
         $pdf->Cell(0, 0, $txt3, 0, 1);
+        $pdf->Ln(); $pdf->Ln();
+        $pdf->Cell(0, 0, $txt4, 0, 1);
         $pdf->Ln();
-        //$pdf->SetY(30);
         $pdf->Image(
             '@'.$this->getImage(),
             '', '', '', '',
