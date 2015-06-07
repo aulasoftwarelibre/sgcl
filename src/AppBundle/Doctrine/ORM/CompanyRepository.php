@@ -11,6 +11,10 @@ namespace AppBundle\Doctrine\ORM;
 use AppBundle\Entity;
 use Doctrine\ORM\Query\Expr;
 
+/**
+ * Class CompanyRepository
+ * @package AppBundle\Doctrine\ORM
+ */
 class CompanyRepository extends CustomRepository
 {
 

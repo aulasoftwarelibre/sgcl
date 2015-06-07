@@ -8,16 +8,20 @@
 
 namespace AppBundle\Controller;
 
-//use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-
 use Sonata\AdminBundle\Controller\CRUDController;
-use Symfony\Component\HttpFoundation\Response;
 
-
+/**
+ * Class ProductCRUDController
+ * @package AppBundle\Controller
+ */
 class ProductCRUDController extends CRUDController
 {
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function trademarkBarcodeAction(Request $request)
     {
         $trademark_id = $request->request->get('trademark_id');

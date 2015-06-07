@@ -10,6 +10,10 @@ namespace AppBundle\Behat;
 
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
+/**
+ * Class CoreContext
+ * @package AppBundle\Behat
+ */
 class CoreContext extends DefaultContext
 {
     /**

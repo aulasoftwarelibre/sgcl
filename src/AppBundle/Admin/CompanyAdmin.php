@@ -16,15 +16,24 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
+/**
+ * Class CompanyAdmin
+ * @package AppBundle\Admin
+ */
 class CompanyAdmin extends Admin
 {
+    /**
+     * @var array
+     */
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC
         '_sort_by' => 'name'  // name of the ordered field
     );
 
+    /**
+     * @param FormMapper $form
+     */
     protected function configureFormFields(FormMapper $form)
     {
         $form
@@ -44,6 +53,9 @@ class CompanyAdmin extends Admin
             ->end();
     }
 
+    /**
+     * @param ListMapper $list
+     */
     protected function configureListFields(ListMapper $list)
     {
         $list
@@ -61,6 +73,9 @@ class CompanyAdmin extends Admin
         ;
     }
 
+    /**
+     * @param ShowMapper $filter
+     */
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
@@ -71,6 +86,9 @@ class CompanyAdmin extends Admin
         ;
     }
 
+    /**
+     * @param DatagridMapper $filter
+     */
     protected function configureDatagridFilters( DatagridMapper $filter )
     {
         $filter

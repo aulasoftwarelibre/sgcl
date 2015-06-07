@@ -8,9 +8,17 @@
 
 namespace AppBundle\Doctrine\ORM;
 
+/**
+ * Class TableLogisticVariablesRepository
+ * @package AppBundle\Doctrine\ORM
+ */
 class TableLogisticVariablesRepository extends CustomRepository
 {
 
+    /**
+     * @param $typeTableLogisticVariables
+     * @return \Doctrine\ORM\QueryBuilder
+     */
     public function getTableLogisticVariablesAsList($typeTableLogisticVariables)
     {
         $qb = $this->getQueryBuilder();
@@ -21,7 +29,9 @@ class TableLogisticVariablesRepository extends CustomRepository
         return $query;
     }
 
-
+    /**
+     * @param $type
+     */
     public function createTableLogisticVariablesQuery($type)
     {
         $query = $this->createQueryBuilder('b');
@@ -33,6 +43,10 @@ class TableLogisticVariablesRepository extends CustomRepository
             ->setParameter('1', $type);
     }
 
+    /**
+     * @param $trademark_id
+     * @return array
+     */
     public function findByTrademarkId($trademark_id)
     {
         $query = $this->getEntityManager()->createQuery("

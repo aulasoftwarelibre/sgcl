@@ -12,15 +12,28 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Class CodeType
+ * @package AppBundle\Form\Type
+ */
 class CodeType extends AbstractType
 {
+    /**
+     * @var array
+     */
     private $codeTypeChoices;
 
+    /**
+     * @param array $codeTypeChoices
+     */
     public function __construct(array $codeTypeChoices)
     {
         $this->codeTypeChoices = $codeTypeChoices;
     }
 
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
@@ -28,6 +41,9 @@ class CodeType extends AbstractType
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function getParent()
     {
         return 'choice';
@@ -43,10 +59,13 @@ class CodeType extends AbstractType
         return 'codeType';
     }
 
-    //public function getDefaultOptions(array $options)
+    /**
+     * @return array
+     *
+     * This is the public method.
+     */
     public function getDefaultOptions()
     {
-        //En este método se especifica las opciones por defecto.
         return array(
             //'choice_list' => null,
             'choices' => array(),

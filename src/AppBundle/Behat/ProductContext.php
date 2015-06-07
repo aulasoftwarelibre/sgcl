@@ -14,6 +14,10 @@ use AppBundle\Entity\Barcode;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
+/**
+ * Class ProductContext
+ * @package AppBundle\Behat
+ */
 class ProductContext extends DefaultContext{
     /**
      * @Given existen los siguientes productos:

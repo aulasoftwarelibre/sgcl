@@ -13,6 +13,10 @@ use AppBundle\Entity\Trademark;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
+/**
+ * Class BarcodeContext
+ * @package AppBundle\Behat
+ */
 class BarcodeContext extends DefaultContext{
     /**
      * @Given existen los siguientes códigos de barras:

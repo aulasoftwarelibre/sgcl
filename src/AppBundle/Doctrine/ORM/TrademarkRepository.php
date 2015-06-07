@@ -11,7 +11,10 @@ namespace AppBundle\Doctrine\ORM;
 use AppBundle\Entity;
 use Doctrine\ORM\Query\Expr;
 
-
+/**
+ * Class TrademarkRepository
+ * @package AppBundle\Doctrine\ORM
+ */
 class TrademarkRepository extends CustomRepository
 {
 

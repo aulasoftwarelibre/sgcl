@@ -14,18 +14,26 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-
+/**
+ * Class TrademarkAdmin
+ * @package AppBundle\Admin
+ */
 class TrademarkAdmin extends Admin
 {
+    /**
+     * @var array
+     */
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC
         '_sort_by' => 'name'  // name of the ordered field
     );
 
+    /**
+     * @param FormMapper $form
+     */
     protected function configureFormFields(FormMapper $form)
     {
         $form
@@ -42,6 +50,9 @@ class TrademarkAdmin extends Admin
             ->end();
     }
 
+    /**
+     * @param ListMapper $list
+     */
     protected function configureListFields(ListMapper $list)
     {
         $list
@@ -60,6 +71,9 @@ class TrademarkAdmin extends Admin
         ;
     }
 
+    /**
+     * @param ShowMapper $filter
+     */
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
@@ -71,6 +85,9 @@ class TrademarkAdmin extends Admin
         ;
     }
 
+    /**
+     * @param DatagridMapper $filter
+     */
     protected function configureDatagridFilters( DatagridMapper $filter )
     {
         $filter

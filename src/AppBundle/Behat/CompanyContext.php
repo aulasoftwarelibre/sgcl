@@ -13,6 +13,10 @@ use AppBundle\Entity\Company;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
+/**
+ * Class CompanyContext
+ * @package AppBundle\Behat
+ */
 class CompanyContext extends DefaultContext
 {
     /**

@@ -14,14 +14,24 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
+/**
+ * Class TableLogisticVariablesAdmin
+ * @package AppBundle\Admin
+ */
 class TableLogisticVariablesAdmin extends Admin
 {
+    /**
+     * @var array
+     */
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC
         '_sort_by' => 'logisticIndicator'  // name of the ordered field
     );
 
+    /**
+     * @param FormMapper $form
+     */
     protected function configureFormFields(FormMapper $form)
     {
         $disabled = $this->getSubject()->isNew() ? false : true;
@@ -44,6 +54,9 @@ class TableLogisticVariablesAdmin extends Admin
             ->end();
     }
 
+    /**
+     * @param ListMapper $list
+     */
     protected function configureListFields(ListMapper $list)
     {
         $list
@@ -62,6 +75,9 @@ class TableLogisticVariablesAdmin extends Admin
         ;
     }
 
+    /**
+     * @param ShowMapper $filter
+     */
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
@@ -73,6 +89,9 @@ class TableLogisticVariablesAdmin extends Admin
         ;
     }
 
+    /**
+     * @param DatagridMapper $filter
+     */
     protected function configureDatagridFilters( DatagridMapper $filter )
     {
         $filter

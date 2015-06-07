@@ -10,13 +10,18 @@ namespace AppBundle\Doctrine\ORM;
 
 use AppBundle\Entity;
 use Doctrine\ORM\Query\Expr;
-use Symfony\Component\Validator\Constraints\False;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-
+/**
+ * Class BarcodeRepository
+ * @package AppBundle\Doctrine\ORM
+ */
 class BarcodeRepository extends CustomRepository
 {
+    /**
+     * @param $typeBarcode
+     * @return \Doctrine\ORM\QueryBuilder
+     */
     public function getBarcodeAsList($typeBarcode)
     {
         $qb = $this->getQueryBuilder();
@@ -27,7 +32,9 @@ class BarcodeRepository extends CustomRepository
         return $query;
     }
 
-
+    /**
+     * @param $type
+     */
     public function createBarcodeQuery($type)
     {
         $query = $this->createQueryBuilder('b');
@@ -39,6 +46,10 @@ class BarcodeRepository extends CustomRepository
             ->setParameter('1', $type);
     }
 
+    /**
+     * @param $trademark_id
+     * @return array
+     */
     public function findByTrademarkId($trademark_id)
     {
         $query = $this->getEntityManager()->createQuery("
@@ -51,6 +62,10 @@ class BarcodeRepository extends CustomRepository
         return $query->getArrayResult();
     }
 
+    /**
+     * @param $code
+     * @return array
+     */
     public function findByCode($code)
     {
         $query = $this->getEntityManager()->createQuery("
@@ -63,6 +78,10 @@ class BarcodeRepository extends CustomRepository
         return $query->getArrayResult();
     }
 
+    /**
+     * @param $code
+     * @return array
+     */
     public function buscarrrr($code)
     {
         $query = $this->getEntityManager()->createQuery("
@@ -74,6 +93,10 @@ class BarcodeRepository extends CustomRepository
         return $query->getArrayResult();
     }
 
+    /**
+     * @param $code
+     * @return array
+     */
     public function findProdutByBarcode($code)
     {
         $query = $this->getEntityManager()->createQuery("

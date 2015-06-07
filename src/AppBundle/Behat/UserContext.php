@@ -13,6 +13,10 @@ use AppBundle\Entity\User;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
+/**
+ * Class UserContext
+ * @package AppBundle\Behat
+ */
 class UserContext extends DefaultContext
 {
     /**

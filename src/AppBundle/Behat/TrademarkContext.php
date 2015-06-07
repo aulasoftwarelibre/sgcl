@@ -14,6 +14,10 @@ use AppBundle\Entity\Company;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
+/**
+ * Class TrademarkContext
+ * @package AppBundle\Behat
+ */
 class TrademarkContext extends DefaultContext
 {
     /**

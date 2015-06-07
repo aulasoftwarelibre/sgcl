@@ -11,9 +11,17 @@ namespace AppBundle\Doctrine\ORM;
 use AppBundle\Entity;
 use Doctrine\ORM\Query\Expr;
 
+/**
+ * Class ProductRepository
+ * @package AppBundle\Doctrine\ORM
+ */
 class ProductRepository extends CustomRepository
 {
 
+    /**
+     * @param $barcode_id
+     * @return array
+     */
     public function findByCodeId($barcode_id)
     {
         $query = $this->getEntityManager()->createQuery("

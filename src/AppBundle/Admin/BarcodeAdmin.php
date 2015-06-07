@@ -14,23 +14,29 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Doctrine\ORM\Query;
-use Doctrine\ORM\QueryBuilder;
-//Para el uso del tipo de dado "codetype"
 use AppBundle\Form\Type;
-//Para "query"
 use AppBundle\Doctrine\ORM;
 use AppBundle\Entity\Barcode;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-
+/**
+ * Class BarcodeAdmin
+ * @package AppBundle\Admin
+ */
 class BarcodeAdmin extends Admin
 {
+    /**
+     * @var array
+     */
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC
         '_sort_by' => 'code'  // name of the ordered field
     );
 
+    /**
+     * @param RouteCollection $collection
+     */
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('trademark_tablelogisticvariables', 'trademark/tablelogisticvariables');
@@ -38,6 +44,9 @@ class BarcodeAdmin extends Admin
         $collection->add('print_pdfbarcode', 'pdf');
     }
 
+    /**
+     * @param FormMapper $form
+     */
     protected function configureFormFields(FormMapper $form)
     {
         $disabled = $this->getSubject()->isNew() ? false : true;
@@ -69,7 +78,6 @@ class BarcodeAdmin extends Admin
                 'disabled' => $disabled,
             ))
             ->add('comment', null, array('label' => 'Comentarios'))
-            //->add('code', null, array('label' => 'Código'))
             ->add('code', null, array(
                 'mapped'=> false,
                 'required'=> false,
@@ -100,6 +108,9 @@ class BarcodeAdmin extends Admin
         }
     }
 
+    /**
+     * @param ListMapper $list
+     */
     protected function configureListFields(ListMapper $list)
     {
         $list
@@ -119,6 +130,9 @@ class BarcodeAdmin extends Admin
         ;
     }
 
+    /**
+     * @param ShowMapper $filter
+     */
     protected function configureShowFields(ShowMapper $filter)
     {
         $filter
@@ -131,6 +145,9 @@ class BarcodeAdmin extends Admin
         ;
     }
 
+    /**
+     * @param DatagridMapper $filter
+     */
     protected function configureDatagridFilters( DatagridMapper $filter )
     {
         $filter

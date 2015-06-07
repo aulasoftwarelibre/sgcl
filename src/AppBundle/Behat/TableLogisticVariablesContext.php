@@ -13,6 +13,10 @@ use AppBundle\Entity\TableLogisticVariables;
 use Behat\Gherkin\Node\TableNode;
 use Sylius\Bundle\ResourceBundle\Behat\DefaultContext;
 
+/**
+ * Class TableLogisticVariablesContext
+ * @package AppBundle\Behat
+ */
 class TableLogisticVariablesContext extends DefaultContext{
     /**
      * @Given existen las siguientes variables logísticas:

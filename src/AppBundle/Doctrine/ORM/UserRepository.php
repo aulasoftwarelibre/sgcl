@@ -11,6 +11,10 @@ namespace AppBundle\Doctrine\ORM;
 
 use Doctrine\ORM\EntityRepository;
 
+/**
+ * Class UserRepository
+ * @package AppBundle\Doctrine\ORM
+ */
 class UserRepository extends EntityRepository
 {
 

@@ -11,8 +11,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-//Para los ASSERT .. las validaciones
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -378,6 +376,9 @@ class Trademark
      * @return \Doctrine\Common\Collections\Collection
      */
 
+    /**
+     * @return TableLogisticVariables
+     */
     public function getTableLogisticVariables()
     {
         return $this->tablelogisticvariabless;

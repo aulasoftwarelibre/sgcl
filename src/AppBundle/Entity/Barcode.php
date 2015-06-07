@@ -12,13 +12,10 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use AppBundle\Form\Type;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
-
 
 
 /**
@@ -123,6 +120,9 @@ class Barcode
      */
 
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;
@@ -298,7 +298,7 @@ class Barcode
     }
 
     /**
-     * Set trademarkDon't forget to comment out any existing LoadModule php5_module... line that might be present from Yosemite's own PHP version!
+     * Set trademark
      *
      * @param Trademark $trademark
      * @return Barcode
@@ -367,12 +367,15 @@ class Barcode
         return $new_code->getText();
     }
 
+
     /**
-     * This function returns the bar code represented in a PNG image.
+     * @return string
+     *
+     * This function returns the barcode represented in a PNG image.
      * The Zend\Barcode library is used, and receives a string with the barcode
      * excluding the check digit (checksum).
      * This function only generates GTIN-12, GTIN-13 and GTIN-14 codes.
-    */
+     */
     public function getImage()
     {
         $subCode = substr($this->getCode(), 0, -1 );
@@ -401,9 +404,12 @@ class Barcode
     }
 
     /**
+     * @return \TCPDF
+     *
      * This function returns a PDF file, where the barcode is shown.
+     * The TCPDF library is used to generate the PDF.
      * This function only generates GTIN-12, GTIN-13 and GTIN-14 codes.
-    */
+     */
     public function getPDFBarcode()
     {
         $code_type = '';

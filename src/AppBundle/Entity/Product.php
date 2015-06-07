@@ -10,16 +10,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-//Para los ASSERT .. las validaciones
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-//Para asignar 'datatime'
 use Gedmo\Mapping\Annotation as Gedmo;
-// Para utilizar búsquedas ... entitymanager ...
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Doctrine\ORM\EntityManager;
+
 
 /**
  * Product

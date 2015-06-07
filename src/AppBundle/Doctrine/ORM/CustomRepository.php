@@ -10,6 +10,10 @@ namespace AppBundle\Doctrine\ORM;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
+/**
+ * Class CustomRepository
+ * @package AppBundle\Doctrine\ORM
+ */
 class CustomRepository extends EntityRepository
 {
     /**
