@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jmb
+ * User: Joaquín & María
  * Date: 04/01/15
  * Time: 9:57
  */
@@ -61,6 +61,14 @@ class CoreContext extends DefaultContext
     }
 
     /**
+     * @Given estoy en la página de listado de usuarios
+     */
+    public function iAmOnUsersList()
+    {
+        $this->getSession()->visit($this->generatePageUrl('admin_app_user_list'));
+    }
+
+    /**
      * @Given estoy en la página de creación de compañías
      */
     public function iAmOnCompanyCreate()
@@ -101,6 +109,14 @@ class CoreContext extends DefaultContext
     }
 
     /**
+     * @Given estoy en la página de creación de usuarios
+     */
+    public function iAmOnUserCreate()
+    {
+        $this->getSession()->visit($this->generatePageUrl('admin_app_user_create'));
+    }
+
+    /**
      * @Given /^estoy en la página de edición de compañía con "([^".]*)" denominado "([^".]*)"$/
      */
     public function iAmOnOneCompanyEdit($campo, $valor)
@@ -109,6 +125,18 @@ class CoreContext extends DefaultContext
         $company = $em->getRepository('AppBundle:Company')->findOneBy(array($campo => $valor));
         $this->assertSession()->addressEquals(
             $this->generatePageUrl('admin_app_company_edit', array('id' => $company->getId()))
+        );
+    }
+
+    /**
+     * @Given /^estoy en la página de edición de usuario con "([^".]*)" denominado "([^".]*)"$/
+     */
+    public function iAmOnOneUserEdit($campo, $valor)
+    {
+        $em = $this->getEntityManager();
+        $user = $em->getRepository('AppBundle:User')->findOneBy(array($campo => $valor));
+        $this->assertSession()->addressEquals(
+            $this->generatePageUrl('admin_app_user_edit', array('id' => $user->getId()))
         );
     }
 
@@ -141,7 +169,7 @@ class CoreContext extends DefaultContext
      */
     public function iShouldBeOnTableLogisticVariablesList()
     {
-        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_tablelogisticvariables_list '));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_tablelogisticvariables_list'));
     }
 
     /**
@@ -149,7 +177,15 @@ class CoreContext extends DefaultContext
      */
     public function iShouldBeOnProductsList()
     {
-        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_product_list '));
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_product_list'));
+    }
+
+    /**
+     * @Then debo estar en la página de listado de usuarios
+     */
+    public function iShouldBeOnUsersList()
+    {
+        $this->assertSession()->addressEquals($this->generatePageUrl('admin_app_user_list'));
     }
 
     /**

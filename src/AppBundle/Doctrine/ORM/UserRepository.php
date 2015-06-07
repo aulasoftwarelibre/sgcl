@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sergio
+ * User: Joaquín & María
  * Date: 26/04/15
  * Time: 11:52
  */

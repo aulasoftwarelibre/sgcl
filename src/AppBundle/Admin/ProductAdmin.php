@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: jmb
+ * User: Joaquín & María
  * Date: 8/03/15
  * Time: 22:51
  */
@@ -25,7 +25,7 @@ class ProductAdmin extends Admin
     protected $datagridValues = array(
         '_page' => 1,            // display the first page (default = 1)
         '_sort_order' => 'ASC', // reverse order (default = 'ASC') ... ASC or DESC
-        '_sort_by' => 'trademark'  // name of the ordered field
+        '_sort_by' => 'code'  // name of the ordered field
     );
 
     protected function configureRoutes(RouteCollection $collection)

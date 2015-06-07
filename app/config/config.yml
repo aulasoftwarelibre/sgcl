@@ -91,7 +91,7 @@ stof_doctrine_extensions:
         default:
             timestampable: true
 
-#Aquí se especifican como SERVICIO los diferntes tipos de códigos de barras con los que se trabaja
+#Here are specified as a service, the different types of barcodes that it can work
 parameters:
     codetypes:
         TYPECODE_GTIN_12: GTIN-12 (UPC-A)
