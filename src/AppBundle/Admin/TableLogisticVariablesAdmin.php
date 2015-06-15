@@ -40,6 +40,7 @@ class TableLogisticVariablesAdmin extends Admin
             ->with('Edición de VARIABLE LOGÍSTICA')
             ->add('trademark', null, array(
                 'label' => 'Marca que corresponde',
+                'placeholder' => 'Selecciona la marca',
                 'disabled' => $disabled,
             ))
             ->add('logisticIndicator', null, array('label' => 'Dígito logístico'))

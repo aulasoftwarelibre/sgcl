@@ -58,7 +58,11 @@ class BarcodeAdmin extends Admin
                 'placeholder' => 'Selecciona la marca del producto',
                 'disabled' => $disabled,
             ))
-            ->add('type', 'codeType', array('label' => 'Tipo', 'disabled' => $disabled))
+            ->add('type', 'codeType', array(
+                'label' => 'Tipo',
+                'placeholder' => 'Selecciona el tipo de código logístico',
+                'disabled' => $disabled
+            ))
             ->add('tableLogisticVariables', 'entity', array(
                 'class' => 'AppBundle:TableLogisticVariables',
                 'required' => false,
@@ -87,7 +91,7 @@ class BarcodeAdmin extends Admin
             //->add('creationDate', null, array('label' => 'Fecha de creación'))
             //->add('lastModificationDate', null, array('label' => 'Fecha de última actualización'))
             ->setHelps(array(
-                'type'=>'Introduce el tipo de código',
+                'type'=>'Selecciona el tipo de código',
                 'basecode'=>'Introduce los cinco dígitos qué servirán de código_base',
                 'code'=>'Introduce el código (incluido el dígito del control)',
                 'trademark' =>'Selecciona la marca que corresponde este código',

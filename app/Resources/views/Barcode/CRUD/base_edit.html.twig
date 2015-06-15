@@ -39,15 +39,12 @@
             $("select[id$='_type']").change(function() {
                 $("div[id$='_withCounter']").show();
                 $("div[id$='_code']").hide();
-                if ( $(this).val() === 'TYPECODE_GTIN_12' || $(this).val() === 'TYPECODE_GTIN_13' ) {
-                    $("div[id$='_tableLogisticVariables']").hide();
+                $("div[id$='_tableLogisticVariables']").hide();
+                if ($(this).val() === 'TYPECODE_GTIN_14') {
+                    $("select[id$='_trademark']").trigger('change');
+                    $("div[id$='_tableLogisticVariables']").show();
                 }
-                else {
-                    if ($(this).val() === 'TYPECODE_GTIN_14') {
-                        $("select[id$='_trademark']").trigger('change');
-                        $("div[id$='_tableLogisticVariables']").show();
-                    }
-                }
+
             });
 
 
