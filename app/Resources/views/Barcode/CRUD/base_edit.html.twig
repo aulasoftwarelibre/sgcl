@@ -10,7 +10,8 @@
                     trademark_id: $(this).val()
                 };
                 console.log(data);
-
+                /* List of logistics variables of a trademark (when the type code is GTIN-14)
+                * */
                 $.ajax({
                     type: 'POST',
                     url: '{{ path("admin_app_barcode_trademark_tablelogisticvariables") }}',
@@ -27,7 +28,10 @@
                             $logisticIndicator_selector.html('');
 
                             for (var i = 0, total = data.length; i < total; i++) {
-                                $logisticIndicator_selector.append('<option value="' + data[i].id + '">' + data[i].logisticIndicator + '</option>');
+                                $logisticIndicator_selector.append('<option value="' +
+                                    data[i].id + '">' + data[i].logisticIndicator +
+                                    ' (' + data[i].description + ') </option>'
+                                );
                             }
                         }
                     }
@@ -36,6 +40,8 @@
             });
 
 
+            /* Show table logistic variables only when the GTIN-14 code type is selected
+            * */
             $("select[id$='_type']").change(function() {
                 $("div[id$='_withCounter']").show();
                 $("div[id$='_code']").hide();
@@ -47,7 +53,9 @@
 
             });
 
-
+            /* Shows the field 'BaseCode' only when  'withCounter' is not selected.
+            *  That is, when the counter of the brand is not used, the base code is requested
+            * */
             $("input[id$='_withCounter']").change(function() {
                 if ( $(this).is(':checked')) {
                     $("div[id$='_basecode']").hide();

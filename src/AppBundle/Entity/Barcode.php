@@ -324,7 +324,7 @@ class Barcode
      * @return string
      *
      * This function generates a barcode.
-     * If the counter brand registered as code base is used, this should be increased (and updated).
+     * If the counter brand registered (trademark) as code base is used, this should be increased (and updated).
      * This function only generates GTIN-12, GTIN-13 and GTIN-14 codes.
      *
     */
@@ -336,7 +336,7 @@ class Barcode
 
         if ($this->getWithCounter())
         {
-            $base_code = (string)($this->getTrademark()->getCounter() + 1);
+            $base_code = (string)($this->getTrademark()->getCounter());
         }
         else
         {

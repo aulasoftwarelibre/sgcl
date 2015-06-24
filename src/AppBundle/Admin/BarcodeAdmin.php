@@ -8,6 +8,7 @@
 
 namespace AppBundle\Admin;
 
+use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -18,6 +19,9 @@ use AppBundle\Form\Type;
 use AppBundle\Doctrine\ORM;
 use AppBundle\Entity\Barcode;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\CoreBundle\Validator\ErrorElement;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
  * Class BarcodeAdmin
@@ -106,11 +110,45 @@ class BarcodeAdmin extends Admin
     public function prePersist($barcode)
     {
         $barcode->setCode( $barcode->generateCode() );
+    }
 
-        if ($barcode->getWithCounter()) {
-            $barcode->getTrademark()->incCounter();
+    /**
+     * @param ErrorElement $errorElement
+     * @param Barcode $object
+     */
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        if (!$object->getWithCounter()) {
+            /** @var QueryBuilder $query */
+            $query = $this->getModelManager()->createQuery($this->getClass(), 'o');
+            $barcode = $query
+                ->where('o.code = :code')
+                ->setParameter('code', $object->generateCode())
+                ->getQuery()
+                ->execute()
+            ;
+
+            if (!empty($barcode)) {
+                $errorElement
+                    ->with('basecode')
+                    ->addViolation('El código está en uso')
+                    ->end()
+                ;
+            }
+        } else {
+            do {
+                $object->getTrademark()->incCounter();
+                $query = $this->getModelManager()->createQuery($this->getClass(), 'o');
+                $barcode = $query
+                    ->where('o.code = :code')
+                    ->setParameter('code', $object->generateCode())
+                    ->getQuery()
+                    ->execute()
+                ;
+            } while (!empty($barcode));
         }
     }
+
 
     /**
      * @param ListMapper $list
