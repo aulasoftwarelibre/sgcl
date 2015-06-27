@@ -119,21 +119,29 @@ class BarcodeAdmin extends Admin
     public function validate(ErrorElement $errorElement, $object)
     {
         if (!$object->getWithCounter()) {
-            /** @var QueryBuilder $query */
-            $query = $this->getModelManager()->createQuery($this->getClass(), 'o');
-            $barcode = $query
-                ->where('o.code = :code')
-                ->setParameter('code', $object->generateCode())
-                ->getQuery()
-                ->execute()
-            ;
-
-            if (!empty($barcode)) {
+            if($object->getBasecode() < 0 || $object->getBasecode() > 99999){
                 $errorElement
                     ->with('basecode')
-                    ->addViolation('El código está en uso')
+                    ->addViolation('Recuerde que son cinco dígitos desde 00000 a 99999')
                     ->end()
                 ;
+            }else {
+                /** @var QueryBuilder $query */
+                $query = $this->getModelManager()->createQuery($this->getClass(), 'o');
+                $barcode = $query
+                    ->where('o.code = :code')
+                    ->setParameter('code', $object->generateCode())
+                    ->getQuery()
+                    ->execute()
+                ;
+
+                if (!empty($barcode)) {
+                    $errorElement
+                        ->with('basecode')
+                        ->addViolation('El código está en uso')
+                        ->end()
+                    ;
+                }
             }
         } else {
             do {

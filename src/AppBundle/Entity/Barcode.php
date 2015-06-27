@@ -67,6 +67,12 @@ class Barcode
      *      min = "5",
      *      exactMessage = "Recuerde que debe introducir cinco dígitos."
      * )
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 99999,
+     *      minMessage = "Recuerde que tiene que introducir un número positivo",
+     *      maxMessage = "Recuerde que el código base no puede ser mayor que '99999'"
+     * )
      */
     private $basecode;
 

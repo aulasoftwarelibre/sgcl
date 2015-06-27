@@ -1,7 +1,7 @@
 \AppBundle\Entity\TableLogisticVariables:
     tableLogisticVariables1:
         logisticIndicator: 1
-        description: 8, 9 o 10 Unidades de Consumo por Agrupación
+        description: 8, 9 ó 10 Unidades de Consumo por Agrupación
         trademark: @trademark1
     tableLogisticVariables2:
         logisticIndicator: 2
@@ -9,19 +9,19 @@
         trademark: @trademark1
     tableLogisticVariables3:
         logisticIndicator: 3
-        description: 2, 3 o 5 Unidades de Consumo por Agrupación
+        description: 2, 3 ó 5 Unidades de Consumo por Agrupación
         trademark: @trademark1
     tableLogisticVariables4:
         logisticIndicator: 4
-        description: 24 o 40 Unidades de Consumo por Agrupación
+        description: 24 ó 40 Unidades de Consumo por Agrupación
         trademark: @trademark1
     tableLogisticVariables5:
         logisticIndicator: 5
-        description: 15 o 16 Unidades de Consumo por Agrupación
+        description: 15 ó 16 Unidades de Consumo por Agrupación
         trademark: @trademark1
     tableLogisticVariables6:
         logisticIndicator: 6
-        description: 4 o 6 Unidades de Consumo por Agrupación
+        description: 4 ó 6 Unidades de Consumo por Agrupación
         trademark: @trademark1
     tableLogisticVariables7:
         logisticIndicator: 7
@@ -29,7 +29,7 @@
         trademark: @trademark1
     tableLogisticVariables8:
         logisticIndicator: 8
-        description: 48, 49 o 72 Unidades de Consumo por Agrupación
+        description: 48, 49 ó 72 Unidades de Consumo por Agrupación
         trademark: @trademark1
     tableLogisticVariables9:
         logisticIndicator: 9
@@ -37,7 +37,7 @@
         trademark: @trademark1
     tableLogisticVariables10:
         logisticIndicator: 1
-        description: 8, 9 o 10 Unidades de Consumo por Agrupación
+        description: 8, 9 ó 10 Unidades de Consumo por Agrupación
         trademark: @trademark2
     tableLogisticVariables11:
         logisticIndicator: 2
@@ -45,19 +45,19 @@
         trademark: @trademark2
     tableLogisticVariables12:
         logisticIndicator: 3
-        description: 2, 3 o 5 Unidades de Consumo por Agrupación
+        description: 2, 3 ó 5 Unidades de Consumo por Agrupación
         trademark: @trademark2
     tableLogisticVariables13:
         logisticIndicator: 4
-        description: 24 o 40 Unidades de Consumo por Agrupación
+        description: 24 ó 40 Unidades de Consumo por Agrupación
         trademark: @trademark2
     tableLogisticVariables14:
         logisticIndicator: 5
-        description: 15 o 16 Unidades de Consumo por Agrupación
+        description: 15 ó 16 Unidades de Consumo por Agrupación
         trademark: @trademark2
     tableLogisticVariables15:
         logisticIndicator: 6
-        description: 4 o 6 Unidades de Consumo por Agrupación
+        description: 4 ó 6 Unidades de Consumo por Agrupación
         trademark: @trademark2
     tableLogisticVariables16:
         logisticIndicator: 7
@@ -65,7 +65,7 @@
         trademark: @trademark2
     tableLogisticVariables17:
         logisticIndicator: 8
-        description: 48, 49 o 72 Unidades de Consumo por Agrupación
+        description: 48, 49 ó 72 Unidades de Consumo por Agrupación
         trademark: @trademark2
     tableLogisticVariables18:
         logisticIndicator: 9
@@ -73,7 +73,7 @@
         trademark: @trademark2
     tableLogisticVariables19:
         logisticIndicator: 1
-        description: 8, 9 o 10 Unidades de Consumo por Agrupación
+        description: 8, 9 ó 10 Unidades de Consumo por Agrupación
         trademark: @trademark3
     tableLogisticVariables20:
         logisticIndicator: 2
@@ -85,11 +85,11 @@
         trademark: @trademark3
     tableLogisticVariables22:
         logisticIndicator: 5
-        description: 15 o 16 Unidades de Consumo por Agrupación
+        description: 15 ó 16 Unidades de Consumo por Agrupación
         trademark: @trademark3
     tableLogisticVariables23:
         logisticIndicator: 6
-        description: 4 o 6 Unidades de Consumo por Agrupación
+        description: 4 ó 6 Unidades de Consumo por Agrupación
         trademark: @trademark3
     tableLogisticVariables24:
         logisticIndicator: 7
