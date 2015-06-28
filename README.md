@@ -1,7 +1,7 @@
-# sf2-behat-skel
+# Sistema de Gestión de Códigos Logísticos
 
-Proyecto plantilla que tiene configurada una pequeña prueba con Behat.
+## Autores:
 
-Se puede usar como base para desarrollar otros proyectos basados en Behay y Symfony2.
-Por el momento se está preparando para que funcione con la futura versión 2.6 así que
-puede resultar inestable.
+* Joaquín Millán Blanco
+* María Jesús León García
+
